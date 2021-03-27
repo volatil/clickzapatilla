@@ -1,0 +1,122 @@
+.medidaCalzado {
+  background: white;
+  width: 500px;
+  width: 100%;
+  margin: 0 0 10px 0;
+  position: relative;
+}
+
+.medidaCalzado > p > img {
+  width: 30px;
+  display: inline-block;
+  position: absolute;
+  margin-left: -40px;
+  top: -7px;
+}
+
+.medidaCalzado > p {
+  display: inline-block;
+  position: relative;
+  text-decoration: underline;
+  color: #00bcf2;
+  cursor: pointer;
+  text-align: center;
+  margin-left: 30px;
+}
+
+.medidaCalzado > p:hover {
+  color: black;
+  color: #0489af;
+}
+
+.medidaCalzado > .tallas > div {
+  display: none;
+}
+
+.medidaCalzado > .tallas > div.mujer {
+  margin-top: 5px;
+}
+
+.medidaCalzado > .tallas > div > p {
+  text-align: center;
+  cursor: pointer;
+  background: whitesmoke;
+  border: 1px solid #dddddd;
+  padding: 0;
+  margin: 0;
+  height: 40px;
+  line-height: 3em;
+}
+
+.medidaCalzado > .tallas > div > p > span {
+  font-weight: 500;
+  margin-left: 70px;
+}
+
+.medidaCalzado > .tallas > div > table {
+  display: none;
+  width: 100%;
+}
+
+.medidaCalzado > .tallas > div > table > caption {
+  height: 40px;
+  line-height: 3em;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #f2f2f2;
+  margin-top: 10px;
+}
+
+.medidaCalzado > .tallas > div > table > caption:hover {
+  border: 1px solid #ddd;
+}
+
+.medidaCalzado > .tallas > div > table > thead,
+.medidaCalzado > .tallas > div > table > tbody {
+  display: none;
+}
+
+.medidaCalzado > .tallas > div > table > thead > tr > th {
+  background: #565656;
+  color: #fff;
+  font-weight: 700;
+  height: 30px;
+}
+
+.medidaCalzado > .tallas > div > table > tbody > tr > td {
+  text-align: center;
+  height: 40px;
+}
+
+.medidaCalzado > .tallas > div > table > thead > th,
+.medidaCalzado > .tallas > div > table > tbody > td {
+  border: 1px solid #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+.medidaCalzado > .tallas > div > table tr:nth-child(2n+2) td {
+  background: #f2f2f2;
+}
+
+@media (max-width: 850px) {
+  .medidaCalzado {
+    width: 90%;
+  }
+}
+@media (max-width: 450px) {
+  .medidaCalzado {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .medidaCalzado > p {
+    width: 100%;
+    margin: 10px auto 20px;
+  }
+
+  .medidaCalzado > p > img {
+    display: none;
+  }
+}

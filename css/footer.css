@@ -1,0 +1,77 @@
+footer {
+  margin-top: 100px;
+}
+
+footer .legal {
+  background: #dddddd;
+}
+
+footer .legal > ul {
+  margin: 0;
+  padding: 0;
+}
+
+footer .legal > ul > li {
+  list-style: none;
+}
+
+footer .legal > ul > li > a {
+  margin: 0 auto;
+  text-align: center;
+  display: table;
+  padding: 10px;
+  color: black;
+}
+
+footer .legal > ul > li > a:hover {
+  color: #0489af;
+}
+
+footer .creditos {
+  color: #ABA9A9;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0;
+  font-size: 0.8em;
+  border-top: 1px dashed #cccccc;
+  background: #222;
+}
+
+footer .creditos > p {
+  margin: 0;
+}
+
+footer .creditos > p > span {
+  color: #FF4433;
+  font-size: 1.7em;
+}
+
+footer .creditos > p > a {
+  color: #00bcf2;
+}
+
+footer .creditos > p > a:hover {
+  color: #0489af;
+}
+
+footer #subir {
+  background: #00bcf2;
+  width: 100px;
+  height: 60px;
+  position: fixed;
+  bottom: 45px;
+  right: 10px;
+  cursor: pointer;
+  display: none;
+}
+
+footer #subir:hover {
+  background: #0489af;
+}
+
+footer #subir > img {
+  width: 100%;
+  height: 80%;
+  margin-top: 5px;
+}

@@ -1,0 +1,139 @@
+doctype html
+html(lang="es")
+	head
+		
+		include _component/head
+		
+	body
+		include _component/analytics
+		
+		include _component/barraSuperior
+		include _component/header
+		
+		//- include _component/carruselReal
+		
+		style( type="text/css" ).
+			.imagenesBodega  {
+				background: white;
+			}
+			.imagenesBodega .grande {}
+			.imagenesBodega .grande > img {
+				/*
+				max-width: 400px;
+				width: 100%;
+				*/
+				max-height: 290px;
+				display: block;
+				margin: 20px auto 0;
+			}
+			.imagenesBodega .thumb > img {
+				width: 100%;
+				max-width: 120px;
+				max-height: 120px;
+				cursor: pointer;
+			}
+			.imagenesBodega .thumb > img:hover {
+				opacity: .8;
+			}
+		
+		div.separador_ponmeUnaImagenGrandeYBorrame
+			br
+			br
+			br
+			br
+			br
+			br
+		
+		div.bodega
+			h2 Bodega
+			div.imagenesBodega
+				.grande
+					img.lazyload( data-src="" alt="Nuestra Bodega <3" )
+				.thumb
+			
+		script( type="text/javascript" ).
+			let bodegaIMG = [
+				"03f5a4d3.jpg" ,
+				"0f1c856a.jpg" ,
+				"159db5de.jpg" ,
+				"15ca9649.jpg" ,
+				"1922971a.jpg" ,
+				"1b537513.jpg" ,
+				"220f36bb.jpg" ,
+				"235d7c1c.jpg" ,
+				"2454f91b.jpg" ,
+				"275e8ebc.jpg" ,
+				"2b5fc331.jpg" ,
+				"38fb1034.jpg" ,
+				"49bb220a.jpg" ,
+				"49ed3475.jpg" ,
+				"4fb5bff9.jpg" ,
+				"51201ad9.jpg" ,
+				"59c5ca8a.jpg" ,
+				"5cb961a8.jpg" ,
+				"67091cb1.jpg" ,
+				"6748c1bb.jpg" ,
+				"6b523515.jpg" ,
+				"715087ea.jpg" ,
+				"737c1eff.jpg" ,
+				"73da32a9.jpg" ,
+				"75d10994.jpg" ,
+				"8138099e.jpg" ,
+				"883053a7.jpg" ,
+				"8d91eebc.jpg" ,
+				"8eed9c09.jpg" ,
+				"904ddb38.jpg" ,
+				"947d5183.jpg" ,
+				"99c21abd.jpg" ,
+				"99d4ae57.jpg" ,
+				"9c263f69.jpg" ,
+				"a0b8bc5d.jpg" ,
+				"a745dd52.jpg" ,
+				"aa1537c4.jpg" ,
+				"adc94e4f.jpg" ,
+				"b5470c5a.jpg" ,
+				"ba07f864.jpg" ,
+				"bf37e2e3.jpg" ,
+				"bf65fae2.jpg" ,
+				"c009f701.jpg" ,
+				"c05a186b.jpg" ,
+				"c5b51e32.jpg" ,
+				"c75a7238.jpg" ,
+				"ca5c197a.jpg" ,
+				"cd57198d.jpg" ,
+				"d7e4e92a.jpg" ,
+				"d9927e05.jpg" ,
+				"d9e81631.jpg" ,
+				"dab3b80d.jpg" ,
+				"dcc45906.jpg" ,
+				"dee59e11.jpg" ,
+				"df087bbc.jpg" ,
+				"e06a3906.jpg" ,
+				"e5179bb2.jpg" ,
+				"e88c18c2.jpg" ,
+				"e8c69f80.jpg" ,
+				"ecb5c685.jpg" ,
+				"f3ffdc81.jpg" ,
+				"f7b78e2e.jpg" ,
+				"f7d0918f.jpg" ,
+				"fa0fcd55.jpg" ,
+				"fae3a12c.jpg" ,
+				"fd0cb060.jpg"
+			];
+			
+			$( ".imagenesBodega > .grande > img" ).attr( "src" , "./imagenes/bodega/" + bodegaIMG[0] );
+			
+			//- for( var count = 0; count <= bodegaIMG.length-1; count++ ) {
+			for( var count = 0; count <= 10; count++ ) {
+				$( ".imagenesBodega .thumb" ).append( `
+					<img class="lazyload" data-src="./imagenes/bodega/${ bodegaIMG[count] }" alt="Nuestra Bodega <3	" />
+				` );
+			}
+			
+			$( ".imagenesBodega .thumb > img" ).click(function(){
+				let ruta = $( this ).attr( "src" );
+				$( ".imagenesBodega .grande > img" ).attr( "src" , ruta );
+			});
+			
+		include _component/footer
+		

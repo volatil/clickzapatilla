@@ -1,0 +1,151 @@
+header {
+  background: transparent;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+header.nohome {
+  background: white;
+}
+
+header .contenedor .logo {
+  width: 270px;
+  height: auto;
+  margin: 30px 0 0 20px;
+  display: inline-block;
+}
+
+header .contenedor .logo img {
+  width: 100%;
+}
+
+header .contenedor nav {
+  float: right;
+  display: inline-block;
+  width: 400px;
+}
+
+header .contenedor nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+header .contenedor nav ul li {
+  display: inline;
+  padding: 0 20px;
+  text-transform: uppercase;
+}
+
+header .contenedor .buscador {
+  float: right;
+  margin: 20px 10px 0 0;
+  cursor: pointer;
+}
+
+header .contenedor .buscador:hover {
+  opacity: 0.5;
+}
+
+header .contenedor .buscador img {
+  width: 40px;
+}
+
+.buscadorgrande-fondo {
+  background: black;
+  opacity: 0.9;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.buscadorgrande-contenido {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  width: 100%;
+}
+
+.buscadorgrande-contenido span {
+  color: white;
+  font-size: 3em;
+  top: 30px;
+  right: 30px;
+  position: fixed;
+  cursor: pointer;
+}
+
+.buscadorgrande-contenido input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  height: 130px;
+  text-align: center;
+  margin: 170px auto 0;
+  display: block;
+  outline: none;
+  color: white;
+  font-size: 7em;
+  width: 90%;
+  padding: 0;
+}
+
+.buscadorgrande-contenido button {
+  width: 90%;
+  height: 60px;
+  margin: 70px auto 0;
+  display: block;
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  font-size: 2em;
+  font-weight: 100;
+}
+
+.buscadorgrande-fondo,
+.buscadorgrande-contenido {
+  display: none;
+}
+
+@media (max-width: 450px) {
+  header {
+    height: 40px;
+    background: white;
+  }
+
+  header .contenedor .logo {
+    width: 130px;
+    margin: 20px auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  header .contenedor .buscador {
+    margin-top: 15px;
+    margin-right: 15px;
+  }
+
+  header .contenedor .buscador img {
+    width: 30px;
+  }
+
+  .buscadorgrande-contenido input {
+    font-size: 2.8em;
+    height: 100px;
+    width: 80%;
+    margin-top: 100px;
+  }
+
+  .buscadorgrande-contenido button {
+    width: 80%;
+    height: 80px;
+    margin: 50px auto 0;
+    display: block;
+  }
+}

@@ -1,0 +1,61 @@
+.carrusel
+	style( type="text/css" ).
+		.carrusel {
+			width: 100%;
+		}
+		.carrusel + .contenido {
+			margin-top: 20px;
+		}
+		.carrusel > a {
+			width: 100%;
+			cursor: pointer;
+		}
+		.carrusel > a > img {
+			width: 100%;
+		}
+	
+	//- a.jordanmars270( title="Nike - Jordan Mars 270" )
+	//- 	img( src="./imagenes/carrusel/20210326-1122-jordanmars270.jpg" alt="Nike - Jordan Mars 270" )
+	
+	a.airhuarache1( title="Nike - Air Huarache 1" )
+		img( src="./imagenes/carrusel/20210312-1501-airhuarache1.jpg" alt="Nike - Air Huarache 1" )
+		
+	a.yeezy700( title="Adidas - Yeezy 700" )
+		img( src="./imagenes/carrusel/20210314-0559-yeezy700.jpg" alt="Adidas - Yeezy 700" )
+	
+	script( type="text/javascript" ).
+		var carruselRotacion = function(){
+			$( ".carrusel > a" ).hide();
+			$( ".carrusel > a" ).first().show();
+			setInterval(function(){
+				$( ".carrusel > a" ).toggle();
+			},3000);
+		};carruselRotacion();
+		
+		$( ".carrusel .yeezy700" ).click(function(){
+			$( ".buscador > input" ).val( "700" );
+			buscar( "700" );
+			cuentaProductos();
+			$('html, body').animate({
+				scrollTop: $( '.buscador.paraScrollLupa' ).offset().top
+			}, 1000);
+			/*
+			setTimeout(function(){
+				$( ".productos > ul > li[data-id=40]" ).click();
+			},200);
+			*/
+		});
+		
+		$( ".carrusel .airhuarache1" ).click(function(){
+			$( ".buscador > input" ).val( "huarache" );
+			buscar( "huarache" );
+			cuentaProductos();
+			$('html, body').animate({
+				scrollTop: $( '.buscador.paraScrollLupa' ).offset().top
+			}, 1000);
+			/*
+			setTimeout(function(){
+				$( ".productos > ul > li[data-id=40]" ).click();
+			},200);
+			*/
+		});

@@ -1,0 +1,12 @@
+//- Global site tag (gtag.js) - Google Analytics
+script( async src="https://www.googletagmanager.com/gtag/js?id=G-EX7H675LDK" )
+script.
+	if ( location.href.includes( "localhost" ) ) {
+		console.log( `[DEBUG MODE]` );
+	} else {
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		
+		gtag('config', 'G-EX7H675LDK');
+	};

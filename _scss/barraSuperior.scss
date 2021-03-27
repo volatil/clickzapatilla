@@ -1,0 +1,26 @@
+
+@import "variables";
+
+.barraSuperior {
+	background-color: $celesteClaro;
+	width: 100%;
+	height: 30px;
+	position: relative;
+}
+.barraSuperior > p {
+	color: white;
+	text-align: center;
+	text-transform: uppercase;
+	margin: 0;
+	padding: 0;
+	line-height: 2em;
+	font-size: 1.1em;
+	letter-spacing: 0.05em;
+}
+
+@media ( max-width: $MQsmartphone ) {
+    .barraSuperior > p {
+        font-size: .9em;
+        line-height: 1.1em;
+    }
+}

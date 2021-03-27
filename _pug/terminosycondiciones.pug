@@ -1,0 +1,46 @@
+doctype html
+html(lang="es")
+	head
+		
+		include _component/head
+		
+	body
+		include _component/analytics
+		
+		include _component/barraSuperior
+		include _component/header
+		
+		style( type="text/css" ).
+			body > .legal {
+				width: 90%;
+				background: white;
+				margin: 150px auto 0;
+				padding: 20px;
+			}
+			body > .legal h1 {
+				padding: 0;
+				margin: 0;
+			}
+			body > .legal h3 {
+				text-transform: uppercase;
+			}
+			
+		.legal
+			h1 Términos y Condiciones
+			
+			h3 formas de pago
+			p Debido a la emergencia sanitaria COVID 19, no aceptamos pago en efectivo. Solo transferencias.
+			
+			h3 devoluciones o cambios
+			p No se realizan cambios de producto, ni devoluciones de dinero.
+			
+			p 
+				strong ClickZapatilla 
+				| procurará entregar siempre las mejores condiciones en cuanto a calidad, precio, plazos y horarios de entrega.
+			
+			script( type="text/javascript" ).
+				const alturaExplorador = window.innerHeight;
+				console.log( `Altura: ${alturaExplorador}` );
+			
+		include _component/footer
+		
