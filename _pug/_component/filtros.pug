@@ -2,6 +2,7 @@
 .filtros
 	link(rel="stylesheet" href="css/filtros.min.css")
 	p Filtrar
+	
 	div.marca
 		p marca
 			span +
@@ -10,10 +11,18 @@
 			li 
 				img( class="lazyload" data-src="./imagenes/marcas/todas.svg" alt="Todas las marcas" )
 	
+	//- div.talla
+	//- 	p talla
+	//- 		span +
+	//- 		span( style="display:none;" ) -
+	//- 	ul.toggle
+	//- 		li 
+	//- 			img( class="lazyload" data-src="./imagenes/marcas/todas.svg" alt="Todas las marcas" )
+	
 	span.cantidad
 
 	script( type="text/javascript" ).
-		$( ".filtros > div p" ).click( function(){
-			$( ".filtros > div p span" ).toggle();
-			$( ".filtros > div > .toggle" ).toggle();
+		$( ".filtros > div" ).click( function(){
+			$( this ).find( "span" ).toggle();
+			$( this ).find( ".toggle" ).toggle();
 		} );

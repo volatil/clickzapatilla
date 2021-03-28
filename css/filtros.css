@@ -14,17 +14,19 @@
 .filtros > div {
   width: 90%;
   border: 1px solid #dddddd;
-  margin: 0 auto;
+  margin: 0 auto 10px;
   padding: 5px 15px;
+  cursor: pointer;
 }
 
 .filtros > div > p {
   text-transform: uppercase;
-  cursor: pointer;
 }
 
 .filtros > div > p > span {
   float: right;
+  font-weight: bold;
+  font-size: 1.3em;
 }
 
 .filtros > div > * {
@@ -74,5 +76,10 @@
   .filtros > .marca > ul > li {
     display: inline-block;
     margin-bottom: 10px;
+  }
+}
+@media (max-width: 450px) {
+  .filtros > div {
+    width: 80%;
   }
 }
