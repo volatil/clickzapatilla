@@ -30,12 +30,6 @@
   border: 1px solid #00bcf2;
 }
 
-.buscador > span.cantidad {
-  text-align: center;
-  display: block;
-  font-size: 0.9em;
-}
-
 .buscador .filtros {
   width: 500px;
   padding: 5px;

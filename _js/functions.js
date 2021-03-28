@@ -86,11 +86,11 @@ var fechaEntrega = function(){
 var cuentaProductos = function(){
 	var cantidadResultados = $( '.productos li:visible' ).length;
 	if ( cantidadResultados >= 2 ) {
-		$( ".buscador span.cantidad" ).html( "<strong>" + cantidadResultados + "</strong> Resultados" );
+		$( ".filtros span.cantidad" ).html( "<strong>" + cantidadResultados + "</strong> Resultados" );
 	} else if ( cantidadResultados == 1 ) {
-		$( ".buscador span.cantidad" ).html( "<strong>" + cantidadResultados + "</strong> Resultado" );
+		$( ".filtros span.cantidad" ).html( "<strong>" + cantidadResultados + "</strong> Resultado" );
 	} else {
-		$( ".buscador span.cantidad" ).html( "No se encontrarón resultados" );
+		$( ".filtros span.cantidad" ).html( "No se encontrarón resultados" );
 	};
 };
 

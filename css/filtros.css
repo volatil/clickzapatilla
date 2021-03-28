@@ -1,0 +1,78 @@
+.filtros {
+  width: 99%;
+  padding: 5px;
+  margin: 0 auto;
+  display: block;
+  background: white;
+  padding-bottom: 20px;
+}
+
+.filtros > p {
+  text-align: center;
+}
+
+.filtros > div {
+  width: 90%;
+  border: 1px solid #dddddd;
+  margin: 0 auto;
+  padding: 5px 15px;
+}
+
+.filtros > div > p {
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.filtros > div > p > span {
+  float: right;
+}
+
+.filtros > div > * {
+  display: none;
+}
+
+.filtros > div > p {
+  display: block;
+}
+
+.filtros > .marca > ul {
+  padding: 0;
+}
+
+.filtros > .marca > ul > li {
+  background: white;
+  border: 1px solid black;
+  display: inline-block;
+  border-radius: 10px;
+  padding: 5px 12px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+
+.filtros > .marca > ul > li:hover,
+.filtros > .marca > ul > li.activo {
+  background-color: whitesmoke;
+  border: 1px solid #dddddd;
+}
+
+.filtros > span.cantidad {
+  text-align: center;
+  display: block;
+  font-size: 0.9em;
+  margin: 30px 0 0;
+}
+
+@media (max-width: 850px) {
+  .filtros {
+    width: 97%;
+  }
+
+  .filtros > .marca > ul > li {
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+}

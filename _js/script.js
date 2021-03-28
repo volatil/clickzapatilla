@@ -45,8 +45,12 @@ Promise.all([
 		};
 		
 		// Agrega FILTROS
-		if( !$( ".buscador .filtros ul" ).html().includes( marca ) ) {
-			$( ".buscador .filtros ul" ).append( `<li>${marca}</li>` );
+		if( !$( ".filtros ul" ).html().includes( marca ) ) {
+			$( ".filtros ul" ).append( `
+				<li class="${marca}">
+		 			<img class="lazyload" data-src="./imagenes/marcas/${marca}.svg" alt="${marca}" />
+		 		</li>
+			` );
 		};
 		// Agrega PRODUCTOS
 		if ( stock == "1" ) {
@@ -71,11 +75,11 @@ Promise.all([
 	cuentaProductos();
 	
 	// FILTRO
-	$( ".buscador .filtros > ul > li" ).click(function(){
+	$( ".filtros > .marca > ul > li" ).click(function(){
 		$( ".buscador > input" ).val( "" );
-		$( ".buscador .filtros > ul > li" ).removeClass( "activo" );
+		$( ".filtros > .marca > ul > li" ).removeClass( "activo" );
 		$( this ).addClass( "activo" );
-		var filtrando = $( this ).text();
+		var filtrando = $( this ).attr( "class" ).split( "activo" )[0];
 		buscar( filtrando );
 		cuentaProductos();
 	});
@@ -84,7 +88,7 @@ Promise.all([
 
 // ESCRIBIENDO EN EL BUSCADOR
 $( "input.buscador" ).keyup(function() {
-	$( ".buscador .filtros > ul > li" ).removeClass( "activo" );
+	$( ".filtros > .marca > ul > li" ).removeClass( "activo" );
 	var valor = $( "input.buscador" ).val();
 	buscar( valor );
 	cuentaProductos();
