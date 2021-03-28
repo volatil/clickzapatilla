@@ -33,10 +33,10 @@
 .filtros > div > p {
 	display:block;
 }
-.filtros > .marca > ul {
+.filtros > div > ul {
 	padding: 0;
 }
-.filtros > .marca > ul > li {
+.filtros > div > ul > li {
 	background: white;
 	border: 1px solid black;
 	display: inline-block;
@@ -49,11 +49,38 @@
 	width: 40px;
 	height: 40px;
 }
-.filtros > .marca > ul > li:hover ,
-.filtros > .marca > ul > li.activo {
-	background-color: whitesmoke;
+.filtros > div > ul > li:hover ,
+.filtros > div > ul > li.activo {
 	border: 1px solid $d;
+	border: 1px solid $celesteOscuro;
 }
+
+.filtros > .talla > div > ul {
+	padding: 0;
+}
+.filtros > .talla > div > ul > li {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	line-height: 2em;
+	font-size: 1.5em;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	border: 1px solid black;
+	color: black;
+	cursor: pointer;
+}
+.filtros > .talla > div > ul > li.todas {
+	width: 80px;
+	text-transform: uppercase;
+}
+.filtros > .talla > div > ul > li:hover ,
+.filtros > .talla > div > ul > li.activo {
+	border: 1px solid $celesteOscuro;
+	color: $celesteOscuro;
+}
+
 .filtros > span.cantidad {
 	text-align: center;
 	display: block;

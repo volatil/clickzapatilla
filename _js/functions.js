@@ -117,6 +117,25 @@ var buscar = function( valor ){
 	}
 };
 
+// FILTRO TALLA
+var filtrarPorTalla = function( tallaBuscada ) {
+	
+	$.each( $( ".productos > ul li" ) , function(){
+	
+		var tallas  = $( this ).attr( "data-talla" );
+		
+		if ( tallaBuscada == "todas" ) {
+			$( ".productos > ul li" ).show();
+		} else if ( tallas.includes( tallaBuscada ) ) {
+			$( this ).show();
+		} else {
+			$( this ).hide();
+		};
+		
+	})
+	
+};
+
 // ENLISTA COLORES
 var listaColor = function( selectColor , padre ){
 					

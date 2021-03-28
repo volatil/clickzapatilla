@@ -45,8 +45,8 @@ Promise.all([
 		};
 		
 		// Agrega FILTROS
-		if( !$( ".filtros ul" ).html().includes( marca ) ) {
-			$( ".filtros ul" ).append( `
+		if( !$( ".filtros .marca ul" ).html().includes( marca ) ) {
+			$( ".filtros .marca ul" ).append( `
 				<li class="${marca}">
 		 			<img class="lazyload" data-src="./imagenes/marcas/${marca}.svg" alt="${marca}" />
 		 		</li>
@@ -55,7 +55,7 @@ Promise.all([
 		// Agrega PRODUCTOS
 		if ( stock == "1" ) {
 			$( ".productos ul" ).prepend( `
-				<li data-stock="${stock}" data-id="${id}" data-zapatilla="${marca} ${modelo} ${color}">
+				<li data-talla="${talla}" data-stock="${stock}" data-id="${id}" data-zapatilla="${marca} ${modelo} ${color}">
 					<a href="/detalle.html?id=${id}" title="${marca} ${modelo}">
 						<img class="lazyload" data-src="${imagen}" alt="${marca} ${modelo} ${color}" /> 
 						<span class="modelo">${modelo}</span>
@@ -86,13 +86,6 @@ Promise.all([
 	
 });	
 
-// ESCRIBIENDO EN EL BUSCADOR
-$( "input.buscador" ).keyup(function() {
-	$( ".filtros > .marca > ul > li" ).removeClass( "activo" );
-	var valor = $( "input.buscador" ).val();
-	buscar( valor );
-	cuentaProductos();
-});
 
 
 

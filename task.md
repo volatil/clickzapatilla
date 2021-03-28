@@ -1,7 +1,6 @@
 
 
 - Agregar filtro talla
-- QUITAR GRATIS : Todas las Zapatillas con envío GRATIS a todo Chile
 
 - DETALLE: abrir en otra ventana la imagen original con un simbolito en un costado de la imagen
 - Agregar en terminos y condiciones o algo asi que los envios son sin caja y el son 5 dolares mnas por caja

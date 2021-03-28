@@ -11,18 +11,47 @@
 			li 
 				img( class="lazyload" data-src="./imagenes/marcas/todas.svg" alt="Todas las marcas" )
 	
-	//- div.talla
-	//- 	p talla
-	//- 		span +
-	//- 		span( style="display:none;" ) -
-	//- 	ul.toggle
-	//- 		li 
-	//- 			img( class="lazyload" data-src="./imagenes/marcas/todas.svg" alt="Todas las marcas" )
+	div.talla
+		p talla
+			span +
+			span( style="display:none;" ) -
+		div.toggle
+			ul
+				li.todas( data-tallita="todas" ) todas
+				li( data-tallita="35" ) 35
+				li( data-tallita="36" ) 36
+				li( data-tallita="37" ) 37
+				li( data-tallita="38" ) 38
+				li( data-tallita="39" ) 39
+				li( data-tallita="40" ) 40
+				li( data-tallita="41" ) 41
+				li( data-tallita="42" ) 42
+				li( data-tallita="43" ) 43
+				li( data-tallita="44" ) 44
+				li( data-tallita="45" ) 45
+				li( data-tallita="46" ) 46
+				li( data-tallita="47" ) 47
+				li( data-tallita="48" ) 48
+				li( data-tallita="49" ) 49
 	
 	span.cantidad
 
 	script( type="text/javascript" ).
-		$( ".filtros > div" ).click( function(){
+	
+		// FILTRO TALLA
+		$( ".talla ul > li" ).click(function(){
+			$( ".buscador > input" ).val( "" );
+			$( ".talla ul > li" ).removeClass( "activo" );
+			$( this ).addClass( "activo" );
+			var buscaTalla = $( this ).attr( "data-tallita" );
+			filtrarPorTalla( buscaTalla );
+			cuentaProductos();
+		});
+	
+		//- CLICK EN CADA BLOQUE DE FILTRO LO DESPLIEGA
+		$( ".filtros > div > p" ).click( function(){
 			$( this ).find( "span" ).toggle();
-			$( this ).find( ".toggle" ).toggle();
+			$( this ).parent().find( ".toggle" ).toggle();
 		} );
+		
+		

@@ -21,3 +21,10 @@
 			}
 		},800);
 		
+		// ESCRIBIENDO EN EL BUSCADOR
+		$( "input.buscador" ).keyup(function() {
+			$( ".filtros > .marca > ul > li" ).removeClass( "activo" );
+			var valor = $( "input.buscador" ).val();
+			buscar( valor );
+			cuentaProductos();
+		});
