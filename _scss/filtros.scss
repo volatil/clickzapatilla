@@ -16,7 +16,7 @@
 	width: 90%;
 	border: 1px solid $d;
 	margin: 0 auto 10px;
-	padding: 5px 15px;
+	padding: 0;
 	cursor: pointer;
 }
 .filtros > div > p {
@@ -32,9 +32,12 @@
 }
 .filtros > div > p {
 	display:block;
+	background: $d;
+	margin: 0;
+	padding: 10px;
 }
 .filtros > div > ul {
-	padding: 0;
+	padding: 0 10px;
 }
 .filtros > div > ul > li {
 	background: white;
@@ -56,7 +59,7 @@
 }
 
 .filtros > .talla > div > ul {
-	padding: 0;
+	padding: 0 10px;
 }
 .filtros > .talla > div > ul > li {
 	display: inline-block;
