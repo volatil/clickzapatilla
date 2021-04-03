@@ -9,7 +9,7 @@ header
 	div.buscador 
 		div
 			input( type="search" )
-			img( src="./imagenes/lupa.svg" alt="buscar" )
+			img( src="./imagenes/header/lupa.svg" alt="buscar" )
 		
 			//- CLICK LUPA
 			script( type="text/javascript" ).
@@ -43,7 +43,6 @@ header
 				$( "header .buscador > div > input" ).keyup(function() {
 					document.onkeydown = function(evt) {
 						evt = evt || window.event;
-						console.log( `evento: ${evt.key} ${evt.keyCode}` );
 						var isEnter = false;
 						if ("key" in evt) {
 							isEnter = ( evt.key === "Enter" );
@@ -60,46 +59,6 @@ header
 					cuentaProductos();
 				});
 	
-	//- Si no estas en el home el link del logo es hacia el home
-	script( type="text/javascript" ).
-		
-		if(  location.pathname == "/" ) {
-			$( "header" ).addClass( "home" );
-		} else {
-			$( "header" ).addClass( "nohome" );
-			var logo = $( ".contenedor .logo" ).html();
-			$( ".contenedor .logo" ).html( `<a href="/">${logo}</a>` );
-		};
-		
-	//- Click Logo, clean val buscador
-	script( type="text/javascript" ).
-		/*
-		$( "header .logo" ).click(function(){
-			$( ".buscador > input" ).val( "" );
-			$( ".productos li" ).removeClass( "hide" );
-			$( ".productos li" ).removeClass( "show" );
-			$( ".buscador .filtros > ul > li" ).removeClass( "activo" );
-		});
-		*/
-	
-	//- Click Lupa, scroll to buscador
-	script( type="text/javascript" ).
-		/*
-		$( "header.home .buscador" ).click(function(){
-			$('html, body').animate({
-				scrollTop: $( '.buscador.paraScrollLupa' ).offset().top
-			}, 1000);
-			
-			setTimeout(function(){
-				$( ".buscador > input" ).addClass( "focus" );
-				setTimeout(function(){
-					$( ".buscador > input" ).removeClass( "focus" );
-				},500);
-			},1000);
-		});
-		*/
-
-
-
-
-
+	//- div.categorias
+	//- 	p categorias
+	//- 		img( src="./imagenes/header/arrow.svg" alt="categorias" )
