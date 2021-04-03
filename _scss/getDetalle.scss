@@ -3,11 +3,10 @@
 
 .getDetalle {
 	width: 1200px;
-	margin: 90px auto 0;
+	margin: 40px auto 0;
 	border: 1px solid #f2f2f2;
 	padding: 30px;
 	background: white;
-	margin-top: 120px;
 	display: flow-root;
 }
 .getDetalle > img {
@@ -209,7 +208,7 @@
 @media (max-width: $MQsmartphone ) {
 	.getDetalle {
 		width: auto;
-		margin-top: 70px;
+		margin-top: 30px;
 		padding: 20px;
 	}
 	.getDetalle > img {

@@ -93,18 +93,6 @@ var cuentaProductos = function( donde ){
 		$( donde ).html( "No se encontrarón resultados" );
 	};
 }; 
-/*
-var cuentaProductos = function(){
-	var cantidadResultados = $( '.productos li:visible' ).length;
-	if ( cantidadResultados >= 2 ) {
-		$( ".filtros span.cantidad" ).html( "<strong>" + cantidadResultados + "</strong> Resultados" );
-	} else if ( cantidadResultados == 1 ) {
-		$( ".filtros span.cantidad" ).html( "<strong>" + cantidadResultados + "</strong> Resultado" );
-	} else {
-		$( ".filtros span.cantidad" ).html( "No se encontrarón resultados" );
-	};
-};
-*/
 
 // BUSCADOR
 var buscar = function( valor ){

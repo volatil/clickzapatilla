@@ -14,40 +14,7 @@ html(lang="es")
 		include _component/header
 		
 		div.busquedaBanner
-			style( type="text/css" ).
-				header {
-					position: relative;
-				}
-				.busquedaBanner {
-					position: relative;
-				}
-				.busquedaBanner > img {
-					width: 100%;
-				}
-				.busquedaBanner > p {
-					position: absolute;
-					top: 0;
-					color: white;
-					display: block;
-					width: 100%;
-					text-align: center;
-					font-size: 4em;
-					text-transform: uppercase;
-					font-weight: 100;
-					font-style: italic;
-					margin: 0;
-					line-height: 2.8;
-				}
-				@media( max-width: 768px ) {
-					.busquedaBanner > p {
-						line-height: normal;
-					}
-				}
-				@media( max-width: 450px ) {
-					.busquedaBanner > p {
-						font-size: 2em;
-					}
-				}
+			link(rel="stylesheet" href="css/busqueda.min.css")
 			img.lazyload( data-src="/imagenes/busqueda/20210403-0517-busquedaBanner.jpg" alt="" )
 			p 
 			script( type="text/javascript" ).
@@ -60,8 +27,7 @@ html(lang="es")
 					$( ".busquedaBanner img" ).attr( "alt" , busqueda );
 					$( ".busquedaBanner p" ).html( `"${busqueda}"` );
 				};
-		
-		h3.resultados 
+			h3.resultados 
 			
 		.productos
 			link( rel="stylesheet" href="css/productos.min.css" )
