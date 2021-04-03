@@ -54,8 +54,37 @@
     <header>
       <link rel="stylesheet" href="css/header.min.css">
       <div class="contenedor">
-        <div class="logo"><img src="./imagenes/logo.png" alt="clickZAPATILLA"></div>
-        <div class="buscador"> <img src="./imagenes/lupa.svg" alt="buscar"></div>
+        <div class="logo"><a href="/" title="Click Zapatilla"><img src="./imagenes/logo.png" alt="clickZAPATILLA"></a></div>
+        <div class="buscador"> 
+          <div>
+            <input type="search"><img src="./imagenes/lupa.svg" alt="buscar">
+            <script type="text/javascript">
+              setTimeout(function(){
+              	const queryString = window.location.search;
+              	const urlParams = new URLSearchParams(queryString);
+              	const buscarEsto = urlParams.get('buscador');
+              	if ( window.location.search ) {
+              		buscar( buscarEsto );
+              		cuentaProductos();
+              		$('html, body').animate({
+              			scrollTop: $( '.buscador.paraScrollLupa' ).offset().top
+              		}, 500);
+              	}
+              },800);
+              
+            </script>
+            <script type="text/javascript">
+              //- $( "input.buscador" ).keyup(function() {
+              $( "header .contenedor .buscador > div > input" ).keyup(function() {
+              	$( ".filtros > .marca > ul > li" ).removeClass( "activo" );
+              	var valor = $( this ).val();
+              	buscar( valor );
+              	cuentaProductos();
+              });
+              
+            </script>
+          </div>
+        </div>
       </div>
       <div class="buscadorgrande-fondo"></div>
       <div class="buscadorgrande-contenido"><span>X</span>
@@ -69,27 +98,21 @@
           	var logo = $( ".contenedor .logo" ).html();
           	$( ".contenedor .logo" ).html( `<a href="/">${logo}</a>` );
           };
-          /*
-          if( location.href.includes( "?id=" ) || location.href.includes( "bodega" ) ) {
-          	$( "header" ).addClass( "nohome" );
-          	var logo = $( ".contenedor .logo" ).html();
-          	$( ".contenedor .logo" ).html( `<a href="/">${logo}</a>` );
-          } else {
-          	$( "header" ).addClass( "home" );
-          };
-          */
           
         </script>
         <script type="text/javascript">
+          /*
           $( "header .logo" ).click(function(){
           	$( ".buscador > input" ).val( "" );
           	$( ".productos li" ).removeClass( "hide" );
           	$( ".productos li" ).removeClass( "show" );
           	$( ".buscador .filtros > ul > li" ).removeClass( "activo" );
           });
+          */
           
         </script>
         <script type="text/javascript">
+          /*
           $( "header.home .buscador" ).click(function(){
           	$('html, body').animate({
           		scrollTop: $( '.buscador.paraScrollLupa' ).offset().top
@@ -102,6 +125,7 @@
           		},500);
           	},1000);
           });
+          */
           
         </script>
         <script type="text/javascript">

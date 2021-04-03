@@ -43,8 +43,24 @@ header .contenedor .buscador {
 	header .contenedor .buscador:hover {
 		opacity: .5;
 	}
-header .contenedor .buscador img {
-	width: 40px;
+header .contenedor .buscador > div {
+	border: 1px solid black;
+	border-radius: 10px;
+	height: 30px;
+}
+header .contenedor .buscador > div > input {
+	height: 30px;
+	background: none;
+	border: none;
+	outline: none;
+	color: black;
+	text-indent: 10px;
+}
+header .contenedor .buscador > div > img {
+	width: 20px;
+	top: 5px;
+	position: relative;
+	padding-right: 8px;
 }
 .buscadorgrande-fondo {
 	background: black;
