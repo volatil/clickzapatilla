@@ -58,23 +58,47 @@
         <div>
           <input type="search"><img src="./imagenes/lupa.svg" alt="buscar">
           <script type="text/javascript">
+            $( "header .buscador > div > img" ).click(function(){
+            	console.log( `Click` )
+            	var valor = $( "header .buscador > div > input" ).val();
+            	console.log( `Buscando: ${valor}` )
+            	window.open( location.origin + "?buscador=" + valor , "_self" );
+            });
+            
+          </script>
+          <script type="text/javascript">
             setTimeout(function(){
             	const queryString = window.location.search;
             	const urlParams = new URLSearchParams(queryString);
             	const buscarEsto = urlParams.get('buscador');
-            	if ( window.location.search ) {
-            		buscar( buscarEsto );
-            		cuentaProductos();
-            		$('html, body').animate({
-            			scrollTop: $( '.buscador.paraScrollLupa' ).offset().top
-            		}, 500);
+            	if ( buscarEsto ) {
+            		if ( window.location.search ) {
+            			buscar( buscarEsto );
+            			cuentaProductos();
+            			//- $('html, body').animate({
+            			//- 	scrollTop: $( '.buscador.paraScrollLupa' ).offset().top
+            			//- }, 500);
+            		}
             	}
             },800);
             
           </script>
           <script type="text/javascript">
             //- $( "input.buscador" ).keyup(function() {
-            $( "header .contenedor .buscador > div > input" ).keyup(function() {
+            $( "header .buscador > div > input" ).keyup(function() {
+            	document.onkeydown = function(evt) {
+            		evt = evt || window.event;
+            		console.log( `evento: ${evt.key} ${evt.keyCode}` );
+            		var isEnter = false;
+            		if ("key" in evt) {
+            			isEnter = ( evt.key === "Enter" );
+            		} else {
+            			isEnter = ( evt.keyCode === 13 );
+            		}
+            		if (isEnter) {
+            			$( "header .buscador > div > img" ).click();
+            		}
+            	};
             	$( ".filtros > .marca > ul > li" ).removeClass( "activo" );
             	var valor = $( this ).val();
             	buscar( valor );
@@ -84,77 +108,43 @@
           </script>
         </div>
       </div>
-      <div class="buscadorgrande-fondo"></div>
-      <div class="buscadorgrande-contenido"><span>X</span>
-        <input type="text" placeholder="Marca / Modelo">
-        <button>BUSCAR</button>
-        <script type="text/javascript">
-          if(  location.pathname == "/" ) {
-          	$( "header" ).addClass( "home" );
-          } else {
-          	$( "header" ).addClass( "nohome" );
-          	var logo = $( ".contenedor .logo" ).html();
-          	$( ".contenedor .logo" ).html( `<a href="/">${logo}</a>` );
-          };
-          
-        </script>
-        <script type="text/javascript">
-          /*
-          $( "header .logo" ).click(function(){
-          	$( ".buscador > input" ).val( "" );
-          	$( ".productos li" ).removeClass( "hide" );
-          	$( ".productos li" ).removeClass( "show" );
-          	$( ".buscador .filtros > ul > li" ).removeClass( "activo" );
-          });
-          */
-          
-        </script>
-        <script type="text/javascript">
-          /*
-          $( "header.home .buscador" ).click(function(){
-          	$('html, body').animate({
-          		scrollTop: $( '.buscador.paraScrollLupa' ).offset().top
-          	}, 1000);
-          	
-          	setTimeout(function(){
-          		$( ".buscador > input" ).addClass( "focus" );
-          		setTimeout(function(){
-          			$( ".buscador > input" ).removeClass( "focus" );
-          		},500);
-          	},1000);
-          });
-          */
-          
-        </script>
-        <script type="text/javascript">
-          $( "header.nohome .contenedor .buscador" ).click(function(){
-          	$( ".buscadorgrande-fondo" ).toggle();
-          	$( ".buscadorgrande-contenido" ).toggle();
-          	console.log( `Activando ...` );
-          });
-          $( ".buscadorgrande-contenido span" ).click(function(){
-          	$( ".buscadorgrande-fondo" ).toggle();
-          	$( ".buscadorgrande-contenido" ).toggle();
-          });
-          document.onkeydown = function(evt) {
-          	evt = evt || window.event;
-          	var isEscape = false;
-          	if ("key" in evt) {
-          		isEscape = (evt.key === "Escape" || evt.key === "Esc");
-          	} else {
-          		isEscape = (evt.keyCode === 27);
-          	}
-          	if (isEscape) {
-          		$( ".buscadorgrande-fondo" ).toggle();
-          		$( ".buscadorgrande-contenido" ).toggle();
-          	}
-          };
-          $( ".buscadorgrande-contenido button" ).click(function(){
-          	var busquemos = $( ".buscadorgrande-contenido input" ).val();
-          	window.open( location.origin + "?buscador=" + busquemos , "_self" );
-          });
-        </script>
-      </div>
+      <script type="text/javascript">
+        if(  location.pathname == "/" ) {
+        	$( "header" ).addClass( "home" );
+        } else {
+        	$( "header" ).addClass( "nohome" );
+        	var logo = $( ".contenedor .logo" ).html();
+        	$( ".contenedor .logo" ).html( `<a href="/">${logo}</a>` );
+        };
+        
+      </script>
+      <script type="text/javascript">
+        /*
+        $( "header .logo" ).click(function(){
+        	$( ".buscador > input" ).val( "" );
+        	$( ".productos li" ).removeClass( "hide" );
+        	$( ".productos li" ).removeClass( "show" );
+        	$( ".buscador .filtros > ul > li" ).removeClass( "activo" );
+        });
+        */
+        
+      </script>
+      <script type="text/javascript">
+        /*
+        $( "header.home .buscador" ).click(function(){
+        	$('html, body').animate({
+        		scrollTop: $( '.buscador.paraScrollLupa' ).offset().top
+        	}, 1000);
+        	
+        	setTimeout(function(){
+        		$( ".buscador > input" ).addClass( "focus" );
+        		setTimeout(function(){
+        			$( ".buscador > input" ).removeClass( "focus" );
+        		},500);
+        	},1000);
+        });
+        */
+      </script>
     </header>
     <div class="getDetalle">
       <link rel="stylesheet" href="css/getDetalle.min.css"><img class="producto">

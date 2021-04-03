@@ -62,62 +62,6 @@ header .buscador > div > img {
 	position: relative;
 	padding-right: 8px;
 }
-.buscadorgrande-fondo {
-	background: black;
-	opacity: .9;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-}
-.buscadorgrande-contenido {
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	width: 100%;
-}
-.buscadorgrande-contenido span {
-	color: white;
-	font-size: 3em;
-	top: 30px;
-	right: 30px;
-	position: fixed;
-	cursor: pointer;
-}
-.buscadorgrande-contenido input {
-	background: transparent;
-	border: none;
-	border-bottom: 1px solid white;
-	height: 130px;
-	text-align: center;
-	margin: 170px auto 0;
-	display: block;
-	outline: none;
-	color: white;
-	font-size: 7em;
-	width: 90%;
-	padding: 0;
-}
-.buscadorgrande-contenido button {
-	width: 90%;
-	height: 60px;
-	margin: 70px auto 0;
-	display: block;
-	background: transparent;
-	border: 1px solid white;
-	color: white;
-	font-size: 2em;
-	font-weight: 100;
-}
-
-.buscadorgrande-fondo ,
-.buscadorgrande-contenido {
-	display: none;
-}
-
-
 
 // ==========================================================================================
 // ==========================================================================================
@@ -142,18 +86,6 @@ header .buscador > div > img {
 @media ( max-width: $MQsmartphone ) {
 	header .buscador img {
 		width: 30px;
-	}
-	.buscadorgrande-contenido input {
-		font-size: 2.8em;
-		height: 100px;
-		width: 80%;
-		margin-top: 100px;
-	}
-	.buscadorgrande-contenido button {
-		width: 80%;
-		height: 80px;
-		margin: 50px auto 0;
-		display: block;
 	}
 	
 }
