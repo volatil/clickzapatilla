@@ -1,9 +1,9 @@
 footer {
   margin-top: 100px;
-}
-
-footer .legal {
-  background: #dddddd;
+  background: #ebf3b7;
+  background: -o-linear-gradient(294deg, #ebf3b7 0%, #51e6c0 100%);
+  background: linear-gradient(156deg, #ebf3b7 0%, #51e6c0 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ebf3b7",endColorstr="#51e6c0",GradientType=1);
 }
 
 footer .legal > ul {
@@ -32,9 +32,8 @@ footer .creditos {
   text-align: center;
   width: 100%;
   margin: 0;
-  padding: 10px 0;
+  padding: 5px 0;
   font-size: 0.8em;
-  border-top: 1px dashed #cccccc;
   background: #222;
 }
 

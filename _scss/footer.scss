@@ -3,9 +3,14 @@
 
 footer {
 	margin-top: 100px;
+	background: rgb(235,243,183);
+	background: -moz-linear-gradient(156deg, rgba(235,243,183,1) 0%, rgba(81,230,192,1) 100%);
+	background: -webkit-linear-gradient(156deg, rgba(235,243,183,1) 0%, rgba(81,230,192,1) 100%);
+	background: linear-gradient(156deg, rgba(235,243,183,1) 0%, rgba(81,230,192,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ebf3b7",endColorstr="#51e6c0",GradientType=1);
 }
 footer .legal {
-	background: $d;
+	// background: $d;
 }
 footer .legal > ul {
 	margin: 0;
@@ -29,9 +34,8 @@ footer .creditos {
 	text-align: center;
 	width: 100%;
 	margin: 0;
-	padding: 10px 0;
+	padding: 5px 0;
 	font-size: 0.8em;
-	border-top: 1px dashed $c;
 	background: #222;
 }
 footer .creditos > p {
