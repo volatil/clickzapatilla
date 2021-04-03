@@ -1,0 +1,37 @@
+
+div.marcas
+	h3 marcas
+	link(rel="stylesheet" href="css/marcas.min.css")
+	ul
+		li 
+			a( href="#MARCA" title="Marcas" )
+				img( class="lazyload" data-src="./imagenes/marcas/todas.svg" alt="Todas las marcas" )
+
+	script( type="text/javascript" ).
+		
+		// TRAE DATA
+		Promise.all([
+			fetch( `https://spreadsheets.google.com/feeds/list/1aZlC5KaMoyEPVqbMiH8_bPCsZoh65PBW9cm0HpG8Kjk/1/public/values?alt=json` ).then(value => value.json())
+		])
+		.then((value) => {
+			
+			var data = value[0].feed.entry;
+			
+			for( var fila = 0; fila <= data.length-1; fila++ ) {
+				
+				var marca  = data[fila].gsx$marca.$t;
+				// Agrega FILTROS
+				if( !$( ".marcas ul" ).html().includes( marca ) ) {
+					$( ".marcas ul" ).append( `
+						<li class="${marca}">
+							<a href="#MARCA" title="${marca}">
+				 			    <img class="lazyload" data-src="./imagenes/marcas/${marca}.svg" alt="${marca}" />
+							</a>
+				 		</li>
+					` );
+				};
+			};
+			
+		});	
+
+

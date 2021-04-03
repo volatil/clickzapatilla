@@ -1,0 +1,57 @@
+
+@import "variables";
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+div.marcas > h3 {
+	font-family: 'Barlow', sans-serif;
+	font-weight: 100;
+	font-size: 2em;
+	text-align: left;
+	text-transform: uppercase;
+	padding-left: 50px;
+	font-weight: 300;
+}
+div.marcas > ul {
+	margin: 0;
+	padding: 0;
+	padding-left: 50px;
+}
+div.marcas > ul > li {
+	display: inline-block;
+	width: 120px;
+	height: 120px;
+	margin-right: 10px;
+	margin-bottom: 20px;
+	border-radius: 50%;
+	background: $celeste;
+}
+	div.marcas > ul > li:hover {
+		background: $celesteClaro;
+	}
+div.marcas > ul > li > a {
+	width: 100%;
+	height: 100%;
+	display: block;
+	margin: 0 auto;
+}
+div.marcas > ul > li > a > img {
+	width: 70%;
+	display: block;
+	margin: 13px auto 0;
+}
+
+@media ( max-width: $MQsmartphone ) {
+	div.marcas > ul {
+		padding: 0;
+	}
+	div.marcas > ul > li {
+		width: 75px;
+		height: 75px;
+		margin-right: 3px;
+	}
+}
+
+
+
+
+
