@@ -60,7 +60,9 @@ html(lang="es")
 					$( ".busquedaBanner img" ).attr( "alt" , busqueda );
 					$( ".busquedaBanner p" ).html( `"${busqueda}"` );
 				};
-				
+		
+		h3.resultados 
+			
 		.productos
 			link( rel="stylesheet" href="css/productos.min.css" )
 			
@@ -128,8 +130,11 @@ html(lang="es")
 					} else {
 						buscar( busqueda );
 					};
-					cuentaProductos();
+					cuentaProductos( "h3.resultados" );	
 				});	
+				
+			
+				
 				
 		include _component/footer
 		

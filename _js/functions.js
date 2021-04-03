@@ -83,6 +83,17 @@ var fechaEntrega = function(){
 };
 
 // CONTADOR DE RESULTADOS
+var cuentaProductos = function( donde ){
+	var cantidadResultados = $( '.productos li:visible' ).length;
+	if ( cantidadResultados >= 2 ) {
+		$( donde ).html( "<strong>" + cantidadResultados + "</strong> Resultados" );
+	} else if ( cantidadResultados == 1 ) {
+		$( donde ).html( "<strong>" + cantidadResultados + "</strong> Resultado" );
+	} else {
+		$( donde ).html( "No se encontrarón resultados" );
+	};
+}; 
+/*
 var cuentaProductos = function(){
 	var cantidadResultados = $( '.productos li:visible' ).length;
 	if ( cantidadResultados >= 2 ) {
@@ -93,6 +104,7 @@ var cuentaProductos = function(){
 		$( ".filtros span.cantidad" ).html( "No se encontrarón resultados" );
 	};
 };
+*/
 
 // BUSCADOR
 var buscar = function( valor ){

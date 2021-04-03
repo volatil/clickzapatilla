@@ -72,7 +72,7 @@ Promise.all([
 		$( ".productos .cargando" ).hide();
 	};
 	
-	cuentaProductos();
+	cuentaProductos( ".filtros span.cantidad" );
 	
 	// FILTRO
 	$( ".filtros > .marca > ul > li" ).click(function(){
@@ -81,7 +81,7 @@ Promise.all([
 		$( this ).addClass( "activo" );
 		var filtrando = $( this ).attr( "class" ).split( "activo" )[0];
 		buscar( filtrando );
-		cuentaProductos();
+		cuentaProductos( ".filtros span.cantidad" );
 	});
 	
 });	
