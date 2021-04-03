@@ -9,15 +9,24 @@ footer {
 	background: linear-gradient(156deg, rgba(235,243,183,1) 0%, rgba(81,230,192,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ebf3b7",endColorstr="#51e6c0",GradientType=1);
 }
-footer .legal {
-	// background: $d;
-}
 footer .legal > ul {
 	margin: 0;
 	padding: 0;
+	width: 50%;
+	display: inline-block;
 }
 footer .legal > ul > li {
 	list-style: none;
+	display: inline-block;
+}
+footer .legal > ul.redes > li {
+	float: right;
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+}
+footer .legal > ul.redes > li:hover {
+	opacity: .6;
 }
 footer .legal > ul > li > a {
 	margin: 0 auto;
@@ -25,6 +34,11 @@ footer .legal > ul > li > a {
 	display: table;
 	padding: 10px;
 	color: black;
+}
+footer .legal > ul.redes > li > a {
+	width: 100%;
+	height: 100%;
+	padding: 0;
 }
 footer .legal > ul > li > a:hover {
 	color: $celesteOscuro;
@@ -56,7 +70,7 @@ footer #subir {
 	width: 100px;
 	height: 60px;
 	position: fixed;
-	bottom: 45px;
+	bottom: 85px;
 	right: 10px;
 	cursor: pointer;
 	display: none;

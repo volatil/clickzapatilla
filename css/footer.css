@@ -9,10 +9,24 @@ footer {
 footer .legal > ul {
   margin: 0;
   padding: 0;
+  width: 50%;
+  display: inline-block;
 }
 
 footer .legal > ul > li {
   list-style: none;
+  display: inline-block;
+}
+
+footer .legal > ul.redes > li {
+  float: right;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+footer .legal > ul.redes > li:hover {
+  opacity: 0.6;
 }
 
 footer .legal > ul > li > a {
@@ -21,6 +35,12 @@ footer .legal > ul > li > a {
   display: table;
   padding: 10px;
   color: black;
+}
+
+footer .legal > ul.redes > li > a {
+  width: 100%;
+  height: 100%;
+  padding: 0;
 }
 
 footer .legal > ul > li > a:hover {
@@ -59,7 +79,7 @@ footer #subir {
   width: 100px;
   height: 60px;
   position: fixed;
-  bottom: 45px;
+  bottom: 85px;
   right: 10px;
   cursor: pointer;
   display: none;
