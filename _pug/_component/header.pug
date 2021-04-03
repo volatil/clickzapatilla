@@ -3,32 +3,31 @@
 header
 	link(rel="stylesheet" href="css/header.min.css")
 	
-	.contenedor
-		div.logo
-			a( href="/" title="Click Zapatilla" )
-				img( src="./imagenes/logo.png" alt="clickZAPATILLA" )
-		div.buscador 
-			div
-				input( type="search" )
-				img( src="./imagenes/lupa.svg" alt="buscar" )
-			
-				//- DEPENDE DEL PARAMETRO BUSCA
-				script( type="text/javascript" ).
-					setTimeout(function(){
-						const queryString = window.location.search;
-						const urlParams = new URLSearchParams(queryString);
-						const buscarEsto = urlParams.get('buscador');
-						if ( window.location.search ) {
-							buscar( buscarEsto );
-							cuentaProductos();
-							$('html, body').animate({
-								scrollTop: $( '.buscador.paraScrollLupa' ).offset().top
-							}, 500);
-						}
-					},800);
-					
-				//- ESCRIBIENDO EN EL BUSCADOR
-				script( type="text/javascript" ).
+	div.logo
+		a( href="/" title="Click Zapatilla" )
+			img( src="./imagenes/logo.png" alt="clickZAPATILLA" )
+	div.buscador 
+		div
+			input( type="search" )
+			img( src="./imagenes/lupa.svg" alt="buscar" )
+		
+			//- DEPENDE DEL PARAMETRO BUSCA
+			script( type="text/javascript" ).
+				setTimeout(function(){
+					const queryString = window.location.search;
+					const urlParams = new URLSearchParams(queryString);
+					const buscarEsto = urlParams.get('buscador');
+					if ( window.location.search ) {
+						buscar( buscarEsto );
+						cuentaProductos();
+						$('html, body').animate({
+							scrollTop: $( '.buscador.paraScrollLupa' ).offset().top
+						}, 500);
+					}
+				},800);
+				
+			//- ESCRIBIENDO EN EL BUSCADOR
+			script( type="text/javascript" ).
 						//- $( "input.buscador" ).keyup(function() {
 						$( "header .contenedor .buscador > div > input" ).keyup(function() {
 							$( ".filtros > .marca > ul > li" ).removeClass( "activo" );

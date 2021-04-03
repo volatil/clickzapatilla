@@ -126,7 +126,6 @@
 			margin-bottom:30px;
 		}
 		.slick-dots {
-			position:absolute;
 			bottom:-45px;
 			list-style:none;
 			display:block;
@@ -192,15 +191,12 @@
 			background-repeat:no-repeat;
 			background-position:center;
 		}
-		.slick-dots {
-			bottom: -5px;
-		}
 		.slick-dots li.slick-active button {
 			background:#7fddf9;
 		}
 		.slick-dots li button {
-			background:#ccc;
-			width:20px;
+			background:#6d6e71;
+			width:30px;
 			height:20px;
 			margin:5px auto 0;
 			border: 1px solid white;
@@ -237,16 +233,22 @@
 			width: 100%;
 			display: block;
 		}
-		@media(max-width:560px) {
+		@media( max-width:850px ) {
 			.carruselo {
-				height:140px;
-				margin-top: 60px;
+				margin-top: 180px;
 			}
+		}
+		@media( max-width:560px ) {
 			.carruselo .slick-slide {
 				background-size:44em!important;
 			}
 			.slick-dots {
 				bottom:0px;
+			}
+		}
+		@media( max-width: 450px ) {
+			.carruselo {
+				margin-top: 150px;
 			}
 		}
 
@@ -264,17 +266,17 @@
 			a.yeezy700( href="/detalle.html?id=40" title="Adidas - Yeezy 700" )
 				img( src="./imagenes/carrusel/20210314-0559-yeezy700.jpg" alt="Adidas - Yeezy 700" )
 		
-script( type="text/javascript" ).
-	$(document).ready(function(){
-		$('.sliders').slick({
-			autoplay: true ,
-			autoplaySpeed: 4000 ,
-			arrows: false ,
-			accessibility: true ,
-			dots: true ,
-			fade: true ,
-			draggable: true
+	script( type="text/javascript" ).
+		$(document).ready(function(){
+			$('.sliders').slick({
+				autoplay: true ,
+				autoplaySpeed: 4000 ,
+				arrows: false ,
+				accessibility: true ,
+				dots: true ,
+				fade: true ,
+				draggable: true
+			});
+			$('.single-item').slick();
 		});
-		$('.single-item').slick();
-	});
-script( src="/js/slick.min.js" )
+	script( src="/js/slick.min.js" )
