@@ -1,0 +1,135 @@
+doctype html
+html(lang="es")
+	head
+	
+		include _component/head
+	
+	body
+		
+		script(src="js/functions.min.js")
+		
+		include _component/analytics
+		
+		include _component/barraSuperior
+		include _component/header
+		
+		div.busquedaBanner
+			style( type="text/css" ).
+				header {
+					position: relative;
+				}
+				.busquedaBanner {
+					position: relative;
+				}
+				.busquedaBanner > img {
+					width: 100%;
+				}
+				.busquedaBanner > p {
+					position: absolute;
+					top: 0;
+					color: white;
+					display: block;
+					width: 100%;
+					text-align: center;
+					font-size: 4em;
+					text-transform: uppercase;
+					font-weight: 100;
+					font-style: italic;
+					margin: 0;
+					line-height: 2.8;
+				}
+				@media( max-width: 768px ) {
+					.busquedaBanner > p {
+						line-height: normal;
+					}
+				}
+				@media( max-width: 450px ) {
+					.busquedaBanner > p {
+						font-size: 2em;
+					}
+				}
+			img.lazyload( data-src="/imagenes/busqueda/20210403-0517-busquedaBanner.jpg" alt="" )
+			p 
+			script( type="text/javascript" ).
+				var busqueda = location.href.split( "buscador=" )[1];
+				if (  busqueda.includes( "%20" ) ) {
+					busqueda = busqueda.replaceAll( "%20" , " " );
+					$( ".busquedaBanner img" ).attr( "alt" , busqueda );
+					$( ".busquedaBanner p" ).html( `"${busqueda}"` );
+				} else {
+					$( ".busquedaBanner img" ).attr( "alt" , busqueda );
+					$( ".busquedaBanner p" ).html( `"${busqueda}"` );
+				};
+				
+		.productos
+			link( rel="stylesheet" href="css/productos.min.css" )
+			
+			ul
+			img.cargando( src="/imagenes/loading.gif" alt="Cargando ..." )
+			//- TRAE DATA
+			script( type="text/javascript" ).
+				Promise.all([
+					fetch( `https://spreadsheets.google.com/feeds/list/1aZlC5KaMoyEPVqbMiH8_bPCsZoh65PBW9cm0HpG8Kjk/1/public/values?alt=json` ).then(value => value.json())
+				])
+				.then((value) => {
+					
+					var data = value[0].feed.entry;
+					
+					for( var fila = 0; fila <= data.length-1; fila++ ) {
+						
+						var id  = data[fila].gsx$id.$t;
+						var stock  = data[fila].gsx$stock.$t;
+						var marca  = data[fila].gsx$marca.$t;
+						var modelo  = data[fila].gsx$modelo.$t;
+						var color  = data[fila].gsx$color.$t;
+						
+						var preciocliente  = data[fila].gsx$precioneto.$t;
+						preciocliente = Number(preciocliente)+15000
+						
+						var talla  = data[fila].gsx$talla.$t;
+						
+						var imagen	= data[fila].gsx$imagen.$t;
+						if ( imagen.split( " " ).length >= 2 ) {
+							for ( var imgcount = 0; imgcount <= imagen.split( " " ).length-1; imgcount++ ) {
+								$( ".getDetalle .galeria" ).append( `<img class="lazyload" src="${imagen.split( " " )[imgcount]}" alt="${marca} - ${modelo}" />` )
+								
+								$( ".getDetalle > .galeria > img" ).click(function(){
+									let ruta = $( this ).attr( "src" );
+									$( ".getDetalle > img" ).attr( "src" , ruta );
+								});
+								
+							};
+							imagen = imagen.split( " " )[0];
+						};
+						
+						// Agrega PRODUCTOS
+						if ( stock == "1" ) {
+							$( ".productos ul" ).prepend( `
+								<li data-talla="${talla}" data-stock="${stock}" data-id="${id}" data-zapatilla="${marca} ${modelo} ${color}">
+									<a href="/detalle.html?id=${id}" title="${marca} ${modelo}">
+										<img class="lazyload" data-src="${imagen}" alt="${marca} ${modelo} ${color}" /> 
+										<span class="modelo">${modelo}</span>
+										<span class="marca">${marca}</span>
+										<span class="color">${color}</span>
+										<span class="precio">${puntuacion(preciocliente)}</span>
+										<span class="talla">${talla}</span>
+										<span class="id">#${id}</span>
+									</a>
+								</li>
+							` );
+						}
+						$( ".productos .cargando" ).hide();
+					};
+					
+					var busqueda = location.href.split( "buscador=" )[1];
+					if (  busqueda.includes( "%20" ) ) {
+						busqueda = busqueda.replaceAll( "%20" , " " );
+						buscar( busqueda );
+					} else {
+						buscar( busqueda );
+					};
+					cuentaProductos();
+				});	
+				
+		include _component/footer
+		

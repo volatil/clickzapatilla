@@ -1,11 +1,159 @@
 
 
 header
+	script( type="text/javascript" ).
+		if( location.pathname == "/" ) {
+			$( "header" ).addClass( "home" );
+		} else {
+			$( "header" ).addClass( "nohome" );
+		};
 	link(rel="stylesheet" href="css/header.min.css")
 	
 	div.logo
 		a( href="/" title="Click Zapatilla" )
 			img( src="./imagenes/logo.png" alt="clickZAPATILLA" )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	div.categorias( style="display:none;" )
+	
+		style( type="text/css" ).
+			header div.categorias {
+				float: right;
+				margin: 20px 30px 0 20px;
+				cursor: pointer;
+			}
+			header div.categorias > p {
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+			}
+			header div.categorias > p > img {
+				width: 10px;
+				margin-left: 10px;
+				position: relative;
+				top: -2px;
+			}
+		p categorias
+			img.lazyload( data-src="./imagenes/header/arrow.svg" alt="categorias" )
+	
+		//- Si estamos dev muestra el avance
+		script( type="text/javascript" ).
+			var devmode = location.origin.includes( "localhost:" );
+			if( devmode ) {
+				$( "header div.categorias" ).show();
+			};
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+		
 	div.buscador 
 		div
 			input( type="search" )
@@ -14,10 +162,9 @@ header
 			//- CLICK LUPA
 			script( type="text/javascript" ).
 				$( "header .buscador > div > img" ).click(function(){
-					console.log( `Click` )
 					var valor = $( "header .buscador > div > input" ).val();
-					console.log( `Buscando: ${valor}` )
-					window.open( location.origin + "?buscador=" + valor , "_self" );
+					//- window.open( location.origin + "?buscador=" + valor , "_self" );
+					window.open( location.origin + "/busqueda.html?buscador=" + valor , "_self" );
 				});
 		
 			//- DEPENDE DEL PARAMETRO BUSCA
@@ -59,6 +206,3 @@ header
 					cuentaProductos();
 				});
 	
-	//- div.categorias
-	//- 	p categorias
-	//- 		img( src="./imagenes/header/arrow.svg" alt="categorias" )

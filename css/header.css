@@ -82,6 +82,11 @@ header .buscador > div > img {
     display: block;
   }
 
+  header.nohome .logo {
+    margin-top: 0;
+    padding-top: 30px;
+  }
+
   header .buscador {
     margin: 20px auto 0;
     display: block;
