@@ -48,7 +48,7 @@ Promise.all([
 		if( !$( ".filtros .marca ul" ).html().includes( marca ) ) {
 			$( ".filtros .marca ul" ).append( `
 				<li class="${marca}">
-		 			<img class="lazyload" data-src="./imagenes/marcas/${marca}.svg" alt="${marca}" />
+		 			<img class="lazyload" data-src="./imagenes/marcas/${marca}-negro.svg" alt="${marca}" />
 		 		</li>
 			` );
 		};
