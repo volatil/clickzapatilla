@@ -1,72 +1,15 @@
 
-.recienLLegados
+.recienLLegados.bloqueContenido
 	link(rel="stylesheet" href="css/recienLLegados.min.css")
 	
-	h3 Recien LLegados
-	div
+	h3.titulo Recien LLegados
+	.productos
+		link(rel="stylesheet" href="css/productos.min.css")
+		ul
 	
 	script( type="text/javascript" ).
-		var getDetalle = function( owo , donde ) {
-			owo = owo-1
-			
-			Promise.all([
-				fetch( `https://spreadsheets.google.com/feeds/list/1aZlC5KaMoyEPVqbMiH8_bPCsZoh65PBW9cm0HpG8Kjk/1/public/values?alt=json` ).then(value => value.json())
-			])
-			.then((value) => {
-				
-				var data			= value[0].feed.entry
-				var id              = data[owo].gsx$id.$t;
-				var stock		    = data[owo].gsx$stock.$t;
-				var marca		    = data[owo].gsx$marca.$t;
-				var modelo		    = data[owo].gsx$modelo.$t;
-				var color		    = data[owo].gsx$color.$t;
-				
-				var imagen		    = data[owo].gsx$imagen.$t;
-					if ( imagen.split( " " ).length >= 2 ) {
-						for ( var imgcount = 0; imgcount <= imagen.split( " " ).length-1; imgcount++ ) {
-							$( ".getDetalle .galeria" ).append( `<img class="lazyload" src="${imagen.split( " " )[imgcount]}" alt="${marca} - ${modelo}" />` )
-							
-							$( ".getDetalle > .galeria > img" ).click(function(){
-								let ruta = $( this ).attr( "src" );
-								$( ".getDetalle > img" ).attr( "src" , ruta );
-							});
-							
-						};
-						imagen = imagen.split( " " )[0];
-					};
-				
-				var preciocliente   = Number( data[owo].gsx$precioneto.$t ) + 15000;
-				var talla           = data[owo].gsx$talla.$t;
-				for( var i = 0; i <= talla.split( " " ).length-1; i++ ) {
-					var tallaActiva = talla.split( " " )[i];
-					$( ".talla > ul > li[data-talla=talla-" + tallaActiva + "]" ).addClass( "enable" );
-				}
-				var descripcion	    = data[owo].gsx$descripcion.$t;
-				if( descripcion.length >= 1 ) {
-					var descripcion = "("+descripcion+")";
-				};
-				
-				// Agrega PRODUCTOS
-				if ( stock == 1 ) {
-					$( `${donde}` ).append( `
-						<div data-id="${id}">
-							<a href="/detalle.html?id=${id}" title="${marca} ${modelo}">
-								<img class="lazyload" data-src="${imagen}" alt="${marca} ${modelo}" />
-								<p class="modelo">${modelo}</p>
-								<p class="marca">${marca}</p>
-								<p class="precio">${puntuacion(preciocliente)}</p>
-							</a>
-						</div>
-					` );
-				};
-			});	
-		};
-		
-		
 		var recienLLegados = [ 483 , 420 , 270 , 96 , 302 , 164 , 154 , 226 , 128 , 79 , 23 , 50 ];
-		setTimeout(function(){
-			for( var count = 0; count <= recienLLegados.length-1; count++ ) {
-				getDetalle( recienLLegados[count] , ".recienLLegados > div" );
-			};
-		},500);
+		for( var count = 0; count <= recienLLegados.length-1; count++ ) {
+			getProdByID( recienLLegados[count] , ".recienLLegados > .productos > ul" );
+		};
 	

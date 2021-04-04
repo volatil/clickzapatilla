@@ -19,7 +19,11 @@ html(lang="es")
 			p 
 			script( type="text/javascript" ).
 				var busqueda = location.href.split( "buscador=" )[1];
-				if (  busqueda.includes( "%20" ) ) {
+				console.log( `Busqueda: ${busqueda}` );
+				if ( busqueda == "" ) {
+					$( ".busquedaBanner img" ).attr( "alt" , "Todos los modelos" );
+					$( ".busquedaBanner p" ).html( `"Todos los modelos"` );
+				}else if (  busqueda.includes( "%20" ) ) {
 					busqueda = busqueda.replaceAll( "%20" , " " );
 					$( ".busquedaBanner img" ).attr( "alt" , busqueda );
 					$( ".busquedaBanner p" ).html( `"${busqueda}"` );

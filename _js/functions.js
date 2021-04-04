@@ -243,3 +243,48 @@ var listaColor = function( selectColor , padre ){
 	}
 
 }
+
+// GET PRODUCTO BY ID
+var getProdByID = function( owo , donde ) {
+	owo = owo-1
+	
+	Promise.all([
+		fetch( `https://spreadsheets.google.com/feeds/list/1aZlC5KaMoyEPVqbMiH8_bPCsZoh65PBW9cm0HpG8Kjk/1/public/values?alt=json` ).then(value => value.json())
+	])
+	.then((value) => {
+		
+		var data			= value[0].feed.entry
+		var id              = data[owo].gsx$id.$t;
+		var stock		    = data[owo].gsx$stock.$t;
+		var marca		    = data[owo].gsx$marca.$t;
+		var modelo		    = data[owo].gsx$modelo.$t;
+		var imagen		    = data[owo].gsx$imagen.$t;
+		if ( imagen.split( " " ).length >= 2 ) {
+			for ( var imgcount = 0; imgcount <= imagen.split( " " ).length-1; imgcount++ ) {
+				$( ".getDetalle .galeria" ).append( `<img class="lazyload" src="${imagen.split( " " )[imgcount]}" alt="${marca} - ${modelo}" />` )
+				
+				$( ".getDetalle > .galeria > img" ).click(function(){
+					let ruta = $( this ).attr( "src" );
+					$( ".getDetalle > img" ).attr( "src" , ruta );
+				});
+				
+			};
+			imagen = imagen.split( " " )[0];
+		};
+		var preciocliente   = Number( data[owo].gsx$precioneto.$t ) + 15000;
+		
+		// Agrega PRODUCTOS
+		if ( stock == 1 ) {
+			$( `${donde}` ).append( `
+				<li data-id="${id}">
+					<a href="/detalle.html?id=${id}" title="${marca} ${modelo}">
+						<img class="lazyload" data-src="${imagen}" alt="${marca} ${modelo}" /> 
+						<span class="modelo">${modelo}</span>
+						<span class="marca">${marca}</span>
+						<span class="precio">${puntuacion(preciocliente)}</span>
+					</a>
+				</li>
+			` );
+		};
+	});	
+};

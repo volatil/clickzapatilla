@@ -14,28 +14,19 @@ body {
   font-size: 0.9em;
 }
 
-.contenedor {
-  width: 1600px;
-  margin: 0 auto;
+.bloqueContenido {
+  background: white;
+  width: 100%;
+  margin: 10px auto;
+  position: relative;
+  display: inline-block;
 }
 
-@media (max-width: 1650px) {
-  .contenedor {
-    width: 1200px;
-  }
-}
-@media (max-width: 1250px) {
-  .contenedor {
-    width: 800px;
-  }
-}
-@media (max-width: 850px) {
-  .contenedor {
-    width: 400px;
-  }
-}
-@media (max-width: 450px) {
-  .contenedor {
-    width: 100%;
-  }
+h3.titulo {
+  font-family: "Barlow", sans-serif;
+  font-size: 2em;
+  text-align: left;
+  text-transform: uppercase;
+  padding-left: 50px;
+  font-weight: 300;
 }

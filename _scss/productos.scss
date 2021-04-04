@@ -8,17 +8,6 @@
 .productos > ul {
 	padding: 0;
 }
-.productos h3 {
-	font-size: 1.3em;
-    letter-spacing: 0.05em;
-    text-align: center;
-    font-weight: 300;
-    text-transform: uppercase;
-    padding-top: 10px;
-    display: inline-block;
-    margin: 0 auto;
-    width: 100%;
-}
 .productos > ul > li {
 	width: 295px;
 	width: calc( 24% - 20px );
@@ -73,6 +62,7 @@
 .productos > ul > li > a > img {
 	max-width: 100%;
 	max-height: 250px;
+	max-height: 130px;
 	width: auto;
 	clear: left;
 	display: block;
