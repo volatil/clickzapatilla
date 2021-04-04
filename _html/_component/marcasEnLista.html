@@ -1,0 +1,34 @@
+
+<div class="marcas">
+  <h3>marcas</h3>
+  <link rel="stylesheet" href="css/marcasEnLista.min.css"/>
+  <ul>
+    <li> <a href="/marca?marca=todas" title="Todas las marcas"><img class="lazyload" data-src="./imagenes/marcas/todas-blanco.svg" alt="Todas las marcas"/></a></li>
+  </ul>
+  <script type="text/javascript">
+    // TRAE DATA
+    Promise.all([
+    	fetch( `https://spreadsheets.google.com/feeds/list/1aZlC5KaMoyEPVqbMiH8_bPCsZoh65PBW9cm0HpG8Kjk/1/public/values?alt=json` ).then(value => value.json())
+    ])
+    .then((value) => {
+    	
+    	var data = value[0].feed.entry;
+    	
+    	for( var fila = 0; fila <= data.length-1; fila++ ) {
+    		
+    		var marca  = data[fila].gsx$marca.$t;
+    		// Agrega FILTROS
+    		if( !$( ".marcas ul" ).html().includes( marca ) ) {
+    			$( ".marcas ul" ).append( `
+    				<li>
+    					<a href="/marca?marca=${marca}" title="${marca}">
+    		 			    <img class="lazyload" data-src="./imagenes/marcas/${marca}-blanco.svg" alt="${marca}" />
+    					</a>
+    		 		</li>
+    			` );
+    		};
+    	};
+    	
+    });	
+  </script>
+</div>

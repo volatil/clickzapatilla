@@ -1,11 +1,11 @@
 
 div.marcas
 	h3 marcas
-	link(rel="stylesheet" href="css/marcas.min.css")
+	link(rel="stylesheet" href="css/marcasEnLista.min.css")
 	ul
 		li 
-			a( href="#MARCA" title="Marcas" )
-				img( class="lazyload" data-src="./imagenes/marcas/todas.svg" alt="Todas las marcas" )
+			a( href="/marca.html?marca=todas" title="Todas las marcas" )
+				img.lazyload( data-src="./imagenes/marcas/todas-blanco.svg" alt="Todas las marcas" )
 
 	script( type="text/javascript" ).
 		
@@ -23,9 +23,9 @@ div.marcas
 				// Agrega FILTROS
 				if( !$( ".marcas ul" ).html().includes( marca ) ) {
 					$( ".marcas ul" ).append( `
-						<li class="${marca}">
-							<a href="#MARCA" title="${marca}">
-				 			    <img class="lazyload" data-src="./imagenes/marcas/${marca}.svg" alt="${marca}" />
+						<li>
+							<a href="/marca.html?marca=${marca}" title="${marca}">
+				 			    <img class="lazyload" data-src="./imagenes/marcas/${marca}-blanco.svg" alt="${marca}" />
 							</a>
 				 		</li>
 					` );
