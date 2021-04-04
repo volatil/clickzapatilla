@@ -1,0 +1,39 @@
+
+@import "variables";
+
+#breadcrumb {
+	margin: 0;
+	position: relative;
+	top: -20px;
+}
+#breadcrumb > ul {
+	margin: 0;
+	padding: 0;
+}
+#breadcrumb > ul > li {
+	display: inline-block;
+	margin-right: 10px;
+}
+#breadcrumb > ul > li::after {
+	content: ">";
+	margin-left: 10px;
+}
+#breadcrumb > ul > li:last-of-type::after {
+	content: "";
+}
+#breadcrumb > ul > li:last-of-type {
+	text-decoration:none;
+	color: $a;
+}
+#breadcrumb > ul > li > a {
+	color: $celesteOscuro;
+}
+#breadcrumb > ul > li > a:hover {
+	color: $celeste;
+}
+#breadcrumb > ul > li > a > img {
+	width: 15px;
+	position: relative;
+	top: 5px;
+	margin-right: 5px;
+}

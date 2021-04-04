@@ -1,0 +1,29 @@
+div#breadcrumb
+	link(rel="stylesheet" href="css/breadcrumb.min.css")
+	
+	ul
+		li
+			a( href="/" title="Inicio" ) 
+				img.lazyload( data-src="/imagenes/detalle/home.svg" alt="Inicio" )
+				| Inicio
+		li
+			a( href="#Marca" title="Marca" ) 
+		li 
+	
+	script( type="text/javascript" ).
+		$( document ).ready(function(){
+			setTimeout(function(){
+				var data = {
+					"marca" : $( ".getDetalle > div > p.marca" ).html() ,
+					"modelo" : $( ".getDetalle > div > p.modelo" ).html() ,
+				};
+				console.log( `Test: ${data.marca}, ${data.modelo}` );
+				$( $( "#breadcrumb > ul > li" )[1] ).find( "a" ).attr( "href" , `/marca.html?marca=${data.marca}` );
+				$( $( "#breadcrumb > ul > li" )[1] ).find( "a" ).html( data.marca );
+				$( $( "#breadcrumb > ul > li" )[1] ).find( "a" ).attr( "title" , data.marca );
+				$( $( "#breadcrumb > ul > li" )[2] ).html( data.modelo );
+				if( data.marca.length <= 1 ) {
+					$( "div#breadcrumb" ).hide();
+				}
+			},1000);
+		});
