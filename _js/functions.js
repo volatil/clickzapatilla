@@ -114,7 +114,7 @@ var buscar = function( valor ){
 				$( this ).addClass( "hide" );
 			};
 		});
-	}
+	};
 };
 
 // FILTRO TALLA
