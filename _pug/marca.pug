@@ -32,6 +32,11 @@ html(lang="es")
 				var marca = location.href.split( "marca=" )[1];
 				$( ".marca > .titulo > img" ).attr( "src" , `/imagenes/marcas/${marca}-blanco.svg` );
 				$( ".marca > .titulo > img" ).attr( "alt" , marca );
+				if ( marca == "todas" ) {
+					buscar( " " );
+					$( "header .buscador > div > img" ).click();
+					cuentaProductos( "h3.resultados" );	
+				}
 			
 			
 			.busquedaBanner
