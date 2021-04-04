@@ -12,9 +12,10 @@
 			height: 40px;
 			text-transform: uppercase;
 			text-align: center;
-			line-height: 2.2em;
-			font-size: 1.3em;
+			line-height: 2.8em;
+			font-size: 1em;
 			letter-spacing: .05em;
+			text-decoration: none;
 		}
 	
 	h3.titulo Recien LLegados
@@ -25,7 +26,7 @@
 		for( var count = 0; count <= recienLLegados.length-1; count++ ) {
 			getProdByID( recienLLegados[count] , ".productos.recienLLegados > ul" );
 			if ( count == recienLLegados.length-1 ) {
-				$( ".productos.recienLLegados" ).append( `<a class="vertodos">ver todos</a>` );
+				$( ".productos.recienLLegados" ).append( `<a class="vertodos" href="/marca.html?marca=todas">ver todos los modelos</a>` );
 			};
 		};
 	
