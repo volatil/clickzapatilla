@@ -69,7 +69,7 @@ header .buscador > div > img {
   width: 20px;
   top: 5px;
   position: relative;
-  padding-right: 8px;
+  padding-right: 3px;
 }
 
 @media (max-width: 850px) {
