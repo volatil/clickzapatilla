@@ -44,12 +44,16 @@ div.marcas > ul > li > a > img {
 
 @media (max-width: 450px) {
   div.marcas > ul {
-    padding: 0;
+    padding: 0 20px;
   }
 
   div.marcas > ul > li {
-    width: 75px;
-    height: 75px;
+    width: 60px;
+    height: 60px;
     margin-right: 3px;
+  }
+
+  div.marcas > ul > li > a > img {
+    margin-top: 8px;
   }
 }
