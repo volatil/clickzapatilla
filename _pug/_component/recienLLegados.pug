@@ -1,15 +1,31 @@
 
-.recienLLegados.bloqueContenido
-	link(rel="stylesheet" href="css/recienLLegados.min.css")
+.productos.recienLLegados.bloqueContenido
+	link(rel="stylesheet" href="css/productos.min.css")
+	style( type="text/css" ).
+		.productos > a.vertodos {
+			width: 230px;
+			background: #00bcf2;
+			color: #fff;
+			margin: 0 auto 20px;
+			display: block;
+			border: 1px solid #0a82a5;
+			height: 40px;
+			text-transform: uppercase;
+			text-align: center;
+			line-height: 2.2em;
+			font-size: 1.3em;
+			letter-spacing: .05em;
+		}
 	
 	h3.titulo Recien LLegados
-	.productos
-		link(rel="stylesheet" href="css/productos.min.css")
-		ul
+	ul
 	
 	script( type="text/javascript" ).
 		var recienLLegados = [ 483 , 420 , 270 , 96 , 302 , 164 , 154 , 226 , 128 , 79 , 23 , 50 ];
 		for( var count = 0; count <= recienLLegados.length-1; count++ ) {
-			getProdByID( recienLLegados[count] , ".recienLLegados > .productos > ul" );
+			getProdByID( recienLLegados[count] , ".productos.recienLLegados > ul" );
+			if ( count == recienLLegados.length-1 ) {
+				$( ".productos.recienLLegados" ).append( `<a class="vertodos">ver todos</a>` );
+			};
 		};
 	
