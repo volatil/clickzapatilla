@@ -58,6 +58,7 @@ header .buscador > div {
 
 header .buscador > div > input {
   height: 40px;
+  width: 160px;
   background: none;
   border: none;
   outline: none;
