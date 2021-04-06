@@ -21,7 +21,7 @@ Promise.all([
 		// var preciocliente  = data[fila].gsx$preciocliente.$t;
 		// desde el valor "precio_neto"
 		var preciocliente  = data[fila].gsx$precioneto.$t;
-		preciocliente = Number(preciocliente)+15000
+		preciocliente = Number(preciocliente)+1
 		
 		var talla  = data[fila].gsx$talla.$t;
 		

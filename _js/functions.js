@@ -1,4 +1,6 @@
 
+var cometa = 14990;
+
 //- Capitalize()
 const capitalize = (s) => {
 	if (typeof s !== 'string') return ''
@@ -271,7 +273,7 @@ var getProdByID = function( owo , donde ) {
 			};
 			imagen = imagen.split( " " )[0];
 		};
-		var preciocliente   = Number( data[owo].gsx$precioneto.$t ) + 15000;
+		var preciocliente   = Number( data[owo].gsx$precioneto.$t ) + cometa;
 		
 		// Agrega PRODUCTOS
 		if ( stock == 1 ) {
@@ -288,3 +290,32 @@ var getProdByID = function( owo , donde ) {
 		};
 	});	
 };
+
+// GET PRODUCTO BY BRAND
+var getProdByMarca = function( donde ) {
+	Promise.all([
+		fetch( `https://spreadsheets.google.com/feeds/list/1aZlC5KaMoyEPVqbMiH8_bPCsZoh65PBW9cm0HpG8Kjk/1/public/values?alt=json` ).then(value => value.json())
+	])
+	.then((value) => {
+		
+		var data = value[0].feed.entry;
+		
+		for( var fila = 0; fila <= data.length-1; fila++ ) {
+			
+			var marca  = data[fila].gsx$marca.$t;
+			// Agrega FILTROS
+			if( !$( donde ).html().includes( marca ) ) {
+				$( donde ).append( `
+					<li>
+						<a href="/marca.html?marca=${marca}" title="${marca}">
+							 <img class="lazyload" data-src="./imagenes/marcas/${marca}-blanco.svg" alt="${marca}" />
+						</a>
+					 </li>
+				` );
+			};
+		};
+		
+	});	
+};
+
+

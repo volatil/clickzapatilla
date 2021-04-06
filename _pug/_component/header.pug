@@ -1,5 +1,4 @@
 
-
 header
 	script( type="text/javascript" ).
 		if( location.pathname == "/" ) {
@@ -13,34 +12,125 @@ header
 		a( href="/" title="Click Zapatilla" )
 			img( src="./imagenes/logo.png" alt="clickZAPATILLA" )
 
-	div.categorias( style="display:none;" )
-	
-		style( type="text/css" ).
-			header div.categorias {
-				float: right;
-				margin: 20px 30px 0 20px;
-				cursor: pointer;
-			}
-			header div.categorias > p {
-				text-transform: uppercase;
-				letter-spacing: 0.05em;
-			}
-			header div.categorias > p > img {
-				width: 10px;
-				margin-left: 10px;
-				position: relative;
-				top: -2px;
-			}
+	div.categorias
 		p categorias
-			img.lazyload( data-src="./imagenes/header/arrow.svg" alt="categorias" )
-	
+			img.lazyload( data-src="./imagenes/header/menu-recto.svg" alt="categorias" )
+		nav
+			a( href="/detalle.html?id=536" title="Nike - Jordan Mars 270" )
+				img.lazyload( data-src="./imagenes/header/nav-20210404-2019-jordan.jpg" alt="Jordan Mars 270" )
+			div.marcas
+				link(rel="stylesheet" href="css/marcasEnLista.min.css")
+				h3 
+					img.lazyload( data-src="./imagenes/header/arrow-right.svg" alt="categorias" )
+					| MARCAS
+				ul
+					li 
+						a( href="/marca.html?marca=todas" title="Todas las marcas" )
+							img.lazyload( data-src="./imagenes/marcas/todas-blanco.svg" alt="Todas las marcas" )
+				script( type="text/javascript" ).
+					getProdByMarca( "header > div.categorias > nav > div.marcas > ul" );
+			div.colores
+				h3 
+					img.lazyload( data-src="./imagenes/header/arrow-right.svg" alt="categorias" )
+					| COLORES
+				ul
+					li
+						a( href="/busqueda.html?buscador=negro" title="negro" )
+							span(style="background:black")
+					li
+						a( href="/busqueda.html?buscador=amarillo" title="amarillo" )
+							span(style="background:yellow")
+					li
+						a( href="/busqueda.html?buscador=rojo" title="rojo" )
+							span(style="background:red")
+					li
+						a( href="/busqueda.html?buscador=blanco" title="blanco" )
+							span(style="background:white")
+					li
+						a( href="/busqueda.html?buscador=rosado" title="rosado" )
+							span(style="background:#fe89b2")
+					li
+						a( href="/busqueda.html?buscador=celeste" title="celeste" )
+							span(style="background:#7fddf9")
+					li
+						a( href="/busqueda.html?buscador=naranjo" title="naranjo" )
+							span(style="background:#ff5a00")
+					li
+						a( href="/busqueda.html?buscador=menta" title="menta" )
+							span(style="background:#91c2a5")
+					li
+						a( href="/busqueda.html?buscador=morado" title="morado" )
+							span(style="background:#8e6f9e")
+					li
+						a( href="/busqueda.html?buscador=verde" title="verde" )
+							span(style="background:#77ca45")
+					li
+						a( href="/busqueda.html?buscador=fluor" title="fluor" )
+							span(style="background:#00ef80")
+					li
+						a( href="/busqueda.html?buscador=burdeo" title="burdeo" )
+							span(style="background:#8c3750")
+					li
+						a( href="/busqueda.html?buscador=cafe" title="cafe" )
+							span(style="background:brown")
+					li
+						a( href="/busqueda.html?buscador=gris" title="gris" )
+							span(style="background:#d4d4d4")
+					li
+						a( href="/busqueda.html?buscador=dorado" title="dorado" )
+							span(style="background:#c39f77")
+					li
+						a( href="/busqueda.html?buscador=azul" title="azul" )
+							span(style="background:#4660cf")
+					li
+						a( href="/busqueda.html?buscador=arcoiris" title="arcoiris" )
+							span(style="background: red;background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet);background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);")
+					li
+						a( href="/busqueda.html?buscador=transparente" title="transparente" )
+							span(style="background:#eef8fb")
+					li
+						a( href="/busqueda.html?buscador=cyan" title="cyan" )
+							span(style="background:cyan")
+					li
+						a( href="/busqueda.html?buscador=vainilla" title="vainilla" )
+							span(style="background:#f1da8a")
+					li
+						a( href="/busqueda.html?buscador=durazno" title="durazno" )
+							span(style="background:#f9ccaf")
+	div.categoriaFondo
+		
 		//- Si estamos dev muestra el avance
 		script( type="text/javascript" ).
+			/*
 			var devmode = location.origin.includes( "localhost:" );
 			if( devmode ) {
-				//- $( "header div.categorias" ).show();
+				$( "header div.categorias" ).show();
 			};
-		
+			*/
+			
+			//- const pantallaAncho = window.innerWidth;
+			const pantallaAncho = document.documentElement.clientWidth;
+			if ( pantallaAncho >= 850 ) {
+				console.log( "Dentro" )
+				$( "header > div.categorias" ).hover(function(){
+					$( "header > div.categorias > nav" ).css( "display" , "block" );
+					$( "div.categoriaFondo" ).css( "display" , "block" );
+				});
+				$( "div.categoriaFondo" ).hover(function(){
+					$( "header > div.categorias > nav" ).css( "display" , "none" );
+					$( "div.categoriaFondo" ).css( "display" , "none" );
+				});
+				$( ".logo" ).hover(function(){
+					$( "header > div.categorias > nav" ).css( "display" , "none" );
+					$( "div.categoriaFondo" ).css( "display" , "none" );
+				});
+			} else {
+				$( "header > div.categorias" ).click(function(){
+					$( "header > div.categorias > nav" ).toggle();
+					$( "div.categoriaFondo" ).toggle();
+				});
+			};
+
 	div.buscador 
 		div
 			input( type="search" )
@@ -92,4 +182,5 @@ header
 					buscar( valor );
 					cuentaProductos();
 				});
+	
 	
