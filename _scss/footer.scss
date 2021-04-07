@@ -88,6 +88,33 @@ footer #subir > img {
 	bottom: 10px;
 	right: 10px;
 }
+#wsp > a {
+	text-decoration: none;
+}
+#wsp > a > p {
+	background: white;
+	border: 1px solid $d;
+	padding: 10px;
+	border-radius: 13px;
+	position: absolute;
+	color: black;
+	top: -75px;
+	right: 0;
+	width: 145px;
+	box-shadow: -1px 7px 9px -10px black;
+	display:none;
+}
+#wsp > a > p > span {
+	background: white;
+	display: block;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	transform: rotate(45deg);
+	bottom: -10px;
+	right: 20px;
+}
+
 @media ( max-width: 768px ) {
 	#wsp > a > img {
 		width: 60px;
