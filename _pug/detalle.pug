@@ -103,6 +103,7 @@ html(lang="es")
 					$producto.find( "img.producto" ).attr( "data-src" , imagen );
 					$producto.find( "img.producto" ).attr( "alt" , modelo + " - " + marca );
 					$producto.find( "img.producto" ).addClass( "lazyload" );
+					$producto.find( "p.id" ).html( id );
 					$producto.find( "p.modelo" ).html( modelo );
 					$producto.find( "p.marca" ).html( marca );
 					$producto.find( "p.colores" ).html( listaColor( color , "p.colores" ) );
@@ -110,16 +111,21 @@ html(lang="es")
 					//- $producto.find( "p.fechaEntrega" ).html( fechaEntrega() );
 					$producto.find( "p.fechaEntrega" ).html( `<strong>Fecha de entrega:</strong> 15 a 20 días hábiles.` );
 					$producto.find( "a.comprar" ).attr( "href" , `https://api.whatsapp.com/send?phone=56996336330&text=Hola, tengo una duda sobre las ${marca} ${modelo} (ID:${id})` );
-					$( "title" ).html( `${capitalize(modelo)} - ${capitalize(marca)}` );
+					//- $( "title" ).html( `${capitalize(modelo)} - ${capitalize(marca)}` );
 					$( ".talla > ul > li.enable" ).click(function(){
 						$( ".talla > ul > li.enable" ).removeClass( "select" );
 						$( this ).addClass( "select" );
 						$( "a.comprar" ).attr( "href" , `https://api.whatsapp.com/send?phone=56996336330&text=Hola, tengo una duda sobre las ${marca} ${modelo} numero ${$( ".talla > ul > li.select" ).html()} (ID:${id})` );
 					});
+					$( document ).ready(function(){
+						setTitle();
+					});
 					
 				});	
 			};
 				
+		script( type="text/javascript" ).
+		
 		//- Te devuelve al home si no viene el parametro
 		script( type="text/javascript" ).
 			var url = location.href;

@@ -318,4 +318,31 @@ var getProdByMarca = function( donde ) {
 	});	
 };
 
-
+// SETEA EL TITULO
+var setTitle = function() {
+	let paginaActual = document.location.pathname;
+	if ( paginaActual === "/" ) {
+		$( "title" ).html( `[CLICKZAPATILLA] Bienvenido` );
+	} else if ( paginaActual === "/marca.html" ) {
+		$( "title" ).html( `[CLICKZAPATILLA] | Marca ${location.href.split( "marca=" )[1].toUpperCase()}` );
+	} else if ( paginaActual === "/busqueda.html" ) {
+		$( "title" ).html( `[CLICKZAPATILLA] | Buscando ${location.href.split( "buscador=" )[1]}` );
+	} else if ( paginaActual === "/detalle.html" ) {
+		var zapatilla = {
+			"marca" : $( ".getDetalle > div > p.marca" ).html() ,
+			"modelo" : $( ".getDetalle > div > p.modelo" ).html() ,
+			"id" : $( ".getDetalle > div > p.id" ).html() ,
+		};
+		$( "title" ).html( `[CLICKZAPATILLA] | ${capitalize(zapatilla.modelo)} - ${capitalize(zapatilla.marca)} - ${capitalize(zapatilla.id)}` );
+		
+		
+		
+		
+		
+		
+	} else if ( paginaActual === "/terminosycondiciones.html" ) {
+		$( "title" ).html( `[CLICKZAPATILLA] | Términos y Condiciones` );
+	} else {
+		$( "title" ).html( `[CLICKZAPATILLA] ${document.location.pathname}` );
+	}
+};setTitle();
