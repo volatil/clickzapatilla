@@ -1,0 +1,159 @@
+doctype html
+html(lang="es")
+	head
+		
+		include _component/head
+		
+	body
+		
+		script(src="js/functions.min.js")
+		
+		include _component/analytics
+		
+		include _component/barraSuperior
+		include _component/header
+		
+		style( type="text/css" ).
+			.seguimiento {
+				width: 90%;
+				background: white;
+				margin: 20px auto 0;
+				padding: 20px;
+			}
+			.seguimiento h1 {
+				padding: 0;
+				margin: 0;
+				text-align: center;
+				margin-bottom: 30px;
+				font-weight: 300;
+				text-transform: uppercase;
+			}
+			.seguimiento h3 {
+				text-transform: uppercase;
+			}
+			.seguimiento > .buscador {
+				width: 500px;
+				height: 55px;
+				margin: 0 auto 20px;
+				position: relative;
+				border: 1px solid #ccc;
+			}
+			.seguimiento > .buscador > input {
+				position: relative;
+				height: 50px;
+				width: calc(100% - 70px);
+				border: none;
+				top: 3px;
+				padding: 0 10px;
+				outline: none;
+				font-size: 1.3em;
+			}
+			.seguimiento > .buscador > img {
+				width: 40px;
+				height: 40px;
+				background-color: #7fddf9;
+				display: block;
+				position: absolute;
+				right: 2px;
+				top: 2px;
+				padding: 5px;
+				cursor: pointer;
+			}
+			.seguimiento > .buscador > img:hover {
+				background: #0489af;
+			}
+			.seguimiento .covid {
+				border: 1px solid #ddd;
+				width: 500px;
+				margin: 0 auto;
+			}
+			.seguimiento .covid h3 {
+				background: #eee;
+				margin: 0;
+				position: relative;
+				top: 0px;
+				padding: 10px 10px 10px 40px;
+				font-weight: 500;
+				letter-spacing: 0.05em;
+			}
+			.seguimiento .covid h3 img {
+				width: 25px;
+				margin: 10px;
+				position: absolute;
+				top: -3px;
+				left: 0;
+			}
+			.seguimiento .covid p {
+				padding: 10px;
+			}
+			
+			.seguimiento .resultado {
+				width: 500px;
+				margin: 0 auto 20px;
+				border: 1px solid #ccc;
+			}
+			.seguimiento .resultado > p.cargando {
+				text-align: center;
+			}
+			.seguimiento .resultado > p.cargando > img {
+				width: 30px;
+				margin-right: 10px;
+			}
+			
+			
+		.seguimiento
+			h1 Seguimiento de Pedidos
+			
+			.buscador
+				input( type="number" placeholder="Ingrese número de seguimiento" )
+				img.lazyload( data-src="/imagenes/seguimientopedido/lupa.svg" alt="buscar" )
+			
+			.resultado( style="display:none;" )
+				p.cargando
+					img.lazyload( data-src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjMDAwMDAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNjQgNjQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDY0IDY0OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBhdGggZD0iTTQwLDNoMS44YzAuNiwwLDEtMC40LDEtMXMtMC40LTEtMS0xSDQwYy0wLjYsMC0xLDAuNC0xLDFTMzkuNCwzLDQwLDN6Ij48L3BhdGg+PHBhdGggZD0iTTYyLDYxaC0yYy0wLjYsMC0xLDAuNC0xLDFzMC40LDEsMSwxaDJjMC42LDAsMS0wLjQsMS0xUzYyLjYsNjEsNjIsNjF6Ij48L3BhdGg+PHBhdGggZD0iTTU2LDYxaC01di01YzAtMS4zLTAuOC0yLjQtMi0yLjh2LTMuNGMwLTUuMi0yLjYtOS45LTcuMS0xMi43Yy0wLjUtMC4zLTEuMS0wLjItMS40LDAuM2MtMC4zLDAuNS0wLjIsMS4xLDAuMywxLjQgIGMzLjUsMi4yLDUuNyw1LjgsNi4xLDkuOGwtMi41LTAuOGMtMS41LTAuNS0zLjMtMC4zLTQuOCwwLjNjLTAuNSwwLjItMC43LDAuOC0wLjUsMS4zYzAuMiwwLjUsMC44LDAuNywxLjMsMC41ICBjMS4xLTAuNSwyLjMtMC42LDMuNC0wLjNsMy4yLDEuMVY1M0gxN3YtMi4zbDMuMi0xLjFjMS0wLjQsMi4yLTAuMywzLjMsMC4zYzEuNSwwLjcsMy4zLDAuOCw0LjgsMC4zbDIuMi0wLjdjMC45LTAuMywxLjgtMC4zLDIuOCwwICBsMi4yLDAuN2MwLjUsMC4yLDEuMS0wLjEsMS4zLTAuNmMwLjItMC41LTAuMS0xLjEtMC42LTEuM0wzNCw0Ny43Yy0xLjMtMC41LTIuOC0wLjUtNCwwbC0yLjIsMC43Yy0xLjEsMC4zLTIuMywwLjItMy40LTAuMyAgYy0xLjctMC44LTMuMy0wLjktNC44LTAuM2wtMi41LDAuOGMwLjQtNCwyLjYtNy43LDYuMS05LjhsNi41LTQuMWMwLjgtMC41LDEuMi0xLjIsMS40LTIuMWMwLDAsMC4zLDAuMywxLDAuM2MwLjUsMCwxLTAuMywxLTAuMyAgYzAuMSwwLjksMC42LDEuNiwxLjQsMi4xbDMuNSwyLjJjMC4yLDAuMSwxLDAuMywxLjQtMC4zYzAuMy0wLjUsMC4yLTEuMS0wLjMtMS40bC0zLjUtMi4yYy0wLjMtMC4yLTAuNS0wLjUtMC41LTAuOXMwLjItMC44LDAuNS0xICBsNi41LTQuMWM0LjQtMi43LDcuMS03LjUsNy4xLTEyLjh2LTMuNGMxLjItMC40LDItMS41LDItMi44VjRjMC0xLjctMS4zLTMtMy0zaC0yYy0wLjYsMC0xLDAuNC0xLDFzMC40LDEsMSwxaDJjMC42LDAsMSwwLjQsMSwxdjQgIGMwLDAuNi0wLjQsMS0xLDFIMTZjLTAuNiwwLTEtMC40LTEtMVY0YzAtMC42LDAuNC0xLDEtMWgyMGMwLjYsMCwxLTAuNCwxLTFzLTAuNC0xLTEtMUgxNmMtMS43LDAtMywxLjMtMywzdjRjMCwxLjMsMC44LDIuNCwyLDIuOCAgdjMuNGMwLDMuOSwxLjUsNy42LDQuMywxMC41YzAuMiwwLjIsMC45LDAuNSwxLjQsMGMwLjQtMC40LDAuNC0xLDAtMS40Yy0xLjQtMS40LTIuNC0zLjEtMy01bDIuOC0xLjRjMi4yLTEuMiw0LjktMS4yLDcuMSwwICBjMi44LDEuNSw2LjEsMS41LDguOSwwYzIuMi0xLjIsNC45LTEuMiw3LjEsMGwyLjgsMS40Yy0wLjksMi45LTIuOCw1LjQtNS41LDdsLTYuNSw0LjFjMCwwLDAsMCwwLDBMMzIsMzAuOGwtMi40LTEuNWMwLDAsMCwwLDAsMCAgbC01LjEtMy4yYy0wLjUtMC4zLTEuMS0wLjItMS40LDAuM2MtMC4zLDAuNS0wLjIsMS4xLDAuMywxLjRsNS4xLDMuMmMwLjMsMC4yLDAuNSwwLjUsMC41LDAuOXMtMC4yLDAuOC0wLjUsMUwyMi4xLDM3ICBjLTQuNCwyLjctNy4xLDcuNS03LjEsMTIuOHYzLjRjLTEuMiwwLjQtMiwxLjUtMiwyLjh2NWgtMWMtMC42LDAtMSwwLjQtMSwxczAuNCwxLDEsMWg2YzAuNiwwLDEtMC40LDEtMXMtMC40LTEtMS0xaC0zdi01ICBjMC0wLjYsMC40LTEsMS0xaDMyYzAuNiwwLDEsMC40LDEsMXY1SDIyLjJjLTAuNiwwLTEsMC40LTEsMXMwLjQsMSwxLDFINTZjMC42LDAsMS0wLjQsMS0xUzU2LjYsNjEsNTYsNjF6IE00NC41LDE1LjEgIGMtMi44LTEuNS02LjEtMS41LTguOSwwYy0yLjIsMS4yLTQuOSwxLjItNy4xLDBjLTIuOC0xLjUtNi4xLTEuNS04LjksMGwtMi40LDEuMmMtMC4xLTAuNy0wLjItMS40LTAuMi0yLjFWMTFoMzB2My4yICBjMCwwLjctMC4xLDEuNC0wLjIsMi4xTDQ0LjUsMTUuMXoiPjwvcGF0aD48cGF0aCBkPSJNOCw2MUgyYy0wLjYsMC0xLDAuNC0xLDFzMC40LDEsMSwxaDZjMC42LDAsMS0wLjQsMS0xUzguNiw2MSw4LDYxeiI+PC9wYXRoPjxwYXRoIGQ9Ik0zNi42LDI1LjljMCwwLDMuMS0xLjQsNi4xLTUuNGMwLjMtMC40LDAuMi0xLjEtMC4zLTEuNGMtMC41LTAuMy0xLjEtMC4yLTEuNCwwLjNjLTEuNCwyLjYtNS41LDQuOC01LjUsNC44ICBjLTAuNSwwLjMtMC42LDEtMC4zLDEuNEMzNS43LDI2LjMsMzYuNCwyNiwzNi42LDI1Ljl6Ij48L3BhdGg+PHBhdGggZD0iTTE4LDVjLTAuNiwwLTEsMC40LTEsMXMwLjQsMSwxLDFoMmMwLjYsMCwxLTAuNCwxLTFzLTAuNC0xLTEtMUgxOHoiPjwvcGF0aD48cGF0aCBkPSJNMjQsNWMtMC42LDAtMSwwLjQtMSwxczAuNCwxLDEsMWg4YzAuNiwwLDEtMC40LDEtMXMtMC40LTEtMS0xSDI0eiI+PC9wYXRoPjxwYXRoIGQ9Ik00Niw1OWMwLjYsMCwxLTAuNCwxLTFzLTAuNC0xLTEtMWgtMmMtMC42LDAtMSwwLjQtMSwxczAuNCwxLDEsMUg0NnoiPjwvcGF0aD48cGF0aCBkPSJNNDAsNTljMC42LDAsMS0wLjQsMS0xcy0wLjQtMS0xLTFIMzBjLTAuNiwwLTEsMC40LTEsMXMwLjQsMSwxLDFINDB6Ij48L3BhdGg+PGNpcmNsZSBjeD0iMzIiIGN5PSIzNiIgcj0iMSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzIiIGN5PSI0MCIgcj0iMSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzIiIGN5PSI0NCIgcj0iMSI+PC9jaXJjbGU+PC9zdmc+" alt="Buscando ..." )
+					| Obteniendo información ...
+				div
+				script( type="text/javascript" ).
+					$( ".buscador img" ).click(function(){
+						let codidoSeguimiento = $( ".seguimiento > .buscador > input" ).val();
+						if ( codidoSeguimiento.length != 6 ) {
+							console.log( "ERROR" );
+							$( ".seguimiento .resultado" ).fadeIn();
+							$( ".seguimiento .resultado" ).append( `
+								<div class="error">
+									<h3>${codidoSeguimiento}</h3>
+									<p>Codigo incorrecto</p>
+								</div>
+							` );
+							setTimeout(function(){
+								$( ".seguimiento .resultado" ).fadeOut();
+								$( ".seguimiento .resultado .error" ).remove();
+							},2000);
+						} else {
+							console.log( "CORRECTO" );
+							$( ".seguimiento .resultado" ).fadeIn();
+							setTimeout(function(){
+								$( ".seguimiento .resultado" ).html( `
+									<h3>#${codidoSeguimiento}</h3>
+									<p>Tu pedido esta perdido</p>
+									<p>uwu</p>
+									<br>
+									<p>Sorry</p>
+								` );
+								//- $( ".seguimiento .resultado > p.cargando" ).toggle();
+								
+							},2000);
+						}
+					});
+			
+			
+			
+			.covid
+				h3 
+					img.lazyload( data-src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDhweCIgdmlld0JveD0iMCAwIDI0IDI0IiB3aWR0aD0iNDhweCIgZmlsbD0iI0QyNDA0MCI+PHBhdGggZD0iTTEyIDUuOTlMMTkuNTMgMTlINC40N0wxMiA1Ljk5TTEyIDJMMSAyMWgyMkwxMiAyem0xIDE0aC0ydjJoMnYtMnptMC02aC0ydjRoMnYtNHoiLz48cGF0aCBkPSJNMCAwaDI0djI0SDBWMHoiIGZpbGw9Im5vbmUiLz48L3N2Zz4K" alt="alerta" )
+					| COVID-19
+				p Estamos siguiendo las recomendaciones internacionales de distanciamiento social y respetando los decretos de Cuarentena y Toque de Queda de las autoridades locales. Esto ha provocado tiempos de respuesta más largos y retrasos en nuestras entregas.
+				p Por favor, ten paciencia en este momento tan difícil para todos.
+			
+		include _component/footer
+		
