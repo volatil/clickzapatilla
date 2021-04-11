@@ -57,6 +57,7 @@
 .getDetalle > div > p.colores {
   color: #cccccc;
   font-size: 1.4em;
+  display: none;
 }
 
 .getDetalle > div > p.colores.somos1 {
