@@ -46,7 +46,7 @@ html(lang="es")
 									
 									var codigoSeguimiento = data[fila].gsx$idcompra.$t;
 									
-									if ( codigoSeguimiento == codigo ) {
+									if ( String(codigoSeguimiento) == String(codigo) ) {
 										var nombre      = data[fila].gsx$nombre.$t;
 										var estado      = data[fila].gsx$estadopedido.$t;
 										$( ".seguimiento .resultado .correcto" ).html( `
@@ -55,16 +55,12 @@ html(lang="es")
 											<h5>Estado Pedido</h5>
 											<p>${estado}</p>
 										` );
-									} else {
-										$( ".seguimiento .resultado .error" ).show();
-										$( ".seguimiento .resultado .correcto" ).hide();
-									}
+									};
 									
 								};
 								
 							});	
 						}
-						
 						if ( codidoSeguimiento.length != 16 ) {
 							$( ".seguimiento .resultado .error" ).show();
 							$( ".seguimiento .resultado .correcto" ).hide();

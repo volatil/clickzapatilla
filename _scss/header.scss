@@ -121,12 +121,11 @@ header > div.categorias > nav > .seguimientoPedido > a {
 	display: block;
 	width: 100px;
 	text-align: center;
-	line-height: 2em;
+	line-height: 1.7em;
 	margin-bottom: 20px;
 }
 header > div.categorias > nav > .seguimientoPedido > a:hover {
 	background: $celesteOscuro;
-	border: 1px solid $celesteOscuro;
 }
 header > div.categorias > nav > .colores > ul > li {
 	padding: 0 2px;

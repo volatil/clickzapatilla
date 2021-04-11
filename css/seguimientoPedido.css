@@ -83,7 +83,7 @@
 }
 
 .seguimiento .resultado {
-  width: 500px;
+  width: 440px;
   margin: 0 auto 20px;
   border: 1px solid #ccc;
 }
@@ -113,6 +113,7 @@
 
 .seguimiento .resultado .correcto > * {
   text-align: center;
+  padding: 0 10px;
 }
 
 .seguimiento .resultado .correcto > h3 {
@@ -140,7 +141,13 @@
 
 @media (max-width: 450px) {
   .seguimiento > .buscador,
+.seguimiento .resultado,
 .seguimiento > .covid {
     width: 90%;
+  }
+
+  .seguimiento .resultado .correcto > h3 {
+    font-size: 0.8em;
+    width: 120px;
   }
 }
