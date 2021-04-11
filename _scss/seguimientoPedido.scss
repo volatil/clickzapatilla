@@ -1,0 +1,136 @@
+
+@import 'variables';
+
+.seguimiento {
+	width: 85%;
+	background: white;
+	margin: 20px auto 0;
+	padding: 20px;
+}
+.seguimiento h1 {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	margin-bottom: 30px;
+	font-weight: 300;
+	text-transform: uppercase;
+}
+.seguimiento h3 {
+	text-transform: uppercase;
+}
+.seguimiento > .buscador {
+	width: 440px;
+	height: 55px;
+	margin: 0 auto 20px;
+	position: relative;
+	border: 1px solid #ccc;
+}
+.seguimiento > .buscador > input {
+	position: relative;
+	height: 50px;
+	width: calc(100% - 70px);
+	border: none;
+	top: 3px;
+	padding: 0 10px;
+	outline: none;
+	font-size: 1.3em;
+}
+.seguimiento > .buscador > img {
+	width: 40px;
+	height: 40px;
+	background-color: #7fddf9;
+	display: block;
+	position: absolute;
+	right: 2px;
+	top: 2px;
+	padding: 5px;
+	cursor: pointer;
+}
+.seguimiento > .buscador > img:hover {
+	background: #0489af;
+}
+.seguimiento .covid {
+	margin-top: 30px;
+	border: 1px solid #ddd;
+	width: 440px;
+	margin: 70px auto 0;
+}
+.seguimiento .covid h3 {
+	background: #eee;
+	margin: 0;
+	position: relative;
+	top: 0px;
+	padding: 10px 10px 10px 40px;
+	font-weight: 500;
+	letter-spacing: 0.05em;
+}
+.seguimiento .covid h3 img {
+	width: 25px;
+	margin: 10px;
+	position: absolute;
+	top: -3px;
+	left: 0;
+}
+.seguimiento .covid p {
+	padding: 10px;
+}
+
+
+
+
+
+.seguimiento .resultado {
+	width: 500px;
+	margin: 0 auto 20px;
+	border: 1px solid #ccc;
+}
+.seguimiento .resultado > p.cargando {
+	text-align: center;
+	display: none;
+}
+.seguimiento .resultado > p.cargando > img {
+	width: 30px;
+	margin-right: 10px;
+}
+.seguimiento .resultado .error {
+	text-align:center;
+}
+.seguimiento .resultado .error > p {
+	color: #842029;
+	background-color: #f8d7da;
+	border-color: #f5c2c7;
+	display: inline-block;
+	padding: 4px 10px;
+	border-radius: 10px;
+}
+.seguimiento .resultado .correcto {}
+.seguimiento .resultado .correcto > * {
+	text-align: center;
+}
+.seguimiento .resultado .correcto > h3 {
+	color: #0f5132;
+	background-color: #d1e7dd;
+	border-color: #badbcc;
+	display: block;
+	padding: 4px 10px;
+	border-radius: 10px;
+	text-align: center;
+	margin: 10px auto 0;
+	width: 300px;
+	font-size: 2em;
+}
+.seguimiento .resultado .correcto > .saludo {
+	text-transform: capitalize;
+}
+.seguimiento .resultado .correcto > h5 {
+	text-transform: uppercase;
+	margin-bottom: 0;
+	font-size: 1.2em;
+}
+
+@media ( max-width: $MQsmartphone ) {
+	.seguimiento > .buscador ,
+	.seguimiento > .covid {
+		width: 90%;
+	}
+}

@@ -125,6 +125,26 @@ header div.marcas > ul > li > a > img {
   left: -8px;
 }
 
+header > div.categorias > nav > .seguimientoPedido > a {
+  background: black;
+  outline: none;
+  padding: 4px 6px;
+  color: white;
+  font-size: 1.3em;
+  text-decoration: none;
+  height: 30px;
+  display: block;
+  width: 100px;
+  text-align: center;
+  line-height: 2em;
+  margin-bottom: 20px;
+}
+
+header > div.categorias > nav > .seguimientoPedido > a:hover {
+  background: #0489af;
+  border: 1px solid #0489af;
+}
+
 header > div.categorias > nav > .colores > ul > li {
   padding: 0 2px;
 }
@@ -279,6 +299,11 @@ header .buscador > div > img {
     position: absolute;
     top: 10px;
     right: 10px;
+  }
+
+  header > div.categorias > nav > .seguimientoPedido > a {
+    margin: 0 auto 20px;
+    display: block;
   }
 }
 @media (max-width: 450px) {
