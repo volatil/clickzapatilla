@@ -12,17 +12,28 @@ div#breadcrumb
 				
 				if( data.marca.length >= 2 ) {
 					$( "div#breadcrumb" ).append( `
-						<ul>
-							<li>
-								<a href="/" title="Inicio">
+						<ul itemscope itemtype="http://schema.org/BreadcrumbList">
+							<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+								<a itemprop="item" href="/" title="Inicio">
 									<img class="lazyload" data-src="/imagenes/detalle/home.svg" alt="Inicio" />
-									Inicio
+									<span itemprop="name">Inicio</span>
 								</a>
+								<meta itemprop="position" content="1" />
 							</li>
-							<li>
-								<a href="/marca.html?marca=${data.marca}" title="${capitalize(data.marca)}">${capitalize(data.marca)}</a>
+							<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+								<a itemprop="item" href="/marca.html?marca=${data.marca}" title="${capitalize(data.marca)}">
+									<span itemprop="name">
+										${capitalize(data.marca)}
+									</span>
+								</a>
+								<meta itemprop="position" content="2" />
 							</li>
-							<li>${capitalize(data.modelo)}</li>
+							<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+								<span itemprop="name">
+									${capitalize(data.modelo)}
+								</span>
+								<meta itemprop="position" content="3" />
+							</li>
 						</ul>
 					` );
 				} else {
