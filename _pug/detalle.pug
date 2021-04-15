@@ -73,7 +73,7 @@ html(lang="es")
 						for ( var imgcount = 0; imgcount <= imagen.split( " " ).length-1; imgcount++ ) {
 							
 							if ( !imagen.split( " " )[imgcount].length == 0 ) {
-								$( ".getDetalle .galeria" ).append( `<img class="lazyload" data-src="${imagen.split( " " )[imgcount]}" alt="${marca} - ${modelo}" />` )
+								$( ".getDetalle .galeria" ).append( `<img itemprop="image" class="lazyload" data-src="${imagen.split( " " )[imgcount]}" alt="${marca} - ${modelo}" />` )
 								
 								$( ".getDetalle > .galeria > img" ).click(function(){
 									let ruta = $( this ).attr( "src" );
@@ -101,6 +101,7 @@ html(lang="es")
 					// Agrega PRODUCTOS
 					var $producto = $( ".getDetalle" );
 					$producto.find( "img.producto" ).attr( "data-src" , imagen );
+					$producto.find( "img.producto" ).attr( "itemprop" , "image" );
 					$producto.find( "img.producto" ).attr( "alt" , modelo + " - " + marca );
 					$producto.find( "img.producto" ).addClass( "lazyload" );
 					$producto.find( "p.id" ).html( id );
