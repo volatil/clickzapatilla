@@ -16,7 +16,6 @@ html(lang="es")
 		link(rel="stylesheet" href="css/seguimientoPedido.min.css")
 		
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-		<link rel="stylesheet" href="/resources/demos/style.css">
 		
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -29,7 +28,7 @@ html(lang="es")
 		
 		style( type="text/css" ).
 			body > div {
-				width: 60%;
+				width: 80%;
 				margin: 50px auto 0;
 			}
 			body > div.path .bloque {
@@ -61,17 +60,25 @@ html(lang="es")
 				width: 610px;
 			}
 			body > section.botones {
-				width: 310px;
+				width: 570px;
 				margin: 20px auto 0;
 				height: 50px;
 			}
-			body > section.botones > button.revisar ,
-			body > section.botones > button.generar {
+			body > section.botones > input {
+				display: inline-block;
+				height: 34px;
+				width: 60px;
+				margin-left: 20px;
+			}
+			body > section.botones > button {
 				width: 150px;
 				margin: 0 auto;
 				height: 40px;
 				display: inline-block;
 				text-transform: uppercase;
+			}
+			body > section.botones > button.borrar {
+				margin-right: 20px;
 			}
 		
 		.path
@@ -94,6 +101,8 @@ html(lang="es")
 		
 		section.botones
 			button.revisar revisar
+			input( placeholder="nombre" )
+			button.borrar borrar
 			button.generar generar
 		
 		.resultado
@@ -103,13 +112,13 @@ html(lang="es")
 		script( type="text/javascript" ).
 			$( "button.revisar" ).click(() => {
 				$( ".preview > div" ).html( "" );
-				var marca       = $( "div.path .marca textarea" ).val();
-				var modelo      = $( "div.path .modelo textarea" ).val();
-				var carpeta     = $( "div.path .carpeta textarea" ).val();
-				var lineas      = $( "div.imagenes textarea" ).val().split( "\n" ).length;	
+				var marca	   = $( "div.path .marca textarea" ).val();
+				var modelo	  = $( "div.path .modelo textarea" ).val();
+				var carpeta	 = $( "div.path .carpeta textarea" ).val();
+				var lineas	  = $( "div.imagenes textarea" ).val().split( "\n" ).length;	
 				for( var count = 0; count <= lineas-1; count++ ) {
 					let cadaLinea = $( "div.imagenes textarea" ).val().split( "\n" )[count];
-					$( ".preview div" ).append( `<img src="./imagenes/productos/${marca}/${modelo}/${carpeta}/${cadaLinea.split( "	" )[0]}" title="${cadaLinea.split( "	" )[0]}" />` )
+					$( ".preview div" ).append( `<img src="./imagenes/productos/${marca}/${modelo}/${carpeta}/${cadaLinea.split( "	" )[0]}" title="${count+1}" />` )
 				};
 			});
 			$( "button.generar" ).click(() => {
@@ -119,7 +128,19 @@ html(lang="es")
 					$( ".resultado > div" ).append( `${ruta} ` );
 				});
 			});
-				
+			$( "button.borrar" ).click(() => {
+				var borrar = $( "body > section.botones > input" ).val();
+				$( `.preview > div > img[title=${borrar}]` ).remove();
+			});
+			
+			//- TEST
+			/*
+			$( "div.path .marca textarea" ).val( "jordan" );
+			$( "div.path .modelo textarea" ).val( "airjordan1" );
+			$( "div.path .carpeta textarea" ).val( "bfdb" );
+			$( "div.imagenes textarea" ).val( `2b87585a.jpg	1.3 MB	16/4/21 14:11:44 \n455e926d.jpg	1.3 MB	16/4/21 14:11:38 \n4bc84d13.jpg	1.5 MB	16/4/21 14:11:46 \n6c03f95b.jpg	1.3 MB	16/4/21 14:11:52 \n911a333e.jpg	1.7 MB	16/4/21 14:11:50 \n94fca65a.jpg	1.3 MB	16/4/21 14:11:48 \na74ccc92.jpg	1.2 MB	16/4/21 14:11:52 \nab798107.jpg	1.5 MB	16/4/21 14:` );
+			*/
+			
 				
 				
 				
