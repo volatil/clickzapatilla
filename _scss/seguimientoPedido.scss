@@ -99,29 +99,81 @@
 	border-radius: 10px;
 }
 .seguimiento .resultado .correcto {}
-.seguimiento .resultado .correcto > * {
-	text-align: center;
-	padding: 0 10px;
+.seguimiento .resultado .correcto > .compra {
+	padding: 10px;
 }
-.seguimiento .resultado .correcto > h3 {
-	color: #0f5132;
-	background-color: #d1e7dd;
-	border-color: #badbcc;
-	display: block;
-	padding: 4px 10px;
-	border-radius: 10px;
-	text-align: center;
-	margin: 10px auto 0;
-	width: 300px;
-	font-size: 2em;
+.seguimiento .resultado .correcto > .compra > img {
+	width: 200px;
+	display: inline-block;
+	float: left;
+	margin-right: 10px;
 }
-.seguimiento .resultado .correcto > .saludo {
+.seguimiento .resultado .correcto > .compra > p {
 	text-transform: capitalize;
+	font-size: 1.8em;
+	font-weight: 400;
+	margin: 0;
 }
-.seguimiento .resultado .correcto > h5 {
-	text-transform: uppercase;
-	margin-bottom: 0;
-	font-size: 1.2em;
+.seguimiento .resultado .correcto > .compra > p.talla {
+	font-weight: 300;
+	font-size: 1em;
+}
+.seguimiento .resultado .correcto > .compra > .estado {
+	border: 1px solid #ccc;
+	width: 120px;
+	padding: 5px;
+	display: inline-block;
+	margin-top: 20px;
+}
+.seguimiento .resultado .correcto > .compra > .estado > img {
+	width: 60px;
+	margin: 0 auto;
+	display: block;
+}
+.seguimiento .resultado .correcto > .compra > .estado > p {
+	font-size: .9em;
+	text-align: center;
+	margin: 0;
+}
+.seguimiento .resultado .correcto > .historial {
+	clear: left;
+    margin-top: 30px;
+    display: inline-block;
+}
+.seguimiento .resultado .correcto > .historial > ul {
+	list-style: none;
+	border-left: 1px solid #ddd;
+    margin-left: 20px;
+    padding-left: 21px;
+}
+.seguimiento .resultado .correcto > .historial > ul > li {
+	line-height: 3em;
+	position: relative;
+	opacity: .7;
+}
+.seguimiento .resultado .correcto > .historial > ul > li span {
+    position: absolute;
+    top: 16px;
+    left: -28px;
+    background: white;
+    border: 3px solid #aaa;
+    width: 7px;
+    height: 7px;
+    display: block;
+    border-radius: 50%;
+}
+.seguimiento .resultado .correcto > .historial > ul > li.activo {
+	font-weight: 600;
+	opacity: 1;
+}
+.seguimiento .resultado .correcto > .historial > ul > li.pasado {
+	text-decoration: line-through;
+}
+.seguimiento .resultado .correcto > .historial > ul > li.pasado.activo {
+	text-decoration: none;
+}
+.seguimiento .resultado .correcto > .historial > ul > li.activo span {
+	border: 3px solid $celesteClaro;
 }
 
 @media ( max-width: $MQsmartphone ) {

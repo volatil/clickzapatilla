@@ -36,25 +36,114 @@ html(lang="es")
 						
 						var getCodigoSeguimiento = function( codigo ){
 							Promise.all([
+								fetch( `https://spreadsheets.google.com/feeds/list/1aZlC5KaMoyEPVqbMiH8_bPCsZoh65PBW9cm0HpG8Kjk/1/public/values?alt=json` ).then(value => value.json()),
 								fetch( `https://spreadsheets.google.com/feeds/list/1aZlC5KaMoyEPVqbMiH8_bPCsZoh65PBW9cm0HpG8Kjk/2/public/values?alt=json` ).then(value => value.json())
 							])
 							.then((value) => {
 								
-								var data = value[0].feed.entry;
+								var inventario = value[0].feed.entry;
+								var ventas = value[1].feed.entry;
 								
-								for( var fila = 0; fila <= data.length-1; fila++ ) {
+								for( var fila = 0; fila <= ventas.length-1; fila++ ) {
 									
-									var codigoSeguimiento = data[fila].gsx$idcompra.$t;
+									var codigoSeguimiento = ventas[fila].gsx$idcompra.$t;
 									
 									if ( String(codigoSeguimiento) == String(codigo) ) {
-										var nombre      = data[fila].gsx$nombre.$t;
-										var estado      = data[fila].gsx$estadopedido.$t;
+										
+										var idproducto  = ventas[fila].gsx$idproducto.$t;
+										var talla       = ventas[fila].gsx$talla.$t;
+										var estado      = ventas[fila].gsx$estadopedido.$t;
+										var marca       = inventario[idproducto-1].gsx$marca.$t;
+										var modelo      = inventario[idproducto-1].gsx$modelo.$t;
+										var imagen      = inventario[idproducto-1].gsx$imagen.$t;
+										if ( imagen.split( " " ).length >= 2 ) {
+											for ( var imgcount = 0; imgcount <= imagen.split( " " ).length-1; imgcount++ ) {
+												$( ".getDetalle .galeria" ).append( `<img class="lazyload" src="${imagen.split( " " )[imgcount]}" alt="${marca} - ${modelo}" />` )
+												
+												$( ".getDetalle > .galeria > img" ).click(function(){
+													let ruta = $( this ).attr( "src" );
+													$( ".getDetalle > img" ).attr( "src" , ruta );
+												});
+												
+											};
+											imagen = imagen.split( " " )[0];
+										};
+										
 										$( ".seguimiento .resultado .correcto" ).html( `
-											<h3>${codidoSeguimiento}</h3>
-											<p class="saludo">Hola ${nombre}.</p>
-											<h5>Estado Pedido</h5>
-											<p>${estado}</p>
+											<div class="compra">
+												<img class="lazyload" data-src="${imagen}" alt="${marca} - ${modelo}" />
+												<p class="nombre">${marca} - ${modelo}</p>
+												<p class="talla">Talla: ${talla}</p>
+												<div class="estado">
+													<img class="lazyload" data-src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjMDAwMDAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4PSIwcHgiIHk9IjBweCI+PHBhdGggZD0ibTQ5LjMxIDQyLjYzYTEgMSAwIDEgMCAtMS0xIDEgMSAwIDAgMCAxIDF6Ij48L3BhdGg+PHBhdGggZD0ibTUzLjI0IDQ1LjY0YTEgMSAwIDEgMCAtMS0xIDEgMSAwIDAgMCAxIDF6Ij48L3BhdGg+PGNpcmNsZSBjeD0iNTcuMTgiIGN5PSI0Ny42NCIgcj0iMS4wMiI+PC9jaXJjbGU+PHBhdGggZD0ibTM4LjE1IDQxLjY4YTEgMSAwIDEgMCAwLTIgMSAxIDAgMCAwIDAgMnoiPjwvcGF0aD48cGF0aCBkPSJtNDEgMzkuODlhMSAxIDAgMSAwIDAtMiAxIDEgMCAwIDAgMCAyeiI+PC9wYXRoPjxwYXRoIGQ9Im05My4wNSA1Ny0uMjMtLjExaC0uMDhhNjAuODYgNjAuODYgMCAwIDAgLTkuNTYtMi41OGMtMi40LS41My01LjExLTEuMTMtOC4yMi0xLjktMi40NS0uNzYtMjMuNzgtMTYuNzEtMjguNTMtMjAuNDFhNy4zOCA3LjM4IDAgMCAxIC0yLjkyLTQuM2wtLjA3LS4yNWEyLjM2IDIuMzYgMCAwIDAgLTEuODUtMS41NGMtMS43My0uMzgtNC44LjM2LTcuNzkgMy43MmE0LjE3IDQuMTcgMCAwIDAgLS44NyAzLjQ4IDUuODcgNS44NyAwIDAgMCAyLjgxIDMuNTNjLS43LjU1LTEuNCAxLjE1LTIuMTIgMS43Ni0zLjQ1IDMtNy4zNiA2LjI5LTEyLjUzIDYuMjktMi4yNSAwLTMuNzgtMS4zOS01LjM5LTIuODdzLTMuNDItMy4xMS02LTMuMTFoLS4xN2MtMi4zMy4wMS00LjUzIDAtNS41MyA0LjI5LS4yMiAxLS40MSAxLjg5LS41OCAyLjgxYTEgMSAwIDAgMCAtLjAyLjE5IDM5LjM0IDM5LjM0IDAgMCAwIC0uNTIgMTMuNTggMS4yMSAxLjIxIDAgMCAwIC4wNi4zOCAxMy44MyAxMy44MyAwIDAgMCAyLjA2IDUuMjRjLS4xNCAyLjc1LS4yNyA1LjU4IDEuNDMgNy4zN2E2IDYgMCAwIDAgNC41NyAxLjZoNDYuODYgMjFjNi41MiAwIDEwLjkxLS42OSAxMy44LTIuMTcgMy4yOS0xLjY4IDQuODktNC40NCA0Ljg5LTguNDUtLjA1LTMuMzgtMS41NS01LjIyLTQuNS02LjU1em0yIDYuMjhjLTEgMS41Mi00LjkgMy44Mi0xOS4yOSAzLjgyLTExLjMzIDAtMjEuMjYtMi4zMy0yOS4yNS00LjItMi42NS0uNjItNS4xNS0xLjItNy4zOC0xLjYzLTkuNzctMS44NC0yMy4yNC0yLjI0LTMyLjQ2IDJhMTEuMjcgMTEuMjcgMCAwIDEgLTEuMTctM2M1Ljg2LTIuOTIgMTgtMS42MiAyNy4wNi0uNjYgMy4zMi4zNiA2LjE5LjY3IDguNDMuNzUgMi45NC4xIDUuNTIuMSA3Ljc5IDBoLjEzYzQuNy0uMzYgOC4wOS0xLjA2IDEwLjUxLTIuMzZhMi43MSAyLjcxIDAgMCAxIDIuMTQtLjRjLjQ2LjIyIDEuMDkgMSAxLjUzIDMuNDJhMy4yNiAzLjI2IDAgMCAwIDIuMjQgMi43MyA0LjA3IDQuMDcgMCAwIDAgMS4xNi4xN2MyLjE2IDAgNC43NC0xLjUgNi40NS0zLjI1IDAgMCAuMzgtLjM1IDIuMzYtLjM0IDEuNDcgMCAzLjI5LjIgNS4yMy40IDUgLjUyIDEwLjIyIDEgMTIuMzEtMS4xNmEzLjkyIDMuOTIgMCAwIDEgMi4xNiAzLjcxem0tODkuNC0xNS45MWEzMS44NiAzMS44NiAwIDAgMSAxNSA0LjIzIDMyLjcgMzIuNyAwIDAgMSA2LjYxIDQuOTVjLTguMTQtLjc3LTE2Ljc5LTEuMTUtMjIuMTkgMS4xNWEzOS42OSAzOS42OSAwIDAgMSAuNTgtMTAuMzN6bTg0LjM1IDExLjFhOS4yNSA5LjI1IDAgMCAxIC0xLjk0LjI4IDUxLjIyIDUxLjIyIDAgMCAxIC03LjI1LS40MmMtNS0uNTItOC4xOS0uNzYtOS41OS42Ny0xLjU5IDEuNjItNCAyLjc5LTUuMTMgMi40NS0uMTQtLjA1LS40NC0uMTQtLjU2LS44Mi0uMzItMS43OC0xLTQuMjYtMi44Ni01LjE5YTQuNzEgNC43MSAwIDAgMCAtNC4zNS40MiAyMC44OSAyMC44OSAwIDAgMSAtNy44NSAxLjg2IDYuMzIgNi4zMiAwIDAgMSAyLjUzLTMuMDZjNS40OC0zLjUzIDE2Ljc1LTEuMSAyMS4zNC4xIDMuMTQuNzggNS44OCAxLjM4IDguMyAxLjkxIDMuMTQuNyA1LjUzIDEuMjUgNy4zNiAxLjh6bS04Mi41Ny0xNy4wNmE0LjQ5IDQuNDkgMCAwIDEgMi0uMjRoLjI3YzEuNjIgMCAyLjg4IDEuMTUgNC4zNCAyLjQ3IDEuOCAxLjY1IDMuODQgMy41MSA3IDMuNTEgNi4wNyAwIDEwLjU0LTMuODEgMTQuMTItNi44NyAzLjg0LTMuMjggNS45My00Ljg4IDguMi0zLjE0YTEuMjIgMS4yMiAwIDEgMCAxLjQ5LTEuOTQgNS40OCA1LjQ4IDAgMCAwIC01Ljk0LS42MyA4Ljg3IDguODcgMCAwIDAgLTEgLjUzYy0xLjUxLS44LTIuNDQtMS42OC0yLjYyLTIuNTFhMS42OSAxLjY5IDAgMCAxIC4zNy0xLjM4YzIuNjEtMi45MyA0LjktMy4xMyA1LjQ5LTIuOTJ2LjA1YTkuNzggOS43OCAwIDAgMCAzLjc2IDUuNTZjLjE5LjE0IDE0LjQyIDExIDIzLjE0IDE3LTUuNjctLjg3LTEyLjIyLTEtMTYuMzkgMS42NmE4LjgzIDguODMgMCAwIDAgLTMuODYgNS4yOGMtMiAuMDYtNC4yMS4wNi02LjczIDAtMi4xNS0uMDgtNS0uMzgtOC4yNi0uNzNsLTEuOS0uMjFhMjkuOTEgMjkuOTEgMCAwIDAgLTYuMDUtNS41NWM2LjE2LS42NSAxMC42Mi0zLjUxIDE0LjM0LTUuOSAyLjM3LTEuNTMgNC40Mi0yLjg1IDYuMjQtMy4wOGExLjIzIDEuMjMgMCAwIDAgLS4zMS0yLjQ0Yy0yLjM3LjMxLTQuNjMgMS43Ny03LjI2IDMuNDYtNC4xNiAyLjY3LTkuMzMgNi0xNi44MSA1LjZhMzQuMTQgMzQuMTQgMCAwIDAgLTE0Ljk1LTQuMDZjLjEtLjQ2LjItLjkzLjMxLTEuNDEuMzktMS43NS44Ni0yLjAyIDEuMDEtMi4xMXptNzEuMzggMzAuMzVoLTIxbC00Ni44MS0uMDRhMy43NCAzLjc0IDAgMCAxIC0yLjc5LS44M2MtLjk0LTEtLjg4LTMtLjc3LTUuMjggOC42OC00LjEyIDIxLjc1LTMuNzIgMzEuMjQtMS45MyAyLjE4LjQyIDQuNjYgMSA3LjI4IDEuNjEgOC4xMSAxLjkgMTguMiA0LjI2IDI5LjgxIDQuMjYgOS4wNyAwIDE1LjI3LS45IDE4Ljc0LTIuNzMtMS4zNCAzLjExLTUuMzYgNC45NC0xNS43IDQuOTR6Ij48L3BhdGg+PHBhdGggZD0ibTI3LjU4IDY2LjEyaC0xMmExLjIzIDEuMjMgMCAxIDAgMCAyLjQ1aDEyYTEuMjMgMS4yMyAwIDEgMCAwLTIuNDV6Ij48L3BhdGg+PC9zdmc+" alt="${estado}" />
+													<p>${estado}</p>
+												</div>
+											</div>
+											<div class="historial">
+												<ul>
+													<li class="estado9 pasado"><span></span>Tu producto esta en nuestra Bodega.</li>
+													<li class="estado8 pasado"><span></span>Tu producto esta en camino a nuestra bodega.</li>
+													<li class="estado7 pasado"><span></span>Tu producto salió de Aduana Chile.</li>
+													<li class="estado6 pasado"><span></span>Tu producto fue confirmado en Aeropuerto Chile.</li>
+													<li class="estado5 pasado"><span></span>Tu producto se encuentra en Aeropuerto Chile.</li>
+													<li class="estado4 pasado"><span></span>Tu producto salió del Aeropuerto con dirección a Chile.</li>
+													<li class="estado3 pasado"><span></span>Tu producto fue recibido en el Aeropuerto Internacional.</li>
+													<li class="estado2 pasado"><span></span>Tu producto fue despachado al Aeropuerto Internacional.</li>
+													<li class="estado1 pasado"><span></span>Obteniendo productos.</li>
+												</ul>
+											</div>
 										` );
+										
+										switch( estado ) {
+												case "Tu producto esta en nuestra Bodega.":
+													$( ".historial ul li.estado9" ).addClass( "activo" );
+													break;
+												case "Tu producto esta en camino a nuestra bodega.":
+													$( ".historial ul li.estado8" ).addClass( "activo" );
+													break;
+												case "Tu producto salió de Aduana Chile.":
+													$( ".historial ul li.estado7" ).addClass( "activo" );
+													break;
+												case "Tu producto fue confirmado en Aeropuerto Chile.":
+													$( ".historial ul li.estado6" ).addClass( "activo" );
+													break;
+												case "Tu producto se encuentra en Aeropuerto Chile.":
+													$( ".historial ul li.estado5" ).addClass( "activo" );
+													break;
+												case "Tu producto salió del Aeropuerto con dirección a Chile.":
+													$( ".historial ul li.estado4" ).addClass( "activo" );
+													break;
+												case "Tu producto fue recibido en el Aeropuerto Internacional.":
+													$( ".historial ul li.estado3" ).addClass( "activo" );
+													break;
+												case "Tu producto fue despachado al Aeropuerto Internacional.":
+													$( ".historial ul li.estado2" ).addClass( "activo" );
+													break;
+												case "Obteniendo productos.":
+													$( ".historial ul li.estado1" ).addClass( "activo" );
+													break;
+												default:
+													console.log( `Se perdio el producto uwu` );
+										};
+										for( var contando = 0; contando <= $( ".seguimiento .resultado .correcto > .historial > ul > li" ).length; contando++ ) {
+											if ( $( $( ".seguimiento .resultado .correcto > .historial > ul > li" )[contando] ).attr( "class" ).split( " " ).length == 3 ) {
+												console.log( `
+													PARO JEFE!
+													Posicion: ${ $( $( ".seguimiento .resultado .correcto > .historial > ul > li" )[contando] ).text() }
+													Cantidad: ${$( $( ".seguimiento .resultado .correcto > .historial > ul > li" )[contando] ).attr( "class" ).split( " " ).length}
+												` );
+												contando = 100;
+											}
+											else {
+												console.log( `
+													Siguiendo boss!
+													Posicion: ${ $( $( ".seguimiento .resultado .correcto > .historial > ul > li" )[contando] ).text() }
+													Cantidad: ${$( $( ".seguimiento .resultado .correcto > .historial > ul > li" )[contando] ).attr( "class" ).split( " " ).length}
+												` );
+												$( $( ".seguimiento .resultado .correcto > .historial > ul > li" )[contando] ).removeClass( "pasado" )
+											}
+										}
+										
 									};
 									
 								};
@@ -70,8 +159,6 @@ html(lang="es")
 							$( ".seguimiento .resultado .error" ).hide();
 						}
 					});
-			
-			
 			
 			.covid
 				h3 
