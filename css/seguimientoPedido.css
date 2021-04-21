@@ -209,8 +209,19 @@
     width: 90%;
   }
 
-  .seguimiento .resultado .correcto > h3 {
-    font-size: 0.8em;
-    width: 120px;
+  .seguimiento .resultado .correcto > .compra > img {
+    display: block;
+    margin: 0 auto;
+    float: none;
+    width: 100%;
+  }
+
+  .seguimiento .resultado .correcto > .compra > p {
+    text-align: center;
+  }
+
+  .seguimiento .resultado .correcto > .compra > .estado {
+    margin: 30px auto 0;
+    display: block;
   }
 }
