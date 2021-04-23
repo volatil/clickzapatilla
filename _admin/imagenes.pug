@@ -55,6 +55,12 @@ html(lang="es")
 			.preview > div > img {
 				max-width: 140px;
 				margin: 0 10px;
+				border: 2px solid transparent;
+				padding: 2px;
+				border-radius: 4px;
+			}
+			.preview > div > img.activo {
+				border: 2px solid green;
 			}
 			.resultado > label {
 				display: block;
@@ -124,6 +130,12 @@ html(lang="es")
 					let cadaLinea = $( "div.imagenes textarea" ).val().split( "\n" )[count];
 					$( ".preview div" ).append( `<img src="./imagenes/productos/${marca}/${modelo}/${carpeta}/${cadaLinea.split( "	" )[0]}" title="${count+1}" />` )
 				};
+				$( ".preview > div > img" ).click(function() {
+					var title = $( this ).attr( "title" );
+					$( "body > section.botones > input" ).val( title );
+					$( ".preview > div > img" ).removeClass( "activo" );
+					$( this ).addClass( "activo" );
+				});
 			});
 			$( "button.generar" ).click(() => {
 				$( ".resultado div" ).html( "" );
@@ -138,9 +150,9 @@ html(lang="es")
 			});
 			
 			//- TEST
-			/*
 			$( "div.path .marca textarea" ).val( "jordan" );
 			$( "div.path .modelo textarea" ).val( "airjordan1" );
+			/*
 			$( "div.path .carpeta textarea" ).val( "bfdb" );
 			$( "div.imagenes textarea" ).val( `2b87585a.jpg	1.3 MB	16/4/21 14:11:44 \n455e926d.jpg	1.3 MB	16/4/21 14:11:38 \n4bc84d13.jpg	1.5 MB	16/4/21 14:11:46 \n6c03f95b.jpg	1.3 MB	16/4/21 14:11:52 \n911a333e.jpg	1.7 MB	16/4/21 14:11:50 \n94fca65a.jpg	1.3 MB	16/4/21 14:11:48 \na74ccc92.jpg	1.2 MB	16/4/21 14:11:52 \nab798107.jpg	1.5 MB	16/4/21 14:` );
 			*/
