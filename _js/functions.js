@@ -170,67 +170,67 @@ var listaColor = function( selectColor , padre ){
 		let colorsete = selectColor.split( " " )[cuentaColor];
 		switch( colorsete ) {
 			case "negro":
-				colorTodos += `<span style="background:black"></span>`;
+				colorTodos += `<span title="negro" style="background:black"></span>`;
 				break;
 			case "amarillo":
-				colorTodos += `<span style="background:yellow"></span>`;
+				colorTodos += `<span title="amarillo" style="background:yellow"></span>`;
 				break;
 			case "rojo":
-				colorTodos += `<span style="background:red"></span>`;
+				colorTodos += `<span title="rojo" style="background:red"></span>`;
 				break;
 			case "blanco":
-				colorTodos += `<span style="background:white"></span>`;
+				colorTodos += `<span title="blanco" style="background:white"></span>`;
 				break;
 			case "rosado":
-				colorTodos += `<span style="background:#fe89b2"></span>`;
+				colorTodos += `<span title="rosado" style="background:#fe89b2"></span>`;
 				break;
 			case "celeste":
-				colorTodos += `<span style="background:#7fddf9"></span>`;
+				colorTodos += `<span title="celeste" style="background:#7fddf9"></span>`;
 				break;
 			case "naranjo":
-				colorTodos += `<span style="background:#ff5a00"></span>`;
+				colorTodos += `<span title="naranjo" style="background:#ff5a00"></span>`;
 				break;
 			case "menta":
-				colorTodos += `<span style="background:#91c2a5"></span>`;
+				colorTodos += `<span title="menta" style="background:#91c2a5"></span>`;
 				break;
 			case "morado":
-				colorTodos += `<span style="background:#8e6f9e"></span>`;
+				colorTodos += `<span title="morado" style="background:#8e6f9e"></span>`;
 				break;
 			case "verde":
-				colorTodos += `<span style="background:#77ca45"></span>`;
+				colorTodos += `<span title="verde" style="background:#77ca45"></span>`;
 				break;
 			case "fluor":
-				colorTodos += `<span style="background:#00ef80"></span>`;
+				colorTodos += `<span title="fluor" style="background:#00ef80"></span>`;
 				break;
 			case "burdeo":
-				colorTodos += `<span style="background:#8c3750"></span>`;
+				colorTodos += `<span title="burdeo" style="background:#8c3750"></span>`;
 				break;
 			case "cafe":
-				colorTodos += `<span style="background:brown"></span>`;
+				colorTodos += `<span title="cafe" style="background:brown"></span>`;
 				break;
 			case "gris":
-				colorTodos += `<span style="background:#d4d4d4"></span>`;
+				colorTodos += `<span title="gris" style="background:#d4d4d4"></span>`;
 				break;
 			case "dorado":
-				colorTodos += `<span style="background:#c39f77"></span>`;
+				colorTodos += `<span title="dorado" style="background:#c39f77"></span>`;
 				break;
 			case "azul":
-				colorTodos += `<span style="background:#4660cf"></span>`;
+				colorTodos += `<span title="azul" style="background:#4660cf"></span>`;
 				break;
 			case "arcoiris":
-				colorTodos += `<span style="background: red;background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet);background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);"></span>`;
+				colorTodos += `<span title="arcoiris" style="background: red;background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet);background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);"></span>`;
 				break;
 			case "transparente":
-				colorTodos += `<span style="background:#eef8fb"></span>`;
+				colorTodos += `<span title="transparente" style="background:#eef8fb"></span>`;
 				break;
 			case "cyan":
-				colorTodos += `<span style="background:cyan"></span>`;
+				colorTodos += `<span title="cyan" style="background:cyan"></span>`;
 				break;
 			case "vainilla":
-				colorTodos += `<span style="background:#f1da8a"></span>`;
+				colorTodos += `<span title="vainilla" style="background:#f1da8a"></span>`;
 				break;
 			case "durazno":
-				colorTodos += `<span style="background:#f9ccaf"></span>`;
+				colorTodos += `<span title="durazno" style="background:#f9ccaf"></span>`;
 				break;
 			default:
 				console.log( `NaaaN [${colorsete}]` );
