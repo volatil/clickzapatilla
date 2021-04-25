@@ -212,7 +212,7 @@ var listaColor = function( selectColor , padre ){
 				colorTodos += `<span title="gris" style="background:#d4d4d4"></span>`;
 				break;
 			case "dorado":
-				colorTodos += `<span title="dorado" style="background:#c39f77"></span>`;
+				colorTodos += `<span title="dorado" style="background:#d9b121"></span>`;
 				break;
 			case "azul":
 				colorTodos += `<span title="azul" style="background:#4660cf"></span>`;
@@ -225,6 +225,9 @@ var listaColor = function( selectColor , padre ){
 				break;
 			case "cyan":
 				colorTodos += `<span title="cyan" style="background:cyan"></span>`;
+				break;
+			case "plateado":
+				colorTodos += `<span title="plateado" style="background:#eceaea"></span>`;
 				break;
 			case "vainilla":
 				colorTodos += `<span title="vainilla" style="background:#f1da8a"></span>`;
