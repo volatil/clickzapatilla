@@ -3,55 +3,61 @@
 	link(rel="stylesheet" href="css/filtros.min.css")
 	p Filtrar
 	
-	div.marca
-		p marca
-			span +
-			span( style="display:none;" ) -
-		ul.toggle
-			li 
-				img( class="lazyload" data-src="./imagenes/marcas/todas.svg" alt="Todas las marcas" )
+	fieldset.talla
+		legend Tallas
+		select
+			option( value="todas" ) todas
+			option( value="34" ) 34
+			option( value="35" ) 35
+			option( value="36" ) 36
+			option( value="37" ) 37
+			option( value="38" ) 38
+			option( value="39" ) 39
+			option( value="40" ) 40
+			option( value="41" ) 41
+			option( value="42" ) 42
+			option( value="43" ) 43
+			option( value="44" ) 44
+			option( value="45" ) 45
+			option( value="46" ) 46
+			option( value="47" ) 47
+			option( value="48" ) 48
+			option( value="49" ) 49
 	
-	div.talla
-		p talla
-			span +
-			span( style="display:none;" ) -
-		div.toggle
-			ul
-				li.todas( data-tallita="todas" ) todas
-				li( data-tallita="35" ) 35
-				li( data-tallita="36" ) 36
-				li( data-tallita="37" ) 37
-				li( data-tallita="38" ) 38
-				li( data-tallita="39" ) 39
-				li( data-tallita="40" ) 40
-				li( data-tallita="41" ) 41
-				li( data-tallita="42" ) 42
-				li( data-tallita="43" ) 43
-				li( data-tallita="44" ) 44
-				li( data-tallita="45" ) 45
-				li( data-tallita="46" ) 46
-				li( data-tallita="47" ) 47
-				li( data-tallita="48" ) 48
-				li( data-tallita="49" ) 49
+	//- fieldset.color
+	//- 	legend Color
+	//- 	select
+			option( value="todas" ) todas
+			option( value="negro" ) Negro
+			option( value="amarillo" ) Amarillo
+			option( value="rojo" ) Rojo
+			option( value="blanco" ) Blanco
+			option( value="rosado" ) Rosado
+			option( value="celeste" ) Celeste
+			option( value="naranjo" ) Naranjo
+			option( value="menta" ) Menta
+			option( value="morado" ) Morado
+			option( value="verde" ) Verde
+			option( value="fluor" ) Fluor
+			option( value="burdeo" ) Burdeo
+			option( value="cafe" ) Cafe
+			option( value="gris" ) Gris
+			option( value="dorado" ) Dorado
+			option( value="azul" ) Azul
+			option( value="arcoiris" ) Arcoiris
+			option( value="transparente" ) Transparente
+			option( value="cyan" ) Cyan
+			option( value="plateado" ) Plateado
+			option( value="vainilla" ) Vainilla
+			option( value="durazno" ) Durazno
 	
-	span.cantidad
-
 	script( type="text/javascript" ).
-	
-		// FILTRO TALLA
-		$( ".talla ul > li" ).click(function(){
-			$( ".buscador > input" ).val( "" );
-			$( ".talla ul > li" ).removeClass( "activo" );
-			$( this ).addClass( "activo" );
-			var buscaTalla = $( this ).attr( "data-tallita" );
-			filtrarPorTalla( buscaTalla );
-			cuentaProductos();
+		$( ".filtros > fieldset select" ).change(function(){
+			var tallaBuscada = $( ".filtros > fieldset select" ).val();
+			$.each( $( ".productos > ul > li" ) , function(){
+				var tallas = $( this ).attr( "data-talla" );
+				filtrarPorTalla( tallaBuscada );
+				cuentaProductos( "h3.resultados" );
+			});
 		});
 	
-		//- CLICK EN CADA BLOQUE DE FILTRO LO DESPLIEGA
-		$( ".filtros > div > p" ).click( function(){
-			$( this ).find( "span" ).toggle();
-			$( this ).parent().find( ".toggle" ).toggle();
-		} );
-		
-		
