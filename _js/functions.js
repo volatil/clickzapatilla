@@ -122,20 +122,22 @@ var buscar = function( valor ){
 // FILTRO TALLA
 var filtrarPorTalla = function( tallaBuscada ) {
 	
-	$.each( $( ".productos > ul li" ) , function(){
-	
-		var tallas  = $( this ).attr( "data-talla" );
+	if ( tallaBuscada == "todas" ) {
+		$( ".productos > ul li" ).show();
+	} else {
+		$.each( $( ".productos > ul li" ) , function(){
 		
-		if ( tallaBuscada == "todas" ) {
-			$( ".productos > ul li" ).show();
-		} else if ( tallas.includes( tallaBuscada ) ) {
-			$( this ).show();
-			$( this ).css( "display" , "inline-block" );
-		} else {
-			$( this ).hide();
-		};
-		
-	})
+			var tallas  = $( this ).attr( "data-talla" );
+			
+			if ( tallas.includes( tallaBuscada ) ) {
+				$( this ).show();
+				$( this ).css( "display" , "inline-block" );
+			} else {
+				$( this ).hide();
+			};
+			
+		});
+	};
 	
 };
 
