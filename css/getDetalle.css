@@ -171,6 +171,7 @@
 }
 
 .getDetalle > div > a.comprar {
+  position: relative;
   background: black;
   color: white;
   width: 400px;
@@ -178,16 +179,29 @@
   display: inline-block;
   text-align: center;
   text-decoration: none;
-  line-height: 2em;
+  line-height: 2.8em;
   text-transform: uppercase;
-  font-size: 2em;
+  font-size: 1.4em;
   letter-spacing: 0.05em;
   margin-top: 20px;
+  text-indent: 30px;
 }
 
 .getDetalle > div > a.comprar:hover {
   background: #cccccc;
   color: black;
+}
+
+.getDetalle > div > a.comprar > span {
+  background: url("https://static.callbell.eu/uploads/widget_configuration/brand_image/143588/wsp.png");
+  height: 30px;
+  width: 30px;
+  display: block;
+  background-size: 1.5em;
+  position: absolute;
+  top: 14px;
+  left: 20px;
+  margin-right: 30px;
 }
 
 @media (max-width: 1250px) {
@@ -280,5 +294,18 @@
   .getDetalle > .galeria > img:nth-child(-n+6) {
     display: inline-block;
     max-width: 50px;
+  }
+
+  .getDetalle > div > a.comprar {
+    font-size: 0.8em;
+    line-height: 5.2em;
+  }
+
+  .getDetalle > div > a.comprar span {
+    background-size: 1.7em;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    top: 20px;
   }
 }

@@ -6,10 +6,14 @@ footer {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ebf3b7",endColorstr="#51e6c0",GradientType=1);
 }
 
+footer .legal {
+  padding-bottom: 10px;
+}
+
 footer .legal > ul {
   margin: 0;
   padding: 0;
-  width: 50%;
+  width: 100%;
   display: inline-block;
 }
 
@@ -19,10 +23,10 @@ footer .legal > ul > li {
 }
 
 footer .legal > ul.redes > li {
-  float: right;
+  float: left;
   width: 30px;
   height: 30px;
-  margin-right: 10px;
+  margin-left: 10px;
 }
 
 footer .legal > ul.redes > li:hover {
