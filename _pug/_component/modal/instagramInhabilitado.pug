@@ -1,0 +1,24 @@
+
+link(rel="stylesheet" href="css/modal.min.css")
+
+.modal-contenido
+	h6 importante
+		span X
+	div
+		p Por motivos que externos estamos temporalmente con la cuenta de instagram inhabilitada pero nuestros servicios siguen funcionando con normalidad.
+		p Cualquier duda a nuestro whatsApp
+		a( target="_blank" href="https://api.whatsapp.com/send?phone=56996336330&text=Hola,%20tengo%20una%20duda" )
+			span
+			| tengo una duda
+.modal-fondo
+
+script( type="text/javascript" ).
+	if ( window.location.pathname == '/' ){
+		$( ".modal-contenido, .modal-fondo" ).addClass( "show" );
+	};
+	var cerrarModal = function(){
+		$( ".modal-contenido, .modal-fondo" ).removeClass( "show" );
+	};
+	$( ".modal-contenido h6 span, .modal-fondo" ).click(function(){
+		cerrarModal();
+	});

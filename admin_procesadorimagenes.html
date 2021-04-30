@@ -420,7 +420,7 @@
         <p>Diseñado y Elaborado con <span>♥ </span>por <a href="https://volatil.cl" target="_blank"> Volatil</a></p>
       </div>
       <div id="wsp"><a href="https://api.whatsapp.com/send?phone=+56996336330" target="_blank">
-          <p>¿Tienes alguna duda ? <span></span></p><img class="lazyload" data-src="https://static.callbell.eu/uploads/widget_configuration/brand_image/143588/wsp.png" alt="Consultas?"></a>
+          <p>¿Tienes alguna duda ? <span></span></p><img class="lazyload" data-src="../imagenes/modal/wspicon.png" alt="Consultas?"></a>
         <script type="text/javascript">
           setTimeout(function(){
           	$( "#wsp > a > p" ).fadeIn();
@@ -432,8 +432,29 @@
           	//- 	beep();
           	//- }
           },2000);
+          
         </script>
       </div>
+      <link rel="stylesheet" href="css/modal.min.css">
+      <div class="modal-contenido">
+        <h6>importante<span>X</span></h6>
+        <div>
+          <p>Por motivos que externos estamos temporalmente con la cuenta de instagram inhabilitada pero nuestros servicios siguen funcionando con normalidad.</p>
+          <p>Cualquier duda a nuestro whatsApp</p><a target="_blank" href="https://api.whatsapp.com/send?phone=56996336330&amp;text=Hola,%20tengo%20una%20duda"><span></span>tengo una duda</a>
+        </div>
+      </div>
+      <div class="modal-fondo"></div>
+      <script type="text/javascript">
+        if ( window.location.pathname == '/' ){
+        	$( ".modal-contenido, .modal-fondo" ).addClass( "show" );
+        };
+        var cerrarModal = function(){
+        	$( ".modal-contenido, .modal-fondo" ).removeClass( "show" );
+        };
+        $( ".modal-contenido h6 span, .modal-fondo" ).click(function(){
+        	cerrarModal();
+        });
+      </script>
     </footer>
   </body>
 </html>

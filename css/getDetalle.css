@@ -193,7 +193,7 @@
 }
 
 .getDetalle > div > a.comprar > span {
-  background: url("https://static.callbell.eu/uploads/widget_configuration/brand_image/143588/wsp.png");
+  background: url("../imagenes/modal/wspicon.png");
   height: 30px;
   width: 30px;
   display: block;
