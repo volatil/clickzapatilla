@@ -358,18 +358,39 @@ var getProdByMarca = function( donde , traemarca ) {
 			var preciocliente   = Number( data[fila].gsx$precioneto.$t ) + cometa;
 			
 			// Agrega FILTROS
-			if ( stock == 1 && marca == traemarca ) {
-				$( `${donde}` ).prepend( `
-					<li data-talla="${talla}" data-color="${color}" data-id="${id}">
-						<a href="/detalle.html?id=${id}" title="${marca} ${modelo}">
-							<img class="lazyload" data-src="${imagen}" alt="${marca} ${modelo}" /> 
-							<span class="modelo">${modelo}</span>
-							<span class="marca">${marca}</span>
-							<span class="precio">${puntuacion(preciocliente)}</span>
-						</a>
-					</li>
-				` );
+			console.log( `test: ${traemarca}` );
+			if ( traemarca === "todas" ) {
+				console.log( `TODAS` );
+				if ( stock == 1 ) {
+					$( `${donde}` ).prepend( `
+						<li data-talla="${talla}" data-color="${color}" data-id="${id}">
+							<a href="/detalle.html?id=${id}" title="${marca} ${modelo}">
+								<img class="lazyload" data-src="${imagen}" alt="${marca} ${modelo}" /> 
+								<span class="modelo">${modelo}</span>
+								<span class="marca">${marca}</span>
+								<span class="precio">${puntuacion(preciocliente)}</span>
+							</a>
+						</li>
+					` );
+				};
+			} else {
+				console.log( `MARCA` );
+				if ( stock == 1 && marca == traemarca ) {
+					$( `${donde}` ).prepend( `
+						<li data-talla="${talla}" data-color="${color}" data-id="${id}">
+							<a href="/detalle.html?id=${id}" title="${marca} ${modelo}">
+								<img class="lazyload" data-src="${imagen}" alt="${marca} ${modelo}" /> 
+								<span class="modelo">${modelo}</span>
+								<span class="marca">${marca}</span>
+								<span class="precio">${puntuacion(preciocliente)}</span>
+							</a>
+						</li>
+					` );
+				};
 			};
+				
+				
+				
 			$( "img.cargando" ).hide();
 			cuentaProductos( "h3.resultados" );
 		};
