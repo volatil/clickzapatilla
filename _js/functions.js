@@ -358,9 +358,7 @@ var getProdByMarca = function( donde , traemarca ) {
 			var preciocliente   = Number( data[fila].gsx$precioneto.$t ) + cometa;
 			
 			// Agrega FILTROS
-			console.log( `test: ${traemarca}` );
 			if ( traemarca === "todas" ) {
-				console.log( `TODAS` );
 				if ( stock == 1 ) {
 					$( `${donde}` ).prepend( `
 						<li data-talla="${talla}" data-color="${color}" data-id="${id}">
@@ -374,7 +372,6 @@ var getProdByMarca = function( donde , traemarca ) {
 					` );
 				};
 			} else {
-				console.log( `MARCA` );
 				if ( stock == 1 && marca == traemarca ) {
 					$( `${donde}` ).prepend( `
 						<li data-talla="${talla}" data-color="${color}" data-id="${id}">
