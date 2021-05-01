@@ -359,7 +359,7 @@ var getProdByMarca = function( donde , traemarca ) {
 			
 			// Agrega FILTROS
 			if ( stock == 1 && marca == traemarca ) {
-				$( `${donde}` ).append( `
+				$( `${donde}` ).prepend( `
 					<li data-talla="${talla}" data-color="${color}" data-id="${id}">
 						<a href="/detalle.html?id=${id}" title="${marca} ${modelo}">
 							<img class="lazyload" data-src="${imagen}" alt="${marca} ${modelo}" /> 
