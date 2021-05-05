@@ -79,6 +79,10 @@ header > div.categorias > nav > div {
 	padding: 0 20px 10px;
 	width: 750px;
 	float: right;
+	margin-bottom: 30px;
+}
+header > div.categorias > nav > div:last-of-type {
+	margin-bottom: 0;
 }
 header > div.categorias > nav > div > h3 {
 	font-family: "Barlow",sans-serif;
