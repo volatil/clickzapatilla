@@ -1,0 +1,30 @@
+
+link(rel="stylesheet" href="css/productos.min.css")
+style( type="text/css" ).
+	.productos.productoRelacionado {
+		margin-top: 30px;
+		padding-top: 10px;
+	}
+
+.productos.productoRelacionado
+	h3.titulo Te podrían interesar
+	img.cargando( src="/imagenes/loading.gif" alt="Cargando ..." )
+	ul
+	
+	script( type="text/javascript" ).
+		const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+		const id = urlParams.get('id');
+		if( id >= 5 ) {
+			getProdRelacionado( Number(id)-Number(1) , ".productoRelacionado > ul" );
+			getProdRelacionado( Number(id)-Number(2) , ".productoRelacionado > ul" );
+			getProdRelacionado( Number(id)-Number(3) , ".productoRelacionado > ul" );
+			getProdRelacionado( Number(id)-Number(4) , ".productoRelacionado > ul" );
+			getProdRelacionado( Number(id)-Number(5) , ".productoRelacionado > ul" );
+		} else {
+			getProdRelacionado( Number(id)+Number(1) , ".productoRelacionado > ul" );
+			getProdRelacionado( Number(id)+Number(2) , ".productoRelacionado > ul" );
+			getProdRelacionado( Number(id)+Number(3) , ".productoRelacionado > ul" );
+			getProdRelacionado( Number(id)+Number(4) , ".productoRelacionado > ul" );
+			getProdRelacionado( Number(id)+Number(5) , ".productoRelacionado > ul" );
+		}

@@ -6,7 +6,6 @@ html(lang="es")
 	
 	body
 		
-		//- script(src="_js/functions.js")
 		script(src="js/functions.min.js")
 		
 		include _component/analytics
@@ -21,6 +20,7 @@ html(lang="es")
 			
 			img.producto
 			.galeria
+				img.cargando( src="/imagenes/loading.gif" alt="Cargando ..." )
 			div
 				p.modelo
 				p.marca
@@ -55,7 +55,7 @@ html(lang="es")
 					span
 					| consultar disponibilidad
 			
-		//- GET DATA
+		//- GET DATA PRINCIPAL
 		script( type="text/javascript" ).
 			var getDetalle = function( owo ) {
 				owo = owo-1
@@ -121,6 +121,7 @@ html(lang="es")
 						$( this ).addClass( "select" );
 						$( "a.comprar" ).attr( "href" , `https://api.whatsapp.com/send?phone=56996336330&text=Hola, tengo una duda sobre las ${marca} ${modelo} numero ${$( ".talla > ul > li.select" ).html()} (ID:${id})` );
 					});
+					$( "img.cargando" ).remove();
 					$( document ).ready(function(){
 						setTitle();
 					});
@@ -128,8 +129,6 @@ html(lang="es")
 				});	
 			};
 				
-		script( type="text/javascript" ).
-		
 		//- Te devuelve al home si no viene el parametro
 		script( type="text/javascript" ).
 			var url = location.href;
@@ -142,5 +141,7 @@ html(lang="es")
 				const id = urlParams.get('id');
 				getDetalle( id );
 			}
+			
+		include _component/relacionados
 			
 		include _component/footer
