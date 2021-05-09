@@ -24,40 +24,111 @@
 			option( value="48" ) 48 EUR
 			option( value="49" ) 49 EUR
 	
-	//- fieldset.color
-	//- 	legend Color
-	//- 	select
-			option( value="todas" ) todas
-			option( value="negro" ) Negro
-			option( value="amarillo" ) Amarillo
-			option( value="rojo" ) Rojo
-			option( value="blanco" ) Blanco
-			option( value="rosado" ) Rosado
-			option( value="celeste" ) Celeste
-			option( value="naranjo" ) Naranjo
-			option( value="menta" ) Menta
-			option( value="morado" ) Morado
-			option( value="verde" ) Verde
-			option( value="fluor" ) Fluor
-			option( value="burdeo" ) Burdeo
-			option( value="cafe" ) Cafe
-			option( value="gris" ) Gris
-			option( value="dorado" ) Dorado
-			option( value="azul" ) Azul
-			option( value="arcoiris" ) Arcoiris
-			option( value="transparente" ) Transparente
-			option( value="cyan" ) Cyan
-			option( value="plateado" ) Plateado
-			option( value="vainilla" ) Vainilla
-			option( value="durazno" ) Durazno
+	fieldset.color
+		legend Color
+		select
+			option( value="todas" ) todos
+			option( value="negro" ) negro
+			option( value="amarillo" ) amarillo
+			option( value="rojo" ) rojo
+			option( value="blanco" ) blanco
+			option( value="rosado" ) rosado
+			option( value="celeste" ) celeste
+			option( value="naranjo" ) naranjo
+			option( value="menta" ) menta
+			option( value="morado" ) morado
+			option( value="verde" ) verde
+			option( value="fluor" ) fluor
+			option( value="burdeo" ) burdeo
+			option( value="cafe" ) cafe
+			option( value="gris" ) gris
+			option( value="dorado" ) dorado
+			option( value="azul" ) azul
+			option( value="arcoiris" ) arcoiris
+			option( value="transparente" ) transparente
+			option( value="cyan" ) cyan
+			option( value="plateado" ) plateado
+			option( value="vainilla" ) vainilla
+			option( value="durazno" ) durazno
+	
+	button.aplicar Aplicar
+	button.limpiar Limpiar Filtro
 	
 	script( type="text/javascript" ).
-		$( ".filtros > fieldset select" ).change(function(){
-			var tallaBuscada = $( ".filtros > fieldset select" ).val();
-			$.each( $( ".productos > ul > li" ) , function(){
-				var tallas = $( this ).attr( "data-talla" );
-				filtrarPorTalla( tallaBuscada );
+		$( ".filtros > button.aplicar" ).click(function(){
+		
+			var busca_talla = $( ".filtros fieldset.talla select" ).val();
+			var busca_color = $( ".filtros fieldset.color select" ).val();
+			
+			if ( busca_talla == "todas" && busca_color == "todas" ) {
+				$( ".productos > ul li" ).show();
+				
 				cuentaProductos( "h3.resultados" );
-			});
+			} else if ( busca_talla == "todas" || !busca_color == "todas" ) {
+				$( ".productos > ul li" ).show();
+				$.each( $( ".productos > ul li:visible" ) , function(){
+		
+					var colores  = $( this ).attr( "data-color" );
+					
+					if ( colores.includes( busca_color ) ) {
+						$( this ).show();
+						$( this ).css( "display" , "inline-block" );
+					} else {
+						$( this ).hide();
+					};
+					
+				});
+				cuentaProductos( "h3.resultados" );
+			} else if ( !busca_talla == "todas" || busca_color == "todas" ) {
+				$( ".productos > ul li" ).show();
+				$.each( $( ".productos > ul li:visible" ) , function(){
+		
+					var tallas  = $( this ).attr( "data-talla" );
+					
+					if ( tallas.includes( busca_talla ) ) {
+						$( this ).show();
+						$( this ).css( "display" , "inline-block" );
+					} else {
+						$( this ).hide();
+					};
+					
+				});
+				cuentaProductos( "h3.resultados" );
+			} else {
+				$( ".productos > ul li" ).show();
+				$.each( $( ".productos > ul li:visible" ) , function(){
+		
+					var tallas  = $( this ).attr( "data-talla" );
+					
+					if ( tallas.includes( busca_talla ) ) {
+						$( this ).show();
+						$( this ).css( "display" , "inline-block" );
+					} else {
+						$( this ).hide();
+					};
+					
+				});
+				
+				$.each( $( ".productos > ul li:visible" ) , function(){
+		
+					var colores  = $( this ).attr( "data-color" );
+					
+					if ( colores.includes( busca_color ) ) {
+						$( this ).show();
+						$( this ).css( "display" , "inline-block" );
+					} else {
+						$( this ).hide();
+					};
+					
+				});
+				
+				cuentaProductos( "h3.resultados" );
+			}
+			
 		});
-	
+		
+		$( ".filtros > button.limpiar" ).click(function(){
+			$( ".filtros fieldset.talla select" ).val( "todas" );
+			$( ".filtros fieldset.color select" ).val( "todas" );
+			$( ".filtros > button.aplicar" ).click();
+		});

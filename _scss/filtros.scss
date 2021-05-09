@@ -19,7 +19,7 @@
 .filtros > fieldset {
 	display: inline-block;
 	border: 1px solid $d;
-	margin-left: 20px;
+	margin-left: 10px;
 }
 .filtros > fieldset legend {
 	border-color: $d;
@@ -31,6 +31,20 @@
 	outline: none;
 	cursor: pointer;
 }
+.filtros > button {
+	border: 1px solid #dddddd;
+	margin-left: 10px;
+	height: 60px;
+	width: 100px;
+	text-align: center;
+	display: inline-block;
+	position: relative;
+	top: -27px;
+	cursor: pointer;
+}
+	.filtros > button:hover {
+		background: whitesmoke;
+	}
 
 @media ( max-width: $MQtablet ) {}
 
