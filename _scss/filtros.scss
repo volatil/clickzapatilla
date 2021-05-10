@@ -46,6 +46,78 @@
 		background: whitesmoke;
 	}
 
-@media ( max-width: $MQtablet ) {}
+@media ( max-width: $MQtablet ) {
+	.filtros {
+		padding: 20px 0;
+		height: 150px;
+	}
+	.filtros > p {
+		float: left;
+		top: 15px;
+	}
+	.filtros > button:first-of-type {
+		display: block;
+		margin-left: 70px;
+		top: 0;
+		float: left;
+		clear: left;
+	}
+	.filtros > button {
+		margin-left: 20px;
+		position: static;
+		float: left;
+		margin-top: 20px;
+	}
+}
 
-@media ( max-width: $MQsmartphone ) {}
+@media ( max-width: $MQsmartphone ) {
+	.filtros {
+		height: 10px;
+	}
+	.filtros[data-state=abierto] {
+		height: 280px;
+	}
+	.filtros > p {
+		background: $c;
+		left: -20px;
+		top: -30px;
+		float: none;
+		display: block;
+		width: 100%;
+		padding: 10px 0;
+		text-transform: uppercase;
+	}
+	.filtros > p:before {
+		content: "☰";
+		padding-right: 10px;
+	}
+	.filtros > fieldset {
+		margin-left: 0;
+	}
+	.filtros[data-state=cerrado] > fieldset ,
+	.filtros[data-state=cerrado] > button:first-of-type ,
+	.filtros[data-state=cerrado] > button {
+		display: none;
+	}
+	.filtros[data-state=abierto] > fieldset ,
+	.filtros[data-state=abierto] > button:first-of-type ,
+	.filtros[data-state=abierto] > button {
+		display: block;
+	}
+	.filtros > button.aplicar {
+		float: left;
+		margin: {
+			top: 10px;
+			left: 10px;
+			bottom: 0;
+		}
+	}
+	.filtros > button.limpiar {
+		float: right;
+		margin: {
+			top: 10px;
+			right: 10px;
+			bottom: 0;
+		}
+	}
+}

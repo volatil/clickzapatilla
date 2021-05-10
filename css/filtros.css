@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .filtros {
   width: 99%;
   padding: 5px;
@@ -47,4 +48,86 @@
 
 .filtros > button:hover {
   background: whitesmoke;
+}
+
+@media (max-width: 850px) {
+  .filtros {
+    padding: 20px 0;
+    height: 150px;
+  }
+
+  .filtros > p {
+    float: left;
+    top: 15px;
+  }
+
+  .filtros > button:first-of-type {
+    display: block;
+    margin-left: 70px;
+    top: 0;
+    float: left;
+    clear: left;
+  }
+
+  .filtros > button {
+    margin-left: 20px;
+    position: static;
+    float: left;
+    margin-top: 20px;
+  }
+}
+@media (max-width: 450px) {
+  .filtros {
+    height: 10px;
+  }
+
+  .filtros[data-state=abierto] {
+    height: 280px;
+  }
+
+  .filtros > p {
+    background: #cccccc;
+    left: -20px;
+    top: -30px;
+    float: none;
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    text-transform: uppercase;
+  }
+
+  .filtros > p:before {
+    content: "☰";
+    padding-right: 10px;
+  }
+
+  .filtros > fieldset {
+    margin-left: 0;
+  }
+
+  .filtros[data-state=cerrado] > fieldset,
+.filtros[data-state=cerrado] > button:first-of-type,
+.filtros[data-state=cerrado] > button {
+    display: none;
+  }
+
+  .filtros[data-state=abierto] > fieldset,
+.filtros[data-state=abierto] > button:first-of-type,
+.filtros[data-state=abierto] > button {
+    display: block;
+  }
+
+  .filtros > button.aplicar {
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 0;
+  }
+
+  .filtros > button.limpiar {
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 0;
+  }
 }

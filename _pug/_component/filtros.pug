@@ -1,5 +1,5 @@
 
-.filtros
+.filtros( data-state="cerrado" )
 	link(rel="stylesheet" href="css/filtros.min.css")
 	p Filtrar
 	
@@ -54,6 +54,7 @@
 	button.aplicar Aplicar
 	button.limpiar Limpiar Filtro
 	
+	//- CLICK BUTTONS
 	script( type="text/javascript" ).
 		$( ".filtros > button.aplicar" ).click(function(){
 		
@@ -124,7 +125,6 @@
 				
 				cuentaProductos( "h3.resultados" );
 			}
-			
 		});
 		
 		$( ".filtros > button.limpiar" ).click(function(){
@@ -132,3 +132,19 @@
 			$( ".filtros fieldset.color select" ).val( "todas" );
 			$( ".filtros > button.aplicar" ).click();
 		});
+	
+	//- CLICK FILTROS MOBILE
+	script( type="text/javascript" ).
+		$( ".filtros > p" ).click(function(){
+			var state = $( ".filtros" ).attr( "data-state" );
+			
+			if ( state == "cerrado" ) {
+				$( ".filtros" ).attr( "data-state" , "abierto" );
+			} else {
+				$( ".filtros" ).attr( "data-state" , "cerrado" );
+			};
+			
+		});
+	
+	
+	

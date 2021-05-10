@@ -97,7 +97,7 @@
 }
 @media (max-width: 450px) {
   .productos > ul > li {
-    width: 97%;
+    width: 93%;
     min-height: 100px;
   }
 

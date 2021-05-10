@@ -38,13 +38,8 @@
 // ===================================================================================================
 // ===================================================================================================
 
-@media( max-width: 768px ) {
-	.busquedaBanner > p {
-		line-height: normal;
-	}
-}
-@media( max-width: 450px ) {
-	.busquedaBanner > p {
+@media( max-width: $MQsmartphone ) {
+	.busquedaBanner > h3.resultados {
 		font-size: 1.4em;
 	}
 }
