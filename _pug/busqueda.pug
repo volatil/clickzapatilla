@@ -45,10 +45,6 @@ html(lang="es")
 				var busqueda = location.href.split( "buscador=" )[1];
 				if (  busqueda.includes( "%20" ) ) {
 					busqueda = busqueda.replaceAll( "%20" , " " );
-					console.log( `Buscandooo: ${busqueda}` );
-					//- buscar( busqueda );
-				} else {
-					//- buscar( busqueda );
 				};
 			
 				Promise.all([
