@@ -181,7 +181,6 @@
             
           </script>
           <script type="text/javascript">
-            //- $( "input.buscador" ).keyup(function() {
             $( "header .buscador > div > input" ).keyup(function() {
             	document.onkeydown = function(evt) {
             		evt = evt || window.event;
@@ -195,10 +194,12 @@
             			$( "header .buscador > div > img" ).click();
             		}
             	};
+            /*
             	$( ".filtros > .marca > ul > li" ).removeClass( "activo" );
             	var valor = $( this ).val();
             	buscar( valor );
             	cuentaProductos();
+            */
             });
           </script>
         </div>
