@@ -6,32 +6,32 @@ header
 		} else {
 			$( "header" ).addClass( "nohome" );
 		};
-	link(rel="stylesheet" href="css/header.min.css")
+	link(rel="stylesheet" href="../css/header.min.css")
 	
 	div.logo
 		a( href="/" title="Click Zapatilla" )
-			img( src="./imagenes/logo.png" alt="clickZAPATILLA" )
+			img( src="../imagenes/logo.png" alt="clickZAPATILLA" )
 
 	div.categorias
 		p categorias
-			img.lazyload( data-src="./imagenes/header/menu-recto.svg" alt="categorias" )
+			img.lazyload( data-src="../imagenes/header/menu-recto.svg" alt="categorias" )
 		nav
 			a( href="/detalle.html?id=536" title="Nike - Jordan Mars 270" )
-				img.lazyload( data-src="./imagenes/header/nav-20210404-2019-jordan.jpg" alt="Jordan Mars 270" )
+				img.lazyload( data-src="../imagenes/header/nav-20210404-2019-jordan.jpg" alt="Jordan Mars 270" )
 			div.marcas
 				link(rel="stylesheet" href="css/marcasEnLista.min.css")
 				h3 
-					img.lazyload( data-src="./imagenes/header/arrow-right.svg" alt="categorias" )
+					img.lazyload( data-src="../imagenes/header/arrow-right.svg" alt="categorias" )
 					| MARCAS
 				ul
 					//- li 
 					//- 	a( href="/marca.html?marca=todas" title="Todas las marcas" )
-					//- 		img.lazyload( data-src="./imagenes/marcas/todas-blanco.svg" alt="Todas las marcas" )
+					//- 		img.lazyload( data-src="../imagenes/marcas/todas-blanco.svg" alt="Todas las marcas" )
 				script( type="text/javascript" ).
 					getProdByLogo( "header > div.categorias > nav > div.marcas > ul" );
 			div.colores
 				h3 
-					img.lazyload( data-src="./imagenes/header/arrow-right.svg" alt="categorias" )
+					img.lazyload( data-src="../imagenes/header/arrow-right.svg" alt="categorias" )
 					| COLORES
 				ul
 					li
@@ -102,7 +102,7 @@ header
 							span(style="background:#f9ccaf")
 			div.seguimientoPedido
 				h3 
-					img.lazyload( data-src="./imagenes/header/arrow-right.svg" alt="categorias" )
+					img.lazyload( data-src="../imagenes/header/arrow-right.svg" alt="categorias" )
 					| SEGUIMIENTO DE PEDIDO
 				a( href="/seguimientopedido.html" title="Visitar Seguimiento de Pedido" ) VISITAR
 	div.categoriaFondo
@@ -132,7 +132,7 @@ header
 	div.buscador 
 		div
 			input( type="search" )
-			img( src="./imagenes/header/lupa.svg" alt="buscar" )
+			img( src="../imagenes/header/lupa.svg" alt="buscar" )
 		
 			//- CLICK LUPA
 			script( type="text/javascript" ).
