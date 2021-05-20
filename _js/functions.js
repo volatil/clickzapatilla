@@ -373,16 +373,30 @@ var getProdByMarca = function( donde , traemarca ) {
 				};
 			} else {
 				if ( stock == 1 && marca == traemarca ) {
-					$( `${donde}` ).prepend( `
-						<li data-talla="${talla}" data-color="${color}" data-id="${id}">
-							<a href="/detalle.html?id=${id}" title="${marca} ${modelo}">
-								<img class="lazyload" data-src="${imagen}" alt="${marca} ${modelo}" /> 
-								<span class="modelo">${modelo}</span>
-								<span class="marca">${marca}</span>
-								<span class="precio">${puntuacion(preciocliente)}</span>
-							</a>
-						</li>
-					` );
+					if ( marca == "puma" ) {
+						var imagen_resized = imagen.split( "puma" )[0] + "puma/resized" + imagen.split( "puma" )[1];
+						$( `${donde}` ).prepend( `
+							<li data-talla="${talla}" data-color="${color}" data-id="${id}">
+								<a href="/detalle.html?id=${id}" title="${marca} ${modelo}">
+									<img class="lazyload" data-src="${imagen_resized}" alt="${marca} ${modelo}" /> 
+									<span class="modelo">${modelo}</span>
+									<span class="marca">${marca}</span>
+									<span class="precio">${puntuacion(preciocliente)}</span>
+								</a>
+							</li>
+						` );
+					} else {
+						$( `${donde}` ).prepend( `
+							<li data-talla="${talla}" data-color="${color}" data-id="${id}">
+								<a href="/detalle.html?id=${id}" title="${marca} ${modelo}">
+									<img class="lazyload" data-src="${imagen}" alt="${marca} ${modelo}" /> 
+									<span class="modelo">${modelo}</span>
+									<span class="marca">${marca}</span>
+									<span class="precio">${puntuacion(preciocliente)}</span>
+								</a>
+							</li>
+						` );
+					}
 				};
 			};
 				
