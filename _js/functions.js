@@ -395,6 +395,48 @@ var getProdByMarca = function( donde , traemarca ) {
 	});	
 };
 
+// GET PRODUCTO BY MARCA con la variable MARCA antes que procese el resto
+var getProdByMarca2 = function( donde , traemarca ) {
+	Promise.all([
+		fetch( `https://spreadsheets.google.com/feeds/list/1aZlC5KaMoyEPVqbMiH8_bPCsZoh65PBW9cm0HpG8Kjk/1/public/values?alt=json` ).then(value => value.json())
+	])
+	.then((value) => {
+		
+		var data = value[0].feed.entry;
+		
+		for( var fila = 0; fila <= data.length-1; fila++ ) {
+			
+			var stock		    = data[fila].gsx$stock.$t;
+			var marca		    = data[fila].gsx$marca.$t;
+			
+			if ( stock == 1 && marca == traemarca ) {
+				
+				var id              = data[fila].gsx$id.$t;
+				var color		    = data[fila].gsx$color.$t;
+				var modelo		    = data[fila].gsx$modelo.$t;
+				var talla           = data[fila].gsx$talla.$t;
+				var imagen		    = data[fila].gsx$imagen.$t;
+				imagen = imagen.split( " " )[0];
+				var preciocliente   = Number( data[fila].gsx$precioneto.$t ) + cometa;
+			
+				$( `${donde}` ).prepend( `
+					<li data-talla="${talla}" data-color="${color}" data-id="${id}">
+						<a href="/detalle.html?id=${id}" title="${marca} ${modelo}">
+							<img class="lazyload" data-src="${imagen}" alt="${marca} ${modelo}" /> 
+							<span class="modelo">${modelo}</span>
+							<span class="marca">${marca}</span>
+							<span class="precio">${puntuacion(preciocliente)}</span>
+						</a>
+					</li>
+				` );
+				$( "img.cargando" ).hide();
+			};
+			cuentaProductos( "h3.resultados" );
+		};
+		
+	});	
+};
+
 // GET PRODUCTO RELACIONADO
 var getProdRelacionado = function( owo , donde ) {
 	owo = owo-1
