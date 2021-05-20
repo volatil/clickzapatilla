@@ -6,7 +6,7 @@ html(lang="es")
 	
 	body
 		
-		script(src="js/functions.min.js")
+		script( src="../js/functions.min.js" )
 		
 		include _component/analytics
 		
@@ -30,24 +30,24 @@ html(lang="es")
 				img.lazyload( data-src="" alt="" )
 			script( type="text/javascript" ).
 				var marca = location.href.split( "marca=" )[1];
-				$( ".marca > .titulo > img" ).attr( "src" , `/imagenes/marcas/${marca}-blanco.svg` );
+				$( ".marca > .titulo > img" ).attr( "src" , `../imagenes/marcas/${marca}-blanco.svg` );
 				$( ".marca > .titulo > img" ).attr( "alt" , marca );
 			
 			.busquedaBanner
-				link( rel="stylesheet" href="css/busqueda.min.css" )
+				link( rel="stylesheet" href="../css/busqueda.min.css" )
 				h3.resultados 
 			
 		include _component/filtros	
 			
 		.productos
-			link( rel="stylesheet" href="css/productos.min.css" )
+			link( rel="stylesheet" href="../css/productos.min.css" )
 			
 			ul
-			img.cargando( src="/imagenes/loading.gif" alt="Cargando ..." )
+			img.cargando( src="../imagenes/loading.gif" alt="Cargando ..." )
 			//- TRAE DATA
 			script( type="text/javascript" ).
 				var marca = location.href.split( "?marca=" )[1];
-				getProdByMarca( ".productos > ul" , marca );
+				getProdByMarca2( ".productos > ul" , marca );
 				
 		include _component/footer
 		

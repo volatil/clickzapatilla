@@ -1,0 +1,141 @@
+
+@import "../_scss/variables";
+
+.calcular {
+	background: #fff;
+	width: 500px;
+	margin: 40px auto 0;
+	padding: 10px;
+	position: relative;
+	box-shadow: 8px 5px 20px -21px black;
+}
+.calcular > h1 {
+	font-weight: 100;
+	text-transform: uppercase;
+	background: #fff;
+	padding: 10px;
+	position: absolute;
+	top: -40px;
+	display: inline-block;
+	color: #888;
+	font-size: 1.3em;
+	left: 20px;
+}
+.calcular > button.agregar {
+	background: $verde;
+	color: white;
+	text-transform: uppercase;
+	border: navajowhite;
+	padding: 8px 10px;
+	margin: 20px 0 30px 20px;
+	cursor: pointer;
+}
+.calcular > button.agregar:hover {
+	background: black;
+}
+.calcular > button.agregar:active {
+	background: $e;
+	color: black;
+}
+.calcular > .agregando {
+	display: none;
+	margin-bottom: 20px;
+	margin-left: 20px;
+}
+.calcular > .agregando input {
+	height: 40px;
+	padding: 2px 10px;
+}
+.calcular > .agregando input.nombre {
+	width: 160px;
+}
+.calcular > .agregando input.precio {
+	width: 70px;
+}
+.calcular > .agregando input.talla {
+	width: 70px;
+}
+.calcular > .agregando button.listo {
+	height: 47px;
+	text-transform: uppercase;
+	padding: 0 20px;
+	cursor: pointer;
+}
+.calcular > div.producto {
+	height: 60px;
+	position: relative;
+	width: 450px;
+	margin: 0 auto 20px;	
+	padding: 10px 0;
+	border-top: 1px dashed #ddd;
+}
+.calcular > div.producto:first-of-type {
+	border-top: none;
+}
+.calcular > div.producto > img {
+	width: 70px;
+	position: absolute;
+}
+.calcular > div.producto > p {
+	margin: 0;
+	display: block;
+	position: relative;
+	left: 90px;
+}
+.calcular > div.producto > p.nombre {
+	font-weight: 600;
+	font-size: 1.1em;
+}
+.calcular > div.producto > p.precio {
+	font-size: 1.3em;
+	color: $verde;
+}
+.calcular > div.producto > p.talla {
+	font-size: .9em;
+}
+.calcular > div.producto > p.talla:before {
+	content: "Talla: "
+}
+.calcular > div.producto > select {
+	height: 40px;
+	position: absolute;
+	top: 10px;
+	right: 0;
+	cursor: pointer;
+}
+.calcular > div.producto > select option {
+	height: 50px;
+	cursor: pointer;
+}
+
+.calcular .total {
+	margin-top: 40px;
+	border-top: 1px solid #ccc;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.calcular .total > div {
+	margin-left: 70px;
+	font-size: 1.3em;
+}
+.calcular .total .total100 {
+	margin-bottom: 10px;
+}
+.calcular .total .total100:before {
+	content: "100%";
+	color: $verde;
+	font-size: .8em;
+	margin-right: 10px;
+}
+.calcular .total .total50 {
+	text-indent: 8px;
+}
+.calcular .total .total50:before {
+	content: "50%";
+	color: $verde;
+	font-size: .8em;
+	margin-right: 10px;
+}
+
+
+
