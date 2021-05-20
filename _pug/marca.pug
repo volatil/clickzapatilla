@@ -6,9 +6,9 @@ html(lang="es")
 	
 	body
 		
-		include _component/analytics
-		
 		script( src="../js/functions.min.js" )
+		
+		include _component/analytics
 		
 		include _component/barraSuperior
 		include _component/header
@@ -47,7 +47,7 @@ html(lang="es")
 			//- TRAE DATA
 			script( type="text/javascript" ).
 				var marca = location.href.split( "?marca=" )[1];
-				getProdByMarca( ".productos > ul" , marca );
+				getProdByMarca2( ".productos > ul" , marca );
 				
 		include _component/footer
 		
