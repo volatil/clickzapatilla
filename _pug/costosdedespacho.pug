@@ -1,0 +1,99 @@
+doctype html
+html(lang="es")
+	head
+		
+		include _component/head
+		
+	body
+		
+		script(src="js/functions.min.js")
+		
+		include _component/analytics
+		
+		include _component/barraSuperior
+		include _component/header
+		
+		link(rel="stylesheet" href="css/costosdedespacho.min.css")
+		
+		.costosdedespacho
+			h1 Costos de Despacho
+			p ClickZapatilla despacha todas tus compras de Arica a Punta Arenas. 
+			p El tiempo de despacho es dede 1 a 3 días hábiles, a partir del momento que llega a nuestra bodega. 
+			p Siempre trataremos de despachar lo más rápido posible.
+			p El despacho de tu orden puede ser a domicilio o a una Sucursal de Chilexpress.
+			p Ofrecemos despacho gratis en compras sobre $100.000, sólo para despachos entre la Región de Atacama y Región de Los Lagos (excluyendo Isla de Pascua y Juan Fernandez).
+			p Los costos de envío son fijos por comuna, independiente de la cantidad de productos que compres. Revisa el costo de despacho a tu región:
+			
+			table
+				thead
+					tr
+						td Comuna
+						td Costo
+				tbody
+					tr
+						td Región Metropolitana de Santiago.
+						//- td $ 4.990
+						td $ 4.990
+					tr
+						td Región de Valparaíso.
+						//- td $ 8.650
+						td $ 8.650
+					tr
+						td Región de Arica y Parinacota.
+						//- td $ 16.309
+						td $ 17.309
+					tr
+						td Región de Tarapacá.
+						//- td $ 13.123
+						td $ 14.123
+					tr
+						td Región de Antofagasta.
+						//- td $ 14.883
+						td $ 15.883
+					tr
+						td Región de Atacama.
+						//- td $ 6.934
+						td $ 7.934
+					tr
+						td Región de Coquimbo.
+						//- td $ 9.723
+						td $ 10.723
+					tr
+						td Región del Libertador General Bernardo O’Higgins.
+						//- td $ 8.907
+						td $ 9.907
+					tr
+						td Región del Maule.
+						//- td $ 11.125
+						td $ 12.125
+					tr
+						td Región del Ñuble.
+						//- td $ 7.541
+						td $ 8.541
+					tr
+						td Región del Biobío.
+						//- td $ 7.541
+						td $ 8.541
+					tr
+						td Región de La Araucanía.
+						//- td $ 10.333
+						td $ 11.333
+					tr
+						td Región de Los Ríos.
+						//- td $ 11.967
+						td $ 12.967
+					tr
+						td Región de Los Lagos.
+						//- td $ 13.350
+						td $ 14.350
+			
+			
+			.covid
+				h3 
+					img.lazyload( data-src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDhweCIgdmlld0JveD0iMCAwIDI0IDI0IiB3aWR0aD0iNDhweCIgZmlsbD0iI0QyNDA0MCI+PHBhdGggZD0iTTEyIDUuOTlMMTkuNTMgMTlINC40N0wxMiA1Ljk5TTEyIDJMMSAyMWgyMkwxMiAyem0xIDE0aC0ydjJoMnYtMnptMC02aC0ydjRoMnYtNHoiLz48cGF0aCBkPSJNMCAwaDI0djI0SDBWMHoiIGZpbGw9Im5vbmUiLz48L3N2Zz4K" alt="alerta" )
+					| COVID-19
+				p Estamos siguiendo las recomendaciones internacionales de distanciamiento social y respetando los decretos de Cuarentena y Toque de Queda de las autoridades locales. Esto ha provocado tiempos de respuesta más largos y retrasos en nuestras entregas.
+				p Por favor, ten paciencia en este momento tan difícil para todos.
+			
+		include _component/footer
+		

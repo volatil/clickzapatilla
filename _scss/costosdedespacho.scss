@@ -1,0 +1,94 @@
+
+@import 'variables';
+
+.costosdedespacho {
+	width: 85%;
+	background: white;
+	margin: 20px auto 0;
+	padding: 20px;
+}
+.costosdedespacho h1 {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	margin-bottom: 30px;
+	font-weight: 300;
+	text-transform: uppercase;
+}
+.costosdedespacho h3 {
+	text-transform: uppercase;
+}
+
+
+
+.costosdedespacho table {
+	width: 500px;
+	margin: 0 auto;
+}
+.costosdedespacho table > thead {
+	background: black;
+	color: white;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: .05em;
+}
+.costosdedespacho table > tbody tr {
+	text-align: center;
+	letter-spacing: .05em;
+	height: 40px;
+}
+.costosdedespacho table > tbody tr td {
+	border-bottom: 1px dashed #ddd;
+}
+.costosdedespacho table > tbody tr:last-of-type td {
+	border-bottom: 1px dashed transparent;
+}
+
+
+
+
+
+
+
+
+
+
+.costosdedespacho .covid {
+	margin-top: 30px;
+	border: 1px solid #ddd;
+	width: 440px;
+	margin: 70px auto 0;
+}
+.costosdedespacho .covid h3 {
+	background: #eee;
+	margin: 0;
+	position: relative;
+	top: 0px;
+	padding: 10px 10px 10px 40px;
+	font-weight: 500;
+	letter-spacing: 0.05em;
+}
+.costosdedespacho .covid h3 img {
+	width: 25px;
+	margin: 10px;
+	position: absolute;
+	top: -3px;
+	left: 0;
+}
+.costosdedespacho .covid p {
+	padding: 10px;
+}
+
+@media ( max-width: $MQtablet ) {
+	.costosdedespacho table {
+		width: 100%;
+	}
+	.costosdedespacho table > tbody tr td {
+		font-size: .7em;
+	}
+}
+@media ( max-width: $MQsmartphone ) {
+	.costosdedespacho > .covid {
+		width: 90%;
+	}
+}
