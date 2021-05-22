@@ -314,7 +314,7 @@ var getProdByLogo = function( donde ) {
 				$( donde ).append( `
 					<li>
 						<a href="/marca.html?marca=${marca}" title="${marca}">
-							 <img class="lazyload" data-src="./imagenes/marcas/${marca}-blanco.svg" alt="${marca}" />
+							 <img class="lazyload" data-src="../imagenes/marcas/${marca}-blanco.svg" alt="${marca}" />
 						</a>
 					 </li>
 				` );
