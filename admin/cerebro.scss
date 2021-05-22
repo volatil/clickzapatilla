@@ -1,0 +1,74 @@
+
+@import "../_scss/variables";
+
+img.cargando {
+	width: 50px;
+	margin: 30px auto;
+	display: block;
+}
+.cerebro {
+	width: 820px;
+	margin: 20px auto 0;
+}
+.cerebro .bloqueSombra {
+	background: white;
+	box-shadow: 0 8px 26px -24px black;
+	border-radius: 8px;
+	padding: 4px 10px;
+	margin-bottom: 20px;
+}
+
+.cerebro .resumen {
+	width: max-content;
+	display: inline-block;
+	margin-left: 20px;
+}
+.cerebro .resumen:first-of-type {
+	margin-left: 0;
+}
+.cerebro .resumen > p {
+	text-align: center;
+	margin: 0;
+}
+.cerebro .resumen > p.titulo {
+	font-weight: 400;
+}
+.cerebro .resumen > p.numero {
+	font-weight: 500;
+	font-size: 2.8em;
+}
+
+
+
+
+
+
+.cerebro .ventas > ul {}
+.cerebro .ventas > ul > li {
+	list-style: none;
+}
+
+
+
+
+@media ( max-width: $MQtablet ) {
+	.cerebro {
+		width: 440px;
+	}
+	.cerebro .resumen {
+		width: 100%;
+		margin: 0 auto 10px;
+	}
+	.cerebro .ventas {
+		width: 100%;
+	}
+}
+@media ( max-width: $MQsmartphone ) {
+	.cerebro {
+		width: 90%;
+	}
+	.cerebro .resumen ,
+	.cerebro .ventas {
+		width: 90%;
+	}
+}

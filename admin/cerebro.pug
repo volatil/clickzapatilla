@@ -1,0 +1,196 @@
+doctype html
+html(lang="es")
+	head
+		
+		include ../_pug/_component/head
+		
+	body
+		
+		script(src="../js/functions.min.js")
+		
+		include ../_pug/_component/barraSuperior
+		include ../_pug/_component/header
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//- https://dribbble.com/shots/14716648/attachments/6416723?mode=media
+		//- https://dribbble.com/shots/14629213-Finance-Dashboard/attachments/6322911?mode=media
+		
+		
+		
+		
+		
+		
+		
+		link( rel="stylesheet" href="cerebro.css" )
+		
+		.cerebro
+			.cantidadVentas.bloqueSombra.resumen
+				p.titulo Cantidad Ventas
+				p.numero 
+				
+			.ventasBruta.bloqueSombra.resumen
+				p.titulo Ventas Bruto
+				p.numero 
+			
+			.ventasLiquido.bloqueSombra.resumen
+				p.titulo Ventas Liquido
+				p.numero 
+			
+			.ganancias.bloqueSombra.resumen
+				p.titulo Ganancias
+				p.numero 
+				
+			.ventas.bloqueSombra
+				ul
+				img.cargando( src="/imagenes/loading.gif" alt="Cargando ..." )
+			
+			script.
+				const dolar = 722;
+				
+				//- PUNTUACION
+				var puntuacion = function( precio ) {
+					precio      = String( precio );
+					var centena = precio.slice( -3 );
+					if ( precio.length <= 3 ) {
+						return precio;
+					} else if ( precio.length == 4 ) {
+						return precio.slice( 0 , 1 ) + "." + centena;
+					} else if ( precio.length == 5 ) {
+						return precio.slice( 0 , 2 ) + "." + centena;
+					} else if ( precio.length == 6 ) {
+						return precio.slice( 0 , 3 ) + "." + centena;
+					} else if ( precio.length == 7 ) {
+						return precio.slice( 0 , 1 ) + "." + precio.slice( 1 , 4 ) + "." + centena;
+					} else if ( precio.length == 8 ) {
+						return precio.slice( 0 , 2 ) + "." + precio.slice( 2 , 5 ) + "." + centena;
+					} else if ( precio.length == 9 ) {
+						return precio.slice( 0 , 3 ) + "." + precio.slice( 3 , 6 ) + "." + centena;
+					} else {
+						return `toi chiquito (cantidad: ${precio.length})`;
+					};
+				};
+				
+				// GET DATA
+				var cerebro = function( donde , traemarca ) {
+					Promise.all([
+						fetch( `https://spreadsheets.google.com/feeds/list/1aZlC5KaMoyEPVqbMiH8_bPCsZoh65PBW9cm0HpG8Kjk/2/public/values?alt=json` ).then(value => value.json())
+					])
+					.then((value) => {
+						
+						var ventas = value[0].feed.entry;
+						//- console.log( `Cantidad: ${ventas.length-1}` );
+						//- console.log( ventas )
+						
+						//- CANTIDAD VENTAS
+						$( ".cerebro .cantidadVentas > p.numero" ).html( ventas.length-1 );
+						
+						//- VENTAS BRUTO
+						{
+							var bruto_total = 0;
+							for( var fila = 0; fila <= ventas.length-1; fila++ ) {
+								let precio      = ventas[fila].gsx$precioneto.$t;
+								let precioCorto = precio.slice( 0 , 2 );
+								bruto_total     = Number( bruto_total ) + Number( Number( precio.slice( 0 , 2 ) ) * Number( dolar ) );
+							};
+							$( ".cerebro .ventasBruta > p.numero" ).html( `$ ${puntuacion( bruto_total )}` );
+						};
+						
+						//- VENTAS LIQUIDO
+						{
+							var liquido_total = 0;
+							for( var fila = 0; fila <= ventas.length-1; fila++ ) {
+								var precio      = ventas[fila].gsx$preciovendido.$t;
+								liquido_total   = Number( liquido_total ) + Number( precio );
+							};
+							$( ".cerebro .ventasLiquido > p.numero" ).html( `$ ${puntuacion( liquido_total )}` );
+						};
+						
+						//- GANANCIAS
+						{
+							var brutoFix = $( ".cerebro .resumen.ventasBruta > p.numero" ).html();
+							brutoFix = brutoFix.split( "$ " )[1].replaceAll( "." , "" );
+							var liquidoFix = $( ".cerebro .resumen.ventasLiquido > p.numero" ).html();
+							liquidoFix = liquidoFix.split( "$ " )[1].replaceAll( "." , "" );
+							var liquidoFix = $( ".cerebro .resumen.ganancias > p.numero" ).html( `$ ${ puntuacion( Number( liquidoFix ) - Number( brutoFix ) ) }` );
+						};
+						
+						for( var fila = 0; fila <= ventas.length-1; fila++ ) {
+							
+							var nombre          = ventas[fila].gsx$nombre.$t;
+							var id              = ventas[fila].gsx$id.$t;
+							var fecha_venta     = ventas[fila].gsx$fechaventa.$t;
+							var precio_vendido  = ventas[fila].gsx$preciovendido.$t;
+							
+							// GET
+							$( `.cerebro .ventas ul` ).append( `
+								<li><strong>${id}</strong> ${nombre}: ${fecha_venta} -> $ ${ puntuacion( precio_vendido ) }</li>
+							` );
+								
+								
+							$( "img.cargando" ).hide();
+						};
+						
+					});	
+				};cerebro();
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		include ../_pug/_component/footer
+		
