@@ -68,6 +68,9 @@ html(lang="es")
 				p.numero 
 				
 			.ventas.bloqueSombra
+				h5 Últimas Compras
+				div.buscador
+					input( type="text" placeholder="Buscar" )
 				ul
 				img.cargando( src="/imagenes/loading.gif" alt="Cargando ..." )
 			
@@ -97,16 +100,16 @@ html(lang="es")
 					};
 				};
 				
-				// GET DATA
+				// VENTAS
 				var cerebro = function( donde , traemarca ) {
 					Promise.all([
+						fetch( `https://spreadsheets.google.com/feeds/list/1aZlC5KaMoyEPVqbMiH8_bPCsZoh65PBW9cm0HpG8Kjk/1/public/values?alt=json` ).then(value => value.json()) ,
 						fetch( `https://spreadsheets.google.com/feeds/list/1aZlC5KaMoyEPVqbMiH8_bPCsZoh65PBW9cm0HpG8Kjk/2/public/values?alt=json` ).then(value => value.json())
 					])
 					.then((value) => {
 						
-						var ventas = value[0].feed.entry;
-						//- console.log( `Cantidad: ${ventas.length-1}` );
-						//- console.log( ventas )
+						var inventario  = value[0].feed.entry;
+						var ventas      = value[1].feed.entry;
 						
 						//- CANTIDAD VENTAS
 						$( ".cerebro .cantidadVentas > p.numero" ).html( ventas.length-1 );
@@ -147,10 +150,16 @@ html(lang="es")
 							var id              = ventas[fila].gsx$id.$t;
 							var fecha_venta     = ventas[fila].gsx$fechaventa.$t;
 							var precio_vendido  = ventas[fila].gsx$preciovendido.$t;
+							var idproducto      = ventas[fila].gsx$idproducto.$t;
+							
+							var marca           = inventario[Number(idproducto)].gsx$marca.$t;
 							
 							// GET
 							$( `.cerebro .ventas ul` ).append( `
-								<li><strong>${id}</strong> ${nombre}: ${fecha_venta} -> $ ${ puntuacion( precio_vendido ) }</li>
+								<li>
+									<img src="../imagenes/marcas/${marca}-negro.svg" alt="${marca}" />
+									${nombre}: ${fecha_venta} -> $ ${ puntuacion( precio_vendido ) }
+								</li>
 							` );
 								
 								
