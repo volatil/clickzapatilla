@@ -71,11 +71,7 @@ img.cargando {
   outline: none;
 }
 
-.cerebro .ventas > ul > li {
-  list-style: none;
-}
-
-.cerebro .ventas > ul > li > img {
+.cerebro .ventas > table > tbody > tr > td > img {
   width: 10px;
 }
 

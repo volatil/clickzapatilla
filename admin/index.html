@@ -216,7 +216,21 @@
         <div class="buscador">
           <input type="text" placeholder="Buscar">
         </div>
-        <ul></ul><img class="cargando" src="/imagenes/loading.gif" alt="Cargando ...">
+        <table>
+          <thead>
+            <tr>
+              <td>&nbsp;</td>
+              <td>Cliente</td>
+              <td>Fecha</td>
+              <td>Precio</td>
+              <td> </td>
+              <td> </td>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div class="modal-fondo"></div>
+        <div class="modal-contenido"></div><img class="cargando" src="/imagenes/loading.gif" alt="Cargando ...">
       </div>
       <script>
         const dolar = 722;
@@ -257,7 +271,6 @@
         		
         		//- CANTIDAD VENTAS
         		$( ".cerebro .cantidadVentas > p.numero" ).html( ventas.length-1 );
-        		
         		//- VENTAS BRUTO
         		{
         			var bruto_total = 0;
@@ -268,7 +281,6 @@
         			};
         			$( ".cerebro .ventasBruta > p.numero" ).html( `$ ${puntuacion( bruto_total )}` );
         		};
-        		
         		//- VENTAS LIQUIDO
         		{
         			var liquido_total = 0;
@@ -278,7 +290,6 @@
         			};
         			$( ".cerebro .ventasLiquido > p.numero" ).html( `$ ${puntuacion( liquido_total )}` );
         		};
-        		
         		//- GANANCIAS
         		{
         			var brutoFix = $( ".cerebro .resumen.ventasBruta > p.numero" ).html();
@@ -290,20 +301,37 @@
         		
         		for( var fila = 0; fila <= ventas.length-1; fila++ ) {
         			
-        			var nombre          = ventas[fila].gsx$nombre.$t;
-        			var id              = ventas[fila].gsx$id.$t;
-        			var fecha_venta     = ventas[fila].gsx$fechaventa.$t;
-        			var precio_vendido  = ventas[fila].gsx$preciovendido.$t;
-        			var idproducto      = ventas[fila].gsx$idproducto.$t;
+        			var nombre              = ventas[fila].gsx$nombre.$t;
+        			var id                  = ventas[fila].gsx$id.$t;
+        			var fecha_venta         = ventas[fila].gsx$fechaventa.$t;
+        			var precio_vendido      = ventas[fila].gsx$preciovendido.$t;
+        			var idproducto          = ventas[fila].gsx$idproducto.$t;
+        			var codigoseguimiento   = ventas[fila].gsx$codigoseguimiento.$t;
         			
         			var marca           = inventario[Number(idproducto)].gsx$marca.$t;
         			
         			// GET
-        			$( `.cerebro .ventas ul` ).append( `
-        				<li>
-        					<img src="../imagenes/marcas/${marca}-negro.svg" alt="${marca}" />
-        					${nombre}: ${fecha_venta} -> $ ${ puntuacion( precio_vendido ) }
-        				</li>
+        			$( `.cerebro .ventas table tbody` ).prepend( `
+        				<tr>
+        					<td>
+        						<img src="../imagenes/marcas/${marca}-negro.svg" alt="${marca}" />
+        					</td>
+        					<td>
+        						${nombre}:
+        					</td>
+        					<td>
+        						${fecha_venta}
+        					</td>
+        					<td>
+        						$ ${ puntuacion( precio_vendido ) }
+        					</td>
+        					<td>
+        						<a target="_blank" href="https://www.trackdog.com/track.html?tn=${codigoseguimiento}">Tracking</a>
+        					</td>
+        					<td>
+        						<span class="vermas">Detalles</span>
+        					</td>
+        				</tr>
         			` );
         				
         				
