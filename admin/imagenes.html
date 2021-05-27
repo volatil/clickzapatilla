@@ -207,81 +207,194 @@
     </header><link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <div class="admin">
-      <p class="cantidad"><span>0</span> visibles</p>
-      <button class="contar">contar</button>
-      <button class="activar">activar</button>
-    </div>
+    <script type="text/javascript">
+      $(function(){
+      	$( "#sortable" ).sortable();
+      	$( "#sortable" ).disableSelection();
+      });
+      
+    </script>
     <style type="text/css">
-      .admin {
-      	width: 160px;
-      	margin: 0 auto;
+      body > div.path ,
+      body > div.imagenes ,
+      body > div.preview ,
+      body > section.botones ,
+      body > div.resultado {
+      	width: 80%;
+      	margin: 50px auto 0;
       }
-      .admin > p {
-      	text-align: center;
-      }
-      .admin > button {
-      	width: 48%;
-      	margin: 0;
-      	padding: 0;
+      body > div.path .bloque {
+      	width: 16%;
       	display: inline-block;
-      	height: 40px;
-      	cursor: pointer;
       }
-      .colores {
-      	width: 400px;
+      body > div.path .bloque > label {
+      	display: block;
+      	color: #666;
+      }
+      body > div.imagenes {
+      	margin-top: 10px;
+      }
+      body > div.imagenes label {
+      	color: #666;
+      }
+      body > div.imagenes textarea {
+      	width: 610px;
+      }
+      .preview > div > img {
+      	max-width: 140px;
+      	margin: 0 10px;
+      	border: 2px solid transparent;
+      	padding: 2px;
+      	border-radius: 4px;
+      }
+      .preview > div > img.activo {
+      	border: 2px solid green;
+      }
+      .resultado > label {
+      	display: block;
+      	color: #666;
+      }
+      .resultado > div {
+      	width: 610px;
+      }
+      body > section.botones {
+      	width: 570px;
       	margin: 20px auto 0;
+      	height: 50px;
       }
-      .colores textarea {
-      	width: 100%;
-      	height: 300px;
+      body > section.botones > input {
+      	display: inline-block;
+      	height: 34px;
+      	width: 60px;
+      	margin-left: 20px;
+      }
+      body > section.botones > button {
+      	width: 150px;
+      	margin: 0 auto;
+      	height: 40px;
+      	display: inline-block;
+      	text-transform: uppercase;
+      }
+      body > section.botones > button.borrar {
+      	margin-right: 20px;
       }
       
     </style>
-    <div class="colores">
-      <textarea>blanco
-H
-O
-L
-negro
-negro
-blanco
-A
-!!</textarea>
+    <div class="path">
+      <div class="bloque marca">
+        <label>Marca</label>
+        <textarea></textarea>
+      </div>
+      <div class="bloque modelo">
+        <label>Modelo</label>
+        <textarea></textarea>
+      </div>
+      <div class="bloque carpeta">
+        <label>Carpeta</label>
+        <textarea></textarea>
+      </div>
+    </div>
+    <div class="imagenes">
+      <label>IMAGENES</label>
+      <textarea></textarea>
+    </div>
+    <div class="preview">
+      <div id="sortable"></div>
+    </div>
+    <section class="botones">
+      <button class="revisar">revisar</button>
+      <input placeholder="nombre">
+      <button class="borrar">borrar</button>
+      <button class="generar">generar</button>
+    </section>
+    <div class="resultado">
+      <label>resultado</label>
+      <div disabled></div>
     </div>
     <script type="text/javascript">
-      var getVisibles = function(){
-      	var visibles = $( ".colores textarea" ).val().split( "\n" ).length;
-      	$( ".admin p.cantidad span" ).html( visibles );
-      };getVisibles();
-      
-      $( ".colores textarea" ).keyup(function(){
-      	getVisibles();
+      $( "button.revisar" ).click(() => {
+      	$( ".preview > div" ).html( "" );
+      	var marca	   = $( "div.path .marca textarea" ).val();
+      	var modelo	  = $( "div.path .modelo textarea" ).val();
+      	var carpeta	 = $( "div.path .carpeta textarea" ).val();
+      	var lineas	  = $( "div.imagenes textarea" ).val().split( "\n" ).length;	
+      	for( var count = 0; count <= lineas-1; count++ ) {
+      		let cadaLinea = $( "div.imagenes textarea" ).val().split( "\n" )[count];
+      		$( ".preview div" ).append( `<img src="../imagenes/productos/${marca}/${modelo}/${carpeta}/${cadaLinea.split( "	" )[0]}" title="${count+1}" />` )
+      	};
+      	$( ".preview > div > img" ).click(function() {
+      		var title = $( this ).attr( "title" );
+      		$( "body > section.botones > input" ).val( title );
+      		$( ".preview > div > img" ).removeClass( "activo" );
+      		$( this ).addClass( "activo" );
+      	});
       });
-      	
-      $( ".admin button.activar" ).click(function(){
-      
-      	var colores = [ "negro","amarillo","rojo","blanco","rosado","celeste","naranjo","menta","morado","verde","fluor","burdeo","cafe","gris","dorado","azul","arcoiris","transparente","cyan","plateado","vainilla","durazno" ];
-      	//- var colores = [ "blanco" , "negro" , "rojo" ];
-      	var parrafo = $( ".colores textarea" ).val();
-      	for( var count = 0; count <= colores.length-1; count++ ) {
-      		parrafo = parrafo.replaceAll( colores[count] , "" );
-      		console.log( `Color: ${colores[count]}` )
-      		if( count == colores.length-1 ) {
-      			console.log( parrafo )
-      			parrafo = parrafo.replaceAll( "\n" , "" );
-      			parrafo = parrafo.replaceAll( " " , "" );
-      			$( ".colores textarea" ).val( parrafo );
-      			console.log( "si termine" );
-      		} else {
-      			console.log( "no termine" );
-      		}
-      	}
-      	
-      	getVisibles();
-      
+      $( "button.generar" ).click(() => {
+      	$( ".resultado div" ).html( "" );
+      	$.each( $( ".preview > div > img" ) , function(){
+      		var ruta = $( this ).attr( "src" );
+      		$( ".resultado > div" ).append( `${ruta} ` );
+      	});
       });
+      $( "button.borrar" ).click(() => {
+      	var borrar = $( "body > section.botones > input" ).val();
+      	$( `.preview > div > img[title=${borrar}]` ).remove();
+      });
+      
+      //- TEST
+      $( "div.path .marca textarea" ).val( "nike" );
+      $( "div.path .modelo textarea" ).val( "airforce1" );
+      /*
+      $( "div.path .carpeta textarea" ).val( "bfdb" );
+      $( "div.imagenes textarea" ).val( `2b87585a.jpg	1.3 MB	16/4/21 14:11:44 \n455e926d.jpg	1.3 MB	16/4/21 14:11:38 \n4bc84d13.jpg	1.5 MB	16/4/21 14:11:46 \n6c03f95b.jpg	1.3 MB	16/4/21 14:11:52 \n911a333e.jpg	1.7 MB	16/4/21 14:11:50 \n94fca65a.jpg	1.3 MB	16/4/21 14:11:48 \na74ccc92.jpg	1.2 MB	16/4/21 14:11:52 \nab798107.jpg	1.5 MB	16/4/21 14:` );
+      */
+      
       	
+      	
+      	
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
     </script>
     <footer>
       <link rel="stylesheet" href="../css/footer.min.css">
@@ -289,7 +402,6 @@ A
         <ul class="estaticos">
           <li><a href="/terminosycondiciones.html" title="Términos y Condiciones">Términos y Condiciones</a></li>
           <li><a href="/seguimientopedido.html" title="Seguimiento de Pedido">Seguimiento de Pedido</a></li>
-          <li><a href="/costosdedespacho.html" title="Costos de Despacho">Costos de Despacho</a></li>
         </ul>
         <ul class="redes">
           <li><a target="_blank" href="https://www.facebook.com/ClickZapatillacl-102357188629797" title="Facebook"> <img src="/imagenes/footer/facebook.svg" alt="Facebook"></a></li>

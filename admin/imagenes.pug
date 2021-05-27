@@ -128,7 +128,7 @@ html(lang="es")
 				var lineas	  = $( "div.imagenes textarea" ).val().split( "\n" ).length;	
 				for( var count = 0; count <= lineas-1; count++ ) {
 					let cadaLinea = $( "div.imagenes textarea" ).val().split( "\n" )[count];
-					$( ".preview div" ).append( `<img src="./imagenes/productos/${marca}/${modelo}/${carpeta}/${cadaLinea.split( "	" )[0]}" title="${count+1}" />` )
+					$( ".preview div" ).append( `<img src="../imagenes/productos/${marca}/${modelo}/${carpeta}/${cadaLinea.split( "	" )[0]}" title="${count+1}" />` )
 				};
 				$( ".preview > div > img" ).click(function() {
 					var title = $( this ).attr( "title" );
