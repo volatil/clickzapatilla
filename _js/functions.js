@@ -20,7 +20,7 @@ var puntuacion = function( uwu ){
 		uwu = "$ " + uwu.slice( 0 , 2 ) + "." + uwu.slice( 2 );
 		return uwu;
 	} else if ( uwu.length == 6 ) {
-		uwu = "$ " + uwu.slice( 0 , 2 ) + "." + uwu.slice( 2 );
+		uwu = "$ " + uwu.slice( 0 , 3 ) + "." + uwu.slice( 3 );
 		return uwu;
 	} else {
 		return uwu;
