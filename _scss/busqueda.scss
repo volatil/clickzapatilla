@@ -4,6 +4,9 @@
 
 .busquedaBanner {
 	position: relative;
+	display: flex;
+	clear: left;
+	flex-direction: row;
 }
 .busquedaBanner > img {
 	width: 100%;
