@@ -122,6 +122,10 @@ html(lang="es")
 											case "Obteniendo productos.":
 												$( ".historial ul li.estado1" ).addClass( "activo" );
 												break;
+											case "Devuelto a Bodega en China":
+												$( ".historial ul" ).append( "<li class='estado0 pasado'><span></span>Devuelto a Bodega en China (Nos contactaremos contigo a la brevedad)</li>" );
+												$( ".historial ul li.estado0" ).addClass( "activo" );
+												break;
 											default:
 												console.log( `Se perdio el producto uwu` );
 									};

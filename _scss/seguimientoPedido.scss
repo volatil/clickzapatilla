@@ -175,6 +175,9 @@
 .seguimiento .resultado .correcto > .historial > ul > li.activo span {
 	border: 3px solid $celesteClaro;
 }
+.seguimiento .resultado .correcto > .historial > ul > li.estado0.activo span {
+	border: 3px solid #f97f7f;
+}
 .seguimiento .resultado .correcto > .historial > ul > li.estado10.activo span {
 	border: 3px solid #62d02e;
 }
