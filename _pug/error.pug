@@ -1,0 +1,42 @@
+doctype html
+html(lang="es")
+	head
+	
+		include _component/head
+	
+	body
+		
+		script(src="js/functions.min.js")
+		
+		include _component/analytics
+		
+		include _component/barraSuperior
+		include _component/header
+		
+		style.
+			body {
+				background: white;
+			}
+			.error > h6 {
+				text-align: center;
+				font-size: 3vw;
+				margin: 0;
+				padding: 0;
+				font-weight: 100;
+			}
+			.error > div {
+				display: flex;
+				justify-content: center;
+				width: 100%;
+			}
+			.error > div > img {
+				max-height: 600px;
+			}
+			
+		div.error
+			h6 No encontramos la pagina
+			div
+				img.lazyload( data-src="https://process.fs.grailed.com/AJdAgnqCST4iPtnUxiGtTz/hlaEAVaTHvMHeF1MFOwV", alt="Nos perdimos uwu" )
+		
+		include _component/footer
+		
