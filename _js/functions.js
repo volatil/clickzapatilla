@@ -1,5 +1,5 @@
 
-var cometa = 19990;
+var cometa = 14990;
 
 //- Capitalize()
 const capitalize = (s) => {
