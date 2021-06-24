@@ -77,7 +77,8 @@ html(lang="es")
 										</div>
 										<div class="historial">
 											<ul>
-												<li class="estado10 pasado"><span></span>Entregado Satisfactoriamente.</li>
+												<li class="estado11 pasado"><span></span>Entregado Satisfactoriamente.</li>
+												<li class="estado10 pasado"><span></span>Producto despachado a tu hogar.</li>
 												<li class="estado9 pasado"><span></span>Tu producto esta en nuestra Bodega.</li>
 												<li class="estado8 pasado"><span></span>Tu producto esta en camino a nuestra bodega.</li>
 												<li class="estado7 pasado"><span></span>Tu producto salió de Aduana Chile.</li>
@@ -93,6 +94,9 @@ html(lang="es")
 									
 									switch( estado ) {
 											case "Entregado Satisfactoriamente.":
+												$( ".historial ul li.estado11" ).addClass( "activo" );
+												break;
+											case "Producto despachado a tu hogar.":
 												$( ".historial ul li.estado10" ).addClass( "activo" );
 												break;
 											case "Tu producto esta en nuestra Bodega.":
