@@ -325,7 +325,9 @@ var getProdByLogo = function( donde ) {
 };
 
 // GET PRODUCTO BY MARCA
+
 var getProdByMarca = function( donde , traemarca ) {
+	
 	Promise.all([
 		fetch( `https://spreadsheets.google.com/feeds/list/1aZlC5KaMoyEPVqbMiH8_bPCsZoh65PBW9cm0HpG8Kjk/1/public/values?alt=json` ).then(value => value.json())
 	])
@@ -333,6 +335,8 @@ var getProdByMarca = function( donde , traemarca ) {
 		
 		var data = value[0].feed.entry;
 		
+
+
 		for( var fila = 0; fila <= data.length-1; fila++ ) {
 			
 			var data			= value[0].feed.entry
@@ -342,7 +346,7 @@ var getProdByMarca = function( donde , traemarca ) {
 			var marca		    = data[fila].gsx$marca.$t;
 			var modelo		    = data[fila].gsx$modelo.$t;
 			var talla           = data[fila].gsx$talla.$t;
-			var imagen		    = data[fila].gsx$imagen.$t;
+			/*
 			if ( imagen.split( " " ).length >= 2 ) {
 				for ( var imgcount = 0; imgcount <= imagen.split( " " ).length-1; imgcount++ ) {
 					$( ".getDetalle .galeria" ).append( `<img class="lazyload" src="${imagen.split( " " )[imgcount]}" alt="${marca} - ${modelo}" />` )
@@ -355,6 +359,7 @@ var getProdByMarca = function( donde , traemarca ) {
 				};
 				imagen = imagen.split( " " )[0];
 			};
+			*/
 			var preciocliente   = Number( data[fila].gsx$precioneto.$t ) + cometa;
 			
 			// Agrega FILTROS
@@ -372,10 +377,27 @@ var getProdByMarca = function( donde , traemarca ) {
 					` );
 				};
 			} else {
+				var imagen		    = data[fila].gsx$imagen.$t.split( " " )[0];
+				/*
+				if ( imagen.split( " " ).length >= 2 ) {
+					for ( var imgcount = 0; imgcount <= imagen.split( " " ).length-1; imgcount++ ) {
+						$( ".getDetalle .galeria" ).append( `<img class="lazyload" src="${imagen.split( " " )[imgcount]}" alt="${marca} - ${modelo}" />` )
+						
+						$( ".getDetalle > .galeria > img" ).click(function(){
+							let ruta = $( this ).attr( "src" );
+							$( ".getDetalle > img" ).attr( "src" , ruta );
+						});
+						
+					};
+					imagen = imagen.split( " " )[0];
+				};
+				*/
 				if ( stock == 1 && marca == traemarca ) {
+					// <img class="lazyload" data-src="${imagen}" alt="${marca} ${modelo}" /> 
+					// <img class="lazyload" data-src="https://statics.cdn0.buscalibre.com/borrame/390b7c2028549649321be2daaf49db59--nike-flyknit-women-running-shoes.jpg" alt="${marca} ${modelo}" /> 
 					$( `${donde}` ).prepend( `
-						<li data-talla="${talla}" data-color="${color}" data-id="${id}">
-							<a href="/detalle.html?id=${id}" title="${marca} ${modelo}">
+					<li data-talla="${talla}" data-color="${color}" data-id="${id}">
+						<a href="/detalle.html?id=${id}" title="${marca} ${modelo}">
 								<img class="lazyload" data-src="${imagen}" alt="${marca} ${modelo}" /> 
 								<span class="modelo">${modelo}</span>
 								<span class="marca">${marca}</span>
@@ -386,14 +408,91 @@ var getProdByMarca = function( donde , traemarca ) {
 				};
 			};
 				
-				
-				
 			$( "img.cargando" ).hide();
 			cuentaProductos( "h3.resultados" );
 		};
 		
+		
+		
+		
 	});	
 };
+// BACKUP 20210621 getProdByMarca()
+	// TIEMPO DE CARGA: 1.23-5.40
+/*
+	var getProdByMarca = function( donde , traemarca ) {
+		Promise.all([
+			fetch( `https://spreadsheets.google.com/feeds/list/1aZlC5KaMoyEPVqbMiH8_bPCsZoh65PBW9cm0HpG8Kjk/1/public/values?alt=json` ).then(value => value.json())
+		])
+		.then((value) => {
+			
+			var data = value[0].feed.entry;
+			
+			for( var fila = 0; fila <= data.length-1; fila++ ) {
+				
+				var data			= value[0].feed.entry
+				var id              = data[fila].gsx$id.$t;
+				var stock		    = data[fila].gsx$stock.$t;
+				var color		    = data[fila].gsx$color.$t;
+				var marca		    = data[fila].gsx$marca.$t;
+				var modelo		    = data[fila].gsx$modelo.$t;
+				var talla           = data[fila].gsx$talla.$t;
+				var imagen		    = data[fila].gsx$imagen.$t;
+				if ( imagen.split( " " ).length >= 2 ) {
+					for ( var imgcount = 0; imgcount <= imagen.split( " " ).length-1; imgcount++ ) {
+						$( ".getDetalle .galeria" ).append( `<img class="lazyload" src="${imagen.split( " " )[imgcount]}" alt="${marca} - ${modelo}" />` )
+						
+						$( ".getDetalle > .galeria > img" ).click(function(){
+							let ruta = $( this ).attr( "src" );
+							$( ".getDetalle > img" ).attr( "src" , ruta );
+						});
+						
+					};
+					imagen = imagen.split( " " )[0];
+				};
+				var preciocliente   = Number( data[fila].gsx$precioneto.$t ) + cometa;
+				
+				// Agrega FILTROS
+				if ( traemarca === "todas" ) {
+					if ( stock == 1 ) {
+						$( `${donde}` ).prepend( `
+							<li data-talla="${talla}" data-color="${color}" data-id="${id}">
+								<a href="/detalle.html?id=${id}" title="${marca} ${modelo}">
+									<img class="lazyload" data-src="${imagen}" alt="${marca} ${modelo}" /> 
+									<span class="modelo">${modelo}</span>
+									<span class="marca">${marca}</span>
+									<span class="precio">${puntuacion(preciocliente)}</span>
+								</a>
+							</li>
+						` );
+					};
+				} else {
+					if ( stock == 1 && marca == traemarca ) {
+						$( `${donde}` ).prepend( `
+							<li data-talla="${talla}" data-color="${color}" data-id="${id}">
+								<a href="/detalle.html?id=${id}" title="${marca} ${modelo}">
+									<img class="lazyload" data-src="${imagen}" alt="${marca} ${modelo}" /> 
+									<span class="modelo">${modelo}</span>
+									<span class="marca">${marca}</span>
+									<span class="precio">${puntuacion(preciocliente)}</span>
+								</a>
+							</li>
+						` );
+					};
+				};
+					
+					
+					
+				$( "img.cargando" ).hide();
+				cuentaProductos( "h3.resultados" );
+			};
+			
+		});	
+	};
+	//     asasd
+	*/
+
+
 
 // GET PRODUCTO RELACIONADO
 var getProdRelacionado = function( owo , donde ) {
