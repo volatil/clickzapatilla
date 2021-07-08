@@ -241,8 +241,8 @@
         	$.each( $( ".calcular > div.producto" ) , function(){
         	
         		//- 100%
-        		if ( $( this ).find( ".precio" ).attr( "data-descuento15" ) ) {
-        			var precio = $( this ).find( ".precio" ).attr( "data-descuento15" );
+        		if ( $( this ).find( ".precio" ).attr( "data-descuento10" ) ) {
+        			var precio = $( this ).find( ".precio" ).attr( "data-descuento10" );
         		} else {
         			var precio = $( this ).find( ".precio" ).attr( "data-precio" );
         		};
@@ -268,12 +268,12 @@
         		var value = $( this ).val();
         		if ( value == "eliminar" ) {
         			$( this ).parent().remove();
-        		} else if ( value == "dcto15" ) {
+        		} else if ( value == "dcto10" ) {
         			let precio = $( this ).parent().find( ".precio" ).attr( "data-precio" );
-        			$( this ).parent().find( ".precio" ).attr( "data-descuento15" , descuento( 15 , precio ) );
-        			$( this ).parent().find( "p.precio" ).html( `$ ${ puntuacion( descuento( 15 , precio ) ) }` );
+        			$( this ).parent().find( ".precio" ).attr( "data-descuento10" , descuento( 10 , precio ) );
+        			$( this ).parent().find( "p.precio" ).html( `$ ${ puntuacion( descuento( 10 , precio ) ) }` );
         		} else {
-        			$( this ).parent().find( ".precio" ).removeAttr( "data-descuento15" );
+        			$( this ).parent().find( ".precio" ).removeAttr( "data-descuento10" );
         			let precio = $( this ).parent().find( ".precio" ).attr( "data-precio" );
         			$( this ).parent().find( "p.precio" ).html( `$ ${ puntuacion( precio ) }` );
         		};
@@ -300,7 +300,7 @@
         			<p class="talla">${ producto.talla }</p>
         			<select>
         				<option value=""></option>
-        				<option value="dcto15">15% dcto</option>
+        				<option value="dcto10">10% dcto</option>
         				<option value="eliminar">eliminar</option>
         			</select>
         		</div>
