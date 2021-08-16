@@ -48,7 +48,7 @@ html(lang="es")
 				};
 			
 				Promise.all([
-					fetch( `https://spreadsheets.google.com/feeds/list/1aZlC5KaMoyEPVqbMiH8_bPCsZoh65PBW9cm0HpG8Kjk/1/public/values?alt=json` ).then(value => value.json())
+					fetch( bd ).then(value => value.json())
 				])
 				.then((value) => {
 					
