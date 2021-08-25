@@ -50,10 +50,13 @@ html(lang="es")
 				])
 				.then((value) => {
 					
+					/*
 					var data = value[0].feed.entry;
+					*/
 					
-					for( var fila = 0; fila <= data.length-1; fila++ ) {
+					for( var fila = 0; fila <= value[0].values.length-1; fila++ ) {
 						
+						/*
 						var id  = data[fila].gsx$id.$t;
 						var stock  = data[fila].gsx$stock.$t;
 						var marca  = data[fila].gsx$marca.$t;
@@ -80,6 +83,24 @@ html(lang="es")
 							imagen = imagen.split( " " )[0];
 						};
 						
+						*/
+					
+						var ayudaBusqueda = marca + modelo + color;
+						var getProd         = value[0].values[fila];
+						var id              = getProd[0];
+						var stock		    = getProd[1];
+						var color		    = getProd[6];
+						var marca		    = getProd[2];
+						var modelo		    = getProd[3];
+						var preciocliente   = Number( getProd[4] ) + cometa;
+						var talla           = getProd[5];
+						
+						var imagen		    = getProd[7];
+						if ( imagen.split( " " ).length >= 2 ) {
+							imagen = imagen.split( " " )[0];
+						};
+						console.log( `hola` );
+						
 						// Agrega PRODUCTOS
 						if ( stock == "1" && ayudaBusqueda.includes( busqueda )  ) {
 							$( ".productos ul" ).prepend( `
@@ -98,7 +119,6 @@ html(lang="es")
 						}
 						$( ".productos .cargando" ).hide();
 					};
-					
 					cuentaProductos( "h3.resultados" );	
 				});	
 				

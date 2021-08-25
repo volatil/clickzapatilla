@@ -1,6 +1,8 @@
 
-var bd      = "https://spreadsheets.google.com/feeds/list/1aZlC5KaMoyEPVqbMiH8_bPCsZoh65PBW9cm0HpG8Kjk/1/public/values?alt=json";
 var bd      = "../imagenes/values.json";
+var bd      = "https://spreadsheets.google.com/feeds/list/1aZlC5KaMoyEPVqbMiH8_bPCsZoh65PBW9cm0HpG8Kjk/1/public/values?alt=json";
+var bd      = "https://sheets.googleapis.com/v4/spreadsheets/1aZlC5KaMoyEPVqbMiH8_bPCsZoh65PBW9cm0HpG8Kjk/values/inventario?key=AIzaSyAOWV0qar-gsYcyp5yWS99GQlPVovkuxcU";
+var ventas  = "https://sheets.googleapis.com/v4/spreadsheets/1aZlC5KaMoyEPVqbMiH8_bPCsZoh65PBW9cm0HpG8Kjk/values/Ventas?key=AIzaSyAOWV0qar-gsYcyp5yWS99GQlPVovkuxcU";
 var cometa  = 14990;
 
 //- Capitalize()
@@ -262,12 +264,13 @@ var getProdByID = function( owo , donde ) {
 		fetch( bd ).then(value => value.json())
 	])
 	.then((value) => {
-		var data			= value[0].feed.entry
-		var id              = data[owo].gsx$id.$t;
-		var stock		    = data[owo].gsx$stock.$t;
-		var marca		    = data[owo].gsx$marca.$t;
-		var modelo		    = data[owo].gsx$modelo.$t;
-		var imagen		    = data[owo].gsx$imagen.$t;
+		var getProd         = value[0].values[owo];
+		var id              = getProd[0];
+		var stock		    = getProd[1];
+		var marca		    = getProd[2];
+		var modelo		    = getProd[3];
+		
+		var imagen		    = getProd[7];
 		if ( imagen.split( " " ).length >= 2 ) {
 			for ( var imgcount = 0; imgcount <= imagen.split( " " ).length-1; imgcount++ ) {
 				$( ".getDetalle .galeria" ).append( `<img class="lazyload" src="${imagen.split( " " )[imgcount]}" alt="${marca} - ${modelo}" />` )
@@ -280,7 +283,7 @@ var getProdByID = function( owo , donde ) {
 			};
 			imagen = imagen.split( " " )[0];
 		};
-		var preciocliente   = Number( data[owo].gsx$precioneto.$t ) + cometa;
+		var preciocliente   = Number( getProd[4] ) + cometa;
 		
 		// Agrega PRODUCTOS
 		if ( stock == 1 ) {
@@ -295,6 +298,8 @@ var getProdByID = function( owo , donde ) {
 				</li>
 			` );
 		};
+		
+		
 	});	
 };
 
@@ -305,11 +310,10 @@ var getProdByLogo = function( donde ) {
 	])
 	.then((value) => {
 		
-		var data = value[0].feed.entry;
-		
-		for( var fila = 0; fila <= data.length-1; fila++ ) {
+		for( var fila = 1; fila <= value[0].values.length-1; fila++ ) {
+			var getProd = value[0].values[fila];
+			var marca   = getProd[2];
 			
-			var marca  = data[fila].gsx$marca.$t;
 			// Agrega FILTROS
 			if( !$( donde ).html().includes( marca ) ) {
 				$( donde ).append( `
@@ -326,7 +330,6 @@ var getProdByLogo = function( donde ) {
 };
 
 // GET PRODUCTO BY MARCA
-
 var getProdByMarca = function( donde , traemarca ) {
 	
 	Promise.all([
@@ -334,34 +337,15 @@ var getProdByMarca = function( donde , traemarca ) {
 	])
 	.then((value) => {
 		
-		var data = value[0].feed.entry;
-		
-
-
-		for( var fila = 0; fila <= data.length-1; fila++ ) {
-			
-			var data			= value[0].feed.entry
-			var id              = data[fila].gsx$id.$t;
-			var stock		    = data[fila].gsx$stock.$t;
-			var color		    = data[fila].gsx$color.$t;
-			var marca		    = data[fila].gsx$marca.$t;
-			var modelo		    = data[fila].gsx$modelo.$t;
-			var talla           = data[fila].gsx$talla.$t;
-			/*
-			if ( imagen.split( " " ).length >= 2 ) {
-				for ( var imgcount = 0; imgcount <= imagen.split( " " ).length-1; imgcount++ ) {
-					$( ".getDetalle .galeria" ).append( `<img class="lazyload" src="${imagen.split( " " )[imgcount]}" alt="${marca} - ${modelo}" />` )
-					
-					$( ".getDetalle > .galeria > img" ).click(function(){
-						let ruta = $( this ).attr( "src" );
-						$( ".getDetalle > img" ).attr( "src" , ruta );
-					});
-					
-				};
-				imagen = imagen.split( " " )[0];
-			};
-			*/
-			var preciocliente   = Number( data[fila].gsx$precioneto.$t ) + cometa;
+		for( var fila = 0; fila <= value[0].values.length-1; fila++ ) {
+			var getProd         = value[0].values[fila];
+			var id              = getProd[0];
+			var stock		    = getProd[1];
+			var color		    = getProd[6];
+			var marca		    = getProd[2];
+			var modelo		    = getProd[3];
+			var preciocliente   = Number( getProd[4] ) + cometa;
+			var talla           = getProd[5];
 			
 			// Agrega FILTROS
 			if ( traemarca === "todas" ) {
@@ -378,24 +362,8 @@ var getProdByMarca = function( donde , traemarca ) {
 					` );
 				};
 			} else {
-				var imagen		    = data[fila].gsx$imagen.$t.split( " " )[0];
-				/*
-				if ( imagen.split( " " ).length >= 2 ) {
-					for ( var imgcount = 0; imgcount <= imagen.split( " " ).length-1; imgcount++ ) {
-						$( ".getDetalle .galeria" ).append( `<img class="lazyload" src="${imagen.split( " " )[imgcount]}" alt="${marca} - ${modelo}" />` )
-						
-						$( ".getDetalle > .galeria > img" ).click(function(){
-							let ruta = $( this ).attr( "src" );
-							$( ".getDetalle > img" ).attr( "src" , ruta );
-						});
-						
-					};
-					imagen = imagen.split( " " )[0];
-				};
-				*/
+				var imagen		    = getProd[7].split( " " )[0];
 				if ( stock == 1 && marca == traemarca ) {
-					// <img class="lazyload" data-src="${imagen}" alt="${marca} ${modelo}" /> 
-					// <img class="lazyload" data-src="https://statics.cdn0.buscalibre.com/borrame/390b7c2028549649321be2daaf49db59--nike-flyknit-women-running-shoes.jpg" alt="${marca} ${modelo}" /> 
 					$( `${donde}` ).prepend( `
 					<li data-talla="${talla}" data-color="${color}" data-id="${id}">
 						<a href="/detalle.html?id=${id}" title="${marca} ${modelo}">
@@ -413,9 +381,6 @@ var getProdByMarca = function( donde , traemarca ) {
 			cuentaProductos( "h3.resultados" );
 		};
 		
-		
-		
-		
 	});	
 };
 
@@ -427,17 +392,17 @@ var getProdRelacionado = function( owo , donde ) {
 		fetch( bd ).then(value => value.json())
 	])
 	.then((value) => {
+		var getProd         = value[0].values[owo];
+		var id              = getProd[0];
+		var stock		    = getProd[1];
+		var marca		    = getProd[2];
+		var modelo		    = getProd[3];
 		
-		var data			= value[0].feed.entry
-		var id              = data[owo].gsx$id.$t;
-		var stock		    = data[owo].gsx$stock.$t;
-		var marca		    = data[owo].gsx$marca.$t;
-		var modelo		    = data[owo].gsx$modelo.$t;
-		var imagen		    = data[owo].gsx$imagen.$t;
+		var imagen		    = getProd[7];
 		if ( imagen.split( " " ).length >= 2 ) {
 			imagen = imagen.split( " " )[0];
 		};
-		var preciocliente   = Number( data[owo].gsx$precioneto.$t ) + cometa;
+		var preciocliente   = Number( getProd[4] ) + cometa;
 		
 		// Agrega PRODUCTOS
 		if ( stock == 1 ) {
@@ -452,6 +417,7 @@ var getProdRelacionado = function( owo , donde ) {
 				</li>
 			` );
 		};
+	
 	});	
 };
 

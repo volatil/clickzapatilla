@@ -30,36 +30,31 @@ html(lang="es")
 				script( type="text/javascript" ).
 					var getCodigoSeguimiento = function( codigo ){
 						Promise.all([
-							fetch( `https://spreadsheets.google.com/feeds/list/1aZlC5KaMoyEPVqbMiH8_bPCsZoh65PBW9cm0HpG8Kjk/1/public/values?alt=json` ).then(value => value.json()),
-							fetch( `https://spreadsheets.google.com/feeds/list/1aZlC5KaMoyEPVqbMiH8_bPCsZoh65PBW9cm0HpG8Kjk/2/public/values?alt=json` ).then(value => value.json())
+							fetch( ventas ).then(value => value.json()),
+							fetch( bd ).then(value => value.json())
 						])
 						.then((value) => {
 							
-							var inventario = value[0].feed.entry;
-							var ventas = value[1].feed.entry;
+							var ventas = value[0];
+							var inventario = value[1];
 							
-							for( var fila = 0; fila <= ventas.length-1; fila++ ) {
+							for( var fila = 1; fila <= ventas.values.length-1; fila++ ) {
 								
-								var codigoSeguimiento = ventas[fila].gsx$idcompra.$t;
+								var getVenta            = ventas.values[fila];
+								var getInventario       = inventario.values[idproducto-1];
+								var codigoSeguimiento   = getVenta[1];
 								
 								if ( String(codigoSeguimiento) == String(codigo) ) {
 									
-									var idproducto  = ventas[fila].gsx$idproducto.$t;
-									var talla       = ventas[fila].gsx$talla.$t;
-									var estado      = ventas[fila].gsx$estadopedido.$t;
-									var marca       = inventario[idproducto-1].gsx$marca.$t;
-									var modelo      = inventario[idproducto-1].gsx$modelo.$t;
-									var imagen      = inventario[idproducto-1].gsx$imagen.$t;
+									var idproducto  = getVenta[3];
+									var talla       = getVenta[4];
+									var estado      = getVenta[6];
+									
+									var getInventario       = inventario.values[idproducto];
+									var marca       = getInventario[2];
+									var modelo      = getInventario[3];
+									var imagen      = getInventario[7];
 									if ( imagen.split( " " ).length >= 2 ) {
-										for ( var imgcount = 0; imgcount <= imagen.split( " " ).length-1; imgcount++ ) {
-											$( ".getDetalle .galeria" ).append( `<img class="lazyload" src="${imagen.split( " " )[imgcount]}" alt="${marca} - ${modelo}" />` )
-											
-											$( ".getDetalle > .galeria > img" ).click(function(){
-												let ruta = $( this ).attr( "src" );
-												$( ".getDetalle > img" ).attr( "src" , ruta );
-											});
-											
-										};
 										imagen = imagen.split( " " )[0];
 									};
 									
@@ -166,6 +161,7 @@ html(lang="es")
 					const codigo = urlParams.get('codigo');
 					$( ".seguimiento > .buscador > input" ).val( codigo );
 					$( ".seguimiento > .buscador > img" ).click();
+					$( ".seguimiento .resultado .error" ).hide();
 					
 			.covid
 				h3 

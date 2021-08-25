@@ -56,13 +56,48 @@ html(lang="es")
 		//- GET DATA PRINCIPAL
 		script( type="text/javascript" ).
 			var getDetalle = function( owo ) {
-				owo = owo-1
+				//- owo = owo
 				
 				Promise.all([
 					fetch( bd ).then(value => value.json())
 				])
 				.then((value) => {
 					
+					var getProd         = value[0].values[owo];
+					var id              = getProd[0];
+					var stock		    = getProd[1];
+					var marca		    = getProd[2];
+					var modelo		    = getProd[3];
+					
+					var imagen		    = getProd[7];
+					if ( imagen.split( " " ).length >= 2 ) {
+						for ( var imgcount = 0; imgcount <= imagen.split( " " ).length-1; imgcount++ ) {
+							
+							if ( !imagen.split( " " )[imgcount].length == 0 ) {
+								$( ".getDetalle .galeria" ).append( `<img itemprop="image" class="lazyload" data-src="${imagen.split( " " )[imgcount]}" alt="${marca} - ${modelo}" />` )
+								
+								$( ".getDetalle > .galeria > img" ).click(function(){
+									let ruta = $( this ).attr( "src" );
+									$( ".getDetalle > img" ).attr( "src" , ruta );
+								});
+							}
+							
+						};
+						imagen = imagen.split( " " )[0];
+					};
+					var preciocliente   = Number( getProd[4] ) + cometa;
+					
+					var talla		   = getProd[5];
+					for( var i = 0; i <= talla.split( " " ).length-1; i++ ) {
+						var tallaActiva = talla.split( " " )[i];
+						$( ".talla > ul > li[data-talla=talla-" + tallaActiva + "]" ).addClass( "enable" );
+					}
+					var color	   = getProd[6];
+					
+					
+					
+					
+					/*
 					var data			= value[0].feed.entry
 					var id			  = data[owo].gsx$id.$t;
 					var stock			= data[owo].gsx$stock.$t;
@@ -98,6 +133,8 @@ html(lang="es")
 					if( descripcion.length >= 1 ) {
 						var descripcion = "("+descripcion+")";
 					};
+					
+					*/
 					
 					// Agrega PRODUCTOS
 					var $producto = $( ".getDetalle" );
